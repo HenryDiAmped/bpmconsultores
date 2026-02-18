@@ -18,9 +18,9 @@ export default function HeroSection() {
             width: s,
             height: s,
             // Animación: Nombre | Duración (lenta) | Tipo | Repetición
-            animation: `${styles['subtle-breath']} 2s ease-in-out infinite`,
+            animation: `${styles['subtle-breath']} 1.5s ease-in-out infinite`,
             // Pequeño retraso para efecto de ola suave. El más grande empieza último.
-            animationDelay: `${i * 1.95}s`,
+            animationDelay: `${i * 1.45}s`,
             // Z-index bajo para asegurar que estén detrás del contenido
             zIndex: 0,
           }}
