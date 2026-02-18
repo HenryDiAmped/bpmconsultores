@@ -3,9 +3,9 @@ import React from "react";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
-  // MEDIDAS EXACTAS basadas en la imagen de referencia de Humand.
+  // MEDIDAS reducidas para que los anillos queden más contenidos y visibles.
   // Ordenadas de mayor a menor.
-  const sizes = [700, 630, 560, 490, 420, 350,280,210];
+  const sizes = [520, 440, 360, 300, 240, 180, 140, 100];
 
   return (
     <section className={styles.container}>

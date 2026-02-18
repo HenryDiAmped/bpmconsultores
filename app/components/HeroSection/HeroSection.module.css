@@ -2,36 +2,43 @@
 .container {
   position: relative;
   width: 100%;
-  height: 85vh; /* Ajustado para parecerse más a la referencia */
-  min-height: 600px;
+  height: 60vh; /* menos alto para centrar mejor los anillos */
+  min-height: 420px;
   display: flex;
-  /* Centra el contenido (texto) verticalmente, alinea a la izquierda */
+  /* Centra el contenido vertical y horizontalmente */
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden; /* Importante para cortar los círculos grandes */
+  justify-content: center;
+  overflow: visible; /* permitimos ver los anillos alrededor del centro */
   background-color: #ffffff; /* Fondo blanco limpio */
-  padding-left: 10%; /* Espacio para el texto a la izquierda */
+  padding: 0; /* quitar desplazamiento a la izquierda */
 }
 
 /* Clase principal para los anillos delgados */
 .ring {
   position: absolute;
-  /* Posición ajustada para que quede detrás del texto (arriba a la izquierda) */
-  top: 45%;
-  left: 40%;
-  /* Centrado desde ese punto */
+  /* Centrado exacto en el contenedor */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none; /* Para que no interfieran con clicks */
 
-  /* ESTILO VISUAL EXACTO DE LA IMAGEN: */
-  background: transparent; /* Sin fondo */
-  /* Borde fino azul con transparencia */
-  border: 1.5px solid rgba(0, 82, 204, 0.25);
-  /* Sin sombras borrosas ni rellenos */
-  box-shadow: none;
+  /* Relleno con degradado radial para lograr anillos concéntricos sutiles */
+    background: radial-gradient(circle at 50% 38%,
+      rgba(6,24,130,0.18) 0%,
+      rgba(6,24,130,0.14) 8%,
+      rgba(12,65,200,0.12) 20%,
+      rgba(12,65,200,0.10) 34%,
+      rgba(10,64,200,0.08) 50%,
+      rgba(10,64,200,0.06) 68%,
+      rgba(10,64,200,0.04) 82%,
+      rgba(10,64,200,0.03) 92%,
+      rgba(10,64,200,0.02) 100%);
 
-  will-change: transform;
+  /* Sutileza de profundidad interna y un ligero brillo exterior */
+    box-shadow: inset 0 10px 30px rgba(0,20,80,0.06), 0 8px 30px rgba(6,24,71,0.02);
+
+  will-change: transform, opacity, background;
 }
 
 /* Contenedor para el texto y el botón para que quede encima */
