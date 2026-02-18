@@ -54,8 +54,8 @@
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    /* Solo crece un 4%, muy sutil y profesional */
-    transform: translate(-50%, -50%) scale(1.04);
+    /* Movimiento más amplio: crece más y se desplaza levemente */
+    transform: translate(-50%, -48%) scale(1.17);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
