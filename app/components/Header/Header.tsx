@@ -43,7 +43,7 @@ export default function Header({
       <div className={styles.container}>
         <div className={styles.brand}>
           <Link href="/" className={styles.logo} onClick={() => setOpen(false)}>
-            {logo ?? <span className={styles.logoText}>BPM Consultores</span>}
+            {logo ?? <span className={styles.logoText}>BPM Consultores y Saas</span>}
           </Link>
         </div>
 
