@@ -1,16 +1,14 @@
-export const metadata = {
-  title: "Nosotros - BPM Consultores",
-  description: "Conoce al equipo y la misión de BPM Consultores",
-}
+'use client';
+
+import { useTranslation } from 'react-i18next';
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
+  
   return (
     <main style={{ padding: 40 }}>
-      <h1>Servicios</h1>
-      <p>
-        Somos BPM Consultores, especialistas en crecimiento y expansión apoyados
-        en soluciones tecnológicas y experiencia de negocio.
-      </p>
+      <h1>{t('services.title')}</h1>
+      <p>{t('services.description')}</p>
     </main>
   )
 }

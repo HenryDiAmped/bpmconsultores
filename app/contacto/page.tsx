@@ -1,10 +1,13 @@
-export const metadata = {
-  title: "Contacto - BPM Consultores",
-  description: "Contacta con BPM Consultores para más información",
-}
+'use client';
+
+import { useTranslation } from 'react-i18next';
 
 export default function ContactoPage() {
+  const { t } = useTranslation();
+  
   return (
-    <h1>Contacto Page</h1>
+    <main style={{ padding: 40 }}>
+      <h1>{t('contact.title')}</h1>
+    </main>
   )
 }
