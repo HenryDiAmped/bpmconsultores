@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header"
-import Footer from "./components/Footer/Footer"
-import I18nProvider from "./components/I18nProvider"
-import LanguageSwitcher from "./components/LanguageSwitcher"
-import CTAButton from "./components/CTAButton"
+import Header from "../components/Header"
+import Footer from "../components/Footer/Footer"
+import I18nProvider from "../components/I18nProvider"
+import LanguageSwitcher from "../components/LanguageSwitcher"
+import CTAButton from "../components/CTAButton"
 import { geistMono, geistSans } from "./fonts";
 
 export const metadata: Metadata = {
