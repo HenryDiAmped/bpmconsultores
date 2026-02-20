@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import styles from "./Header.module.css"
 
 type NavItem = { label: string; href: string; external?: boolean }
 
 interface HeaderProps {
   logo?: React.ReactNode
-  nav?: NavItem[]
   actions?: React.ReactNode
   fixed?: boolean
   transparent?: boolean
@@ -16,16 +16,8 @@ interface HeaderProps {
   className?: string
 }
 
-const DEFAULT_NAV: NavItem[] = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Contacto", href: "/contacto" },
-]
-
 export default function Header({
   logo,
-  nav = DEFAULT_NAV,
   actions,
   fixed = false,
   transparent = false,
@@ -33,6 +25,15 @@ export default function Header({
   className = "",
 }: HeaderProps) {
   const [open, setOpen] = useState(false)
+  const { t } = useTranslation()
+
+  const nav: NavItem[] = [
+    { label: t('nav.home'), href: "/" },
+    { label: t('nav.services'), href: "/servicios" },
+    { label: t('nav.about'), href: "/nosotros" },
+    { label: t('nav.blog'), href: "/blog" },
+    { label: t('nav.contact'), href: "/contacto" },
+  ]
 
   return (
     <header
