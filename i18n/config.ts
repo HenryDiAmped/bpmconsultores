@@ -17,6 +17,10 @@ const resources = {
         subtitle: 'Unimos nuestra consultoría experta con la plataforma de RR.HH. líder en Latinoamérica.',
         button: 'Ver detalles de la alianza',
       },
+      video: {
+        title: 'Descubre cómo transformamos negocios',
+        subtitle: 'Conoce nuestra metodología y casos de éxito que han impulsado el crecimiento de empresas en toda Latinoamérica.',
+      },
       about: {
         title: 'Nosotros',
         description: 'Somos BPM Consultores, especialistas en crecimiento y expansión apoyados en soluciones tecnológicas y experiencia de negocio.',
@@ -73,6 +77,10 @@ const resources = {
         title: 'Strategic Alliance: B2B SaaS and...',
         subtitle: 'We unite our expert consulting with the leading HR platform in Latin America.',
         button: 'View alliance details',
+      },
+      video: {
+        title: 'Discover how we transform businesses',
+        subtitle: 'Learn about our methodology and success stories that have driven business growth across Latin America.',
       },
       about: {
         title: 'About Us',
