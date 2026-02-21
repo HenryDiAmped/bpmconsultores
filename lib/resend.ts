@@ -15,7 +15,13 @@ export const send = async (emailFormData: z.infer<typeof formSchema>)=>{
             from: 'BPM Consultores <onboarding@resend.dev>',
             to: ['minvosoftware@gmail.com'],
             subject: 'Correo de prueba',
-            react: EmailTemplate({ firstName: emailFormData.firstName }) as ReactElement,
+            react: EmailTemplate({ 
+                firstName: emailFormData.firstName,
+                lastName: emailFormData.lastName,
+                email: emailFormData.email,
+                company: emailFormData.company,
+                message: emailFormData.message,
+            }) as ReactElement,
         });
 
         if(error){
