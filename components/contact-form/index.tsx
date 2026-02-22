@@ -53,14 +53,14 @@ export default function ContactForm() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    
+
                     <h2 className="text-2xl font-bold text-gray-900">¡Mensaje Enviado!</h2>
                     <p className="text-gray-600 text-base">
                         Gracias por contactarnos. Hemos recibido tu mensaje con éxito y nuestro equipo se pondrá en contacto contigo muy pronto.
                     </p>
-                    
-                    <Button 
-                        onClick={() => router.push('/')} 
+
+                    <Button
+                        onClick={() => router.push('/')}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-6 text-base"
                     >
                         Aceptar y volver al inicio

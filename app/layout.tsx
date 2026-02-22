@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "../components/Header"
-import Footer from "../components/Footer/Footer"
-import I18nProvider from "../components/I18nProvider"
-import LanguageSwitcher from "../components/LanguageSwitcher"
-import CTAButton from "../components/CTAButton"
+import I18nProvider from "@/components/I18nProvider"
 import { geistMono, geistSans } from "./fonts";
 
 export const metadata: Metadata = {
@@ -23,16 +19,7 @@ export default function RootLayout({
         className={`${geistSans.className} ${geistMono.className} antialiased`}
       >
         <I18nProvider>
-          <Header
-            actions={
-              <>
-                <CTAButton />
-                <LanguageSwitcher />
-              </>
-            }
-          />
           {children}
-          <Footer />
         </I18nProvider>
       </body>
     </html>
