@@ -1,10 +1,9 @@
-import ImpactSection from "@/components/impact-section";
+import HeroSection from '@/components/HeroSection';
 
 export default function Home() {
   return (
-    <div>
-      {/* Página principal */}
-      <ImpactSection />
-    </div>
+    <main>
+      <HeroSection />
+    </main>
   );
 }
