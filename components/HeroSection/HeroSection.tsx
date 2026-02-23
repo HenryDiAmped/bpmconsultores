@@ -15,10 +15,10 @@ export default function HeroSection() {
   const [activeItem, setActiveItem] = useState("item-1");
 
   return (
-    <div className="w-full pb-24 bg-[#EFEFEF]">
+    <div className="w-full pb-24">
       {/* ================= HERO SECTION ================= */}
-      {/* 1. Cambio Clave: Añadimos z-0, quitamos overflow-hidden y aumentamos el pb-28 para dar espacio */}
-      <section className="relative z-0 flex flex-col items-center justify-center pt-20 pb-28 px-4 text-center">
+      {/* 1. Quitamos el pb-28 de aquí para controlar el espacio solo con el botón */}
+      <section className="relative z-0 flex flex-col items-center justify-center pt-20 px-4 text-center">
         
         {/* Logos BPM + Humand */}
         <div className="flex items-center gap-3 mb-6 z-10">
@@ -41,26 +41,31 @@ export default function HeroSection() {
           Soluciones Estratégicas<br />Para Transformar tu negocio
         </h1>
         
-        <p className="text-base md:text-lg text-gray-800 max-w-2xl mb-12 z-10 font-medium">
+        {/* 2. Ajuste de 29px entre el texto y el botón */}
+        <p className="text-base md:text-lg text-gray-800 max-w-2xl mb-[29px] z-10 font-medium">
           Consultoría especializada en crecimiento, eficiencia y expansión internacional<br className="hidden md:block" />
           potenciada por inteligencia artificial avanzada de la mano con <span className="text-[#002EC3] font-bold">Humand</span>.
         </p>
 
-        {/* Contenedor del Botón + Efecto Ripple */}
-        <div className="relative flex items-center justify-center w-full h-[240px]">
-          {/* 2. Cambio Clave: El Ripple debe tener z-0 para estar en el fondo */}
-          <Ripple mainCircleSize={196} className="z-0" />
+        {/* 3. Ajuste del Contenedor: Quitamos h-[240px] y añadimos mb-[29px] hacia el bloque azul */}
+        <div className="relative flex items-center justify-center w-full mb-[29px] ">
+          {/* 3. ¡EL TRUCO AQUÍ! Envolvemos el Ripple en una caja flotante de 0x0.
+              Al ponerle -top-[35px] lo "empujamos" hacia arriba, justo al centro de la separación.
+              Si necesitas que suba o baje más, solo cambia ese número (ej: -top-[20px] o -top-[50px]). */}
+          <div className="absolute left-1/2 -translate-x-1/2 -top-[-155px] w-0 h-0 z-0">
+            <Ripple mainCircleSize={196} />
+          </div>
           
           {/* Botón al frente */}
-          <Button className="bg-[#002EC3] hover:bg-[#002EC3]/90 text-white rounded-lg px-8 py-6 text-base shadow-lg transition-transform hover:scale-105 z-10 font-medium">
+          <Button className="bg-[#002EC3] hover:bg-[#002EC3]/90 text-white rounded-lg px-8 py-6 text-base shadow-lg transition-transform hover:scale-105 z-10 relative font-medium">
             Quiero una Demo
           </Button>
         </div>
       </section>
 
       {/* ================= BLUE FEATURE SECTION ================= */}
-      {/* 3. Cambio Clave: Añadimos relative, z-20 y un margen negativo -mt-24 para superponerla */}
-      <section className="relative z-20 max-w-[1200px] mx-auto px-4 -mt-24">
+      {/* 4. Quitamos el -mt-24. Como es z-20 tapará naturalmente las ondas que bajen */}
+      <section className="relative z-20 max-w-[1200px] mx-auto px-4">
         <div className="bg-[#002EC3] rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 shadow-2xl">
           
           {/* Columna Izquierda: Textos y Acordeón */}
