@@ -17,7 +17,6 @@ export default function HeroSection() {
   return (
     <div className="w-full pb-24">
       {/* ================= HERO SECTION ================= */}
-      {/* 1. Quitamos el pb-28 de aquí para controlar el espacio solo con el botón */}
       <section className="relative z-0 flex flex-col items-center justify-center pt-20 px-4 text-center">
         
         {/* Logos BPM + Humand */}
@@ -37,26 +36,21 @@ export default function HeroSection() {
         </button>
 
         {/* Textos Principales */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-black max-w-4xl mb-6 leading-[1.1] z-10">
+        <h1 className="text-4xl md:text-5xl lg:text-[64px] font-semibold tracking-tight text-black max-w-4xl mb-6 leading-[1.1] z-10">
           Soluciones Estratégicas<br />Para Transformar tu negocio
         </h1>
         
-        {/* 2. Ajuste de 29px entre el texto y el botón */}
         <p className="text-base md:text-lg text-gray-800 max-w-2xl mb-[29px] z-10 font-medium">
           Consultoría especializada en crecimiento, eficiencia y expansión internacional<br className="hidden md:block" />
           potenciada por inteligencia artificial avanzada de la mano con <span className="text-[#002EC3] font-bold">Humand</span>.
         </p>
 
-        {/* 3. Ajuste del Contenedor: Quitamos h-[240px] y añadimos mb-[29px] hacia el bloque azul */}
-        <div className="relative flex items-center justify-center w-full mb-[29px] ">
-          {/* 3. ¡EL TRUCO AQUÍ! Envolvemos el Ripple en una caja flotante de 0x0.
-              Al ponerle -top-[35px] lo "empujamos" hacia arriba, justo al centro de la separación.
-              Si necesitas que suba o baje más, solo cambia ese número (ej: -top-[20px] o -top-[50px]). */}
+        {/* Contenedor del Botón + Ripple flotante */}
+        <div className="relative flex items-center justify-center w-full mb-[29px]">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[-155px] w-0 h-0 z-0">
             <Ripple mainCircleSize={196} />
           </div>
           
-          {/* Botón al frente */}
           <Button className="bg-[#002EC3] hover:bg-[#002EC3]/90 text-white rounded-lg px-8 py-6 text-base shadow-lg transition-transform hover:scale-105 z-10 relative font-medium">
             Quiero una Demo
           </Button>
@@ -64,16 +58,18 @@ export default function HeroSection() {
       </section>
 
       {/* ================= BLUE FEATURE SECTION ================= */}
-      {/* 4. Quitamos el -mt-24. Como es z-20 tapará naturalmente las ondas que bajen */}
-      <section className="relative z-20 max-w-[1200px] mx-auto px-4">
-        <div className="bg-[#002EC3] rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 shadow-2xl">
+      {/* Cambiamos el ancho máximo a 1020px exactos */}
+      <section className="relative z-20 max-w-[1020px] mx-auto px-4">
+        
+        {/* Añadimos lg:min-h-[470px] para respetar el diseño base pero permitir que el acordeón empuje si es necesario */}
+        <div className="bg-[#002EC3] rounded-[2rem] flex flex-col lg:flex-row shadow-2xl overflow-hidden lg:min-h-[470px]">
           
-          {/* Columna Izquierda: Textos y Acordeón */}
-          <div className="w-full lg:w-[45%] flex flex-col text-white">
-            <h2 className="text-3xl md:text-4xl font-medium mb-4 pr-8">
+          {/* Columna Izquierda: Ajustamos un poco el padding superior para balancear el nuevo alto */}
+          <div className="w-full lg:w-[50%] flex flex-col text-white p-8 md:p-12 lg:pt-12 lg:pb-8 lg:pl-12 lg:pr-8">
+            <h2 className="text-3xl md:text-4xl lg:text-[36px] font-semibold mb-5 leading-[1.15]">
               ¿Tu empresa realmente conoce a su gente?
             </h2>
-            <p className="text-white/90 mb-8 text-sm md:text-base leading-relaxed">
+            <p className="text-white/90 mb-6 text-sm md:text-base leading-relaxed">
               La mayoría cree que sí. Los datos dicen otra cosa. Transforma la forma en que entiendes, mides y potencias a tu equipo a nivel global.
             </p>
 
@@ -82,49 +78,56 @@ export default function HeroSection() {
               collapsible 
               value={activeItem} 
               onValueChange={setActiveItem}
-              className="w-full"
+              className="w-full flex flex-col gap-1"
             >
-              <AccordionItem value="item-1" className="border-b-0 mb-4 pl-4 border-l-[3px] border-white/30 data-[state=open]:border-white transition-all">
-                <AccordionTrigger className="text-left font-semibold text-sm md:text-base py-2 hover:no-underline text-white">
+              <AccordionItem value="item-1" className="border-none">
+                <AccordionTrigger className="text-left font-semibold text-sm py-2.5 hover:no-underline text-white relative pl-6">
+                  <div className={`absolute left-0 top-[12px] w-[5px] h-6 rounded-full transition-colors duration-300 ${activeItem === 'item-1' ? 'bg-white' : 'bg-white/30'}`} />
                   ¿Mides el clima laboral en tiempo real o esperas encuestas anuales?
                 </AccordionTrigger>
-                <AccordionContent className="text-white/80 text-sm leading-relaxed pb-4 pt-2">
+                <AccordionContent className="text-white/80 text-sm leading-relaxed pl-6 pb-2 pt-0">
                   Las encuestas anuales son fotografías del pasado. Con tecnología en tiempo real, puedes detectar problemas antes de que escalen.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-2" className="border-b-0 mb-4 pl-4 border-l-[3px] border-white/30 data-[state=open]:border-white transition-all">
-                <AccordionTrigger className="text-left font-semibold text-sm md:text-base py-2 hover:no-underline text-white">
+              <AccordionItem value="item-2" className="border-none">
+                <AccordionTrigger className="text-left font-semibold text-sm py-2.5 hover:no-underline text-white relative pl-6">
+                  <div className={`absolute left-0 top-[12px] w-[5px] h-6 rounded-full transition-colors duration-300 ${activeItem === 'item-2' ? 'bg-white' : 'bg-white/30'}`} />
                   ¿Cuánto talento estás perdiendo sin darte cuenta?
                 </AccordionTrigger>
-                <AccordionContent className="text-white/80 text-sm leading-relaxed pb-4 pt-2">
+                <AccordionContent className="text-white/80 text-sm leading-relaxed pl-6 pb-2 pt-0">
                   Identifica la fuga de talento a tiempo con métricas predictivas.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-3" className="border-b-0 mb-4 pl-4 border-l-[3px] border-white/30 data-[state=open]:border-white transition-all">
-                <AccordionTrigger className="text-left font-semibold text-sm md:text-base py-2 hover:no-underline text-white">
+              <AccordionItem value="item-3" className="border-none">
+                <AccordionTrigger className="text-left font-semibold text-sm py-2.5 hover:no-underline text-white relative pl-6">
+                  <div className={`absolute left-0 top-[12px] w-[5px] h-6 rounded-full transition-colors duration-300 ${activeItem === 'item-3' ? 'bg-white' : 'bg-white/30'}`} />
                   ¿Tus líderes gestionan personas o solo administran tareas?
                 </AccordionTrigger>
-                <AccordionContent className="text-white/80 text-sm leading-relaxed pb-4 pt-2">
+                <AccordionContent className="text-white/80 text-xs leading-relaxed pl-6 pb-2 pt-0">
                   Con la tecnología de Humand, empoderamos a tus líderes dándoles herramientas para medir el pulso de su equipo. Fomentamos el desarrollo continuo, el feedback constructivo y el reconocimiento.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-4" className="border-b-0 mb-4 pl-4 border-l-[3px] border-white/30 data-[state=open]:border-white transition-all">
-                <AccordionTrigger className="text-left font-semibold text-sm md:text-base py-2 hover:no-underline text-white">
+              <AccordionItem value="item-4" className="border-none">
+                <AccordionTrigger className="text-left font-semibold text-sm py-2.5 hover:no-underline text-white relative pl-6">
+                  <div className={`absolute left-0 top-[12px] w-[5px] h-6 rounded-full transition-colors duration-300 ${activeItem === 'item-4' ? 'bg-white' : 'bg-white/30'}`} />
                   ¿Tomas decisiones basadas en datos o en intuiciones?
                 </AccordionTrigger>
-                <AccordionContent className="text-white/80 text-sm leading-relaxed pb-4 pt-2">
+                <AccordionContent className="text-white/80 text-sm leading-relaxed pl-6 pb-2 pt-0">
                   Convierte la intuición en acción respaldada por analítica de personas.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           </div>
 
-          {/* Columna Derecha: Cuadro Celeste */}
-          <div className="w-full lg:w-[55%] min-h-[400px] bg-[#AEC0F5] rounded-2xl flex items-center justify-center">
-            {/* Aquí puedes cambiar la imagen según el 'activeItem' más adelante */}
+          {/* Columna Derecha: Ajuste de flex para que respete el alto de 470px */}
+          <div className="w-full lg:w-[50%] flex items-end justify-end pt-8 lg:pt-16 pl-8 md:pl-12 lg:pl-0">
+            {/* Caja Celeste */}
+            <div className="w-full h-full min-h-[300px] bg-[#AEC0F5] rounded-tl-[2.5rem] border-t-[6px] border-l-[6px] border-white flex items-center justify-center relative">
+               {/* Contenido dinámico */}
+            </div>
           </div>
 
         </div>
