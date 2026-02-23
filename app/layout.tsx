@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import I18nProvider from "@/components/I18nProvider"
 import { geistMono, bricolage } from "./fonts";
+import { Ripple } from "@/components/ui/ripple";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -18,9 +19,11 @@ export default function RootLayout({
       <body
         className={`${bricolage.className} ${geistMono.className} antialiased`}
       >
+        <Ripple/>
         <I18nProvider>
           {children}
         </I18nProvider>
+        
       </body>
     </html>
   );
