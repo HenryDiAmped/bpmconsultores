@@ -15,7 +15,7 @@ export default function HeroSection() {
   const [activeItem, setActiveItem] = useState("item-1");
 
   return (
-    <div className="w-full pb-24">
+<div className="w-full pb-4 overflow-x-hidden">
       {/* ================= HERO SECTION ================= */}
       <section className="relative z-0 flex flex-col items-center justify-center pt-20 px-4 text-center">
         
@@ -62,7 +62,7 @@ export default function HeroSection() {
       <section className="relative z-20 max-w-[1020px] mx-auto px-4">
         
         {/* Añadimos lg:min-h-[470px] para respetar el diseño base pero permitir que el acordeón empuje si es necesario */}
-        <div className="bg-[#002EC3] rounded-[2rem] flex flex-col lg:flex-row shadow-2xl overflow-hidden lg:min-h-[470px]">
+        <div className="bg-[#002EC3] rounded-[2rem] flex flex-col lg:flex-row overflow-hidden lg:min-h-[470px]">
           
           {/* Columna Izquierda: Ajustamos un poco el padding superior para balancear el nuevo alto */}
           <div className="w-full lg:w-[50%] flex flex-col text-white p-8 md:p-12 lg:pt-12 lg:pb-8 lg:pl-12 lg:pr-8">

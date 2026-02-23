@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -24,13 +25,20 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Global">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo Nuevo con PNG */}
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-2xl font-bold text-blue-600">BPM</span>
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/logo.png" /* El nombre exacto de tu archivo en la carpeta public */
+                alt="Logo BPM Consultores" 
+                width={120} /* Ancho original aproximado para que Next.js calcule la proporción */
+                height={40} /* Alto original aproximado */
+                className="h-8 w-auto" /* h-8 le da 32px de alto. Ajusta a h-10 o h-12 si lo ves muy pequeño */
+                priority /* Esta etiqueta es súper importante para que el logo cargue al instante */
+              />
             </Link>
           </div>
 
@@ -106,7 +114,7 @@ export default function Header() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200">
+          <div className="lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-md">
             <div className="space-y-2">
               {navigation.map((item) => (
                 <Link
