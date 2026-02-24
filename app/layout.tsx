@@ -22,8 +22,9 @@ export default function RootLayout({
       >
         <I18nProvider>
           <Header />
-
-          {children}
+          <div className="min-h-screen pt-16">
+            {children}
+          </div>
         </I18nProvider>
       </body>
     </html>

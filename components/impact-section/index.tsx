@@ -26,7 +26,7 @@ export default function ImpactSection() {
     // Se usa un color de fondo genérico. Si en Figma tiene un gris muy clarito, 
     // podrías usar bg-slate-50 o bg-zinc-50 en lugar de bg-background.
     <section className="w-full py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="w-full max-w-[1020px] mx-auto px-4 md:px-6">
         
         {/* Título Principal */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-center mb-16 md:mb-24 text-foreground">
