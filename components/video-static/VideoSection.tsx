@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface VideoSectionProps {
   // El ID de tu video ya está configurado por defecto
@@ -33,10 +34,11 @@ export default function VideoSection({
             {!isPlaying ? (
               <>
                 {/* Imagen de previsualización */}
-                <img 
+                <Image 
                   src={finalThumbnail} 
-                  alt="Previsualización del video" 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  alt="Previsualización del video"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 
                 {/* Capa oscura sutil para que el botón de play siempre resalte */}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const features = [
   {
@@ -34,8 +35,8 @@ export default function BlueFeatureSection() {
 
   // EFECTO 1: Solo maneja el incremento de la barra de progreso
   useEffect(() => {
-    const updateInterval = 50; 
-    const step = (updateInterval / AUTO_PLAY_DURATION) * 100; 
+    const updateInterval = 50;
+    const step = (updateInterval / AUTO_PLAY_DURATION) * 100;
 
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -64,7 +65,7 @@ export default function BlueFeatureSection() {
   return (
     <section className="relative z-10 w-full px-4 pb-0 mt-12 bg-[#F7F7F7]">
       <div className="max-w-[1250px] mx-auto min-h-[300px]">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full relative">
 
           {/* === TÍTULO (Fila 1) === */}
@@ -87,13 +88,13 @@ export default function BlueFeatureSection() {
                 const isActive = index === activeIndex;
 
                 return (
-                  <div 
-                    key={feature.id} 
+                  <div
+                    key={feature.id}
                     className="flex gap-4 cursor-pointer group"
                     onClick={() => handleItemClick(index)}
                   >
-                    <div className="relative w-[3px] bg-white/30 rounded-full shrink-0 overflow-hidden" 
-                         style={{ minHeight: isActive ? '100%' : '36px' }}>
+                    <div className="relative w-[3px] bg-white/30 rounded-full shrink-0 overflow-hidden"
+                      style={{ minHeight: isActive ? '100%' : '36px' }}>
                       {isActive && (
                         <motion.div
                           className="absolute top-0 left-0 w-full bg-white rounded-full"
@@ -108,7 +109,7 @@ export default function BlueFeatureSection() {
                       <h3 className="text-white font-semibold text-[15px] leading-snug mb-2">
                         {feature.title}
                       </h3>
-                      
+
                       <AnimatePresence>
                         {isActive && (
                           <motion.div
@@ -134,7 +135,7 @@ export default function BlueFeatureSection() {
           {/* === CAJA CELESTE E IMAGEN (Fila 2, Derecha) === */}
           {/* CORRECCIÓN VISUAL: flex y h-full en el contenedor padre para que herede la altura del grid */}
           <div className="col-span-1 lg:col-span-6 relative p-6 pb-0 md:p-10 md:pb-0 lg:pr-0 lg:pl-4 lg:pt-4 lg:pb-0 flex flex-col h-full mt-8 lg:mt-0">
-            
+
             <svg
               className="hidden lg:block absolute top-0 left-0 w-[0.8rem] h-[0.8rem] pointer-events-none"
               viewBox="0 0 100 100"
@@ -146,10 +147,11 @@ export default function BlueFeatureSection() {
 
             {/* CORRECCIÓN VISUAL: flex-grow empuja la caja hasta el fondo para nivelarse con el contenedor izquierdo */}
             <div className="w-full h-full flex-grow min-h-[250px] lg:min-h-[300px] bg-[#AEC0F5] rounded-[0.8rem] relative shadow-inner overflow-hidden">
-              <img 
-                  src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
-                  alt="Descripción" 
-                  className="absolute inset-0 w-full h-full object-cover"
+              <Image
+                src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
+                alt="Descripción de la imagen"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
