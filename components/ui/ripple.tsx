@@ -4,13 +4,11 @@ import { cn } from "@/lib/utils"
 
 interface RippleProps extends ComponentPropsWithoutRef<"div"> {
   mainCircleSize?: number
-  mainCircleOpacity?: number // Esta prop ya no la usaremos para los círculos individuales
   numCircles?: number
 }
 
 export const Ripple = React.memo(function Ripple({
   mainCircleSize = 196,
-  mainCircleOpacity = 0.24, // Se mantiene pero no afecta el color
   numCircles = 8,
   className,
   ...props
@@ -18,32 +16,37 @@ export const Ripple = React.memo(function Ripple({
   return (
     <div
       className={cn(
-        // La máscara se encarga del desvanecimiento general
-        "pointer-events-none absolute w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] select-none",
+        // ELIMINADO: La máscara [mask-image] que forzaba el degradado sobre el centro.
+        // Ahora el contenedor es completamente transparente y deja ser a los círculos.
+        "pointer-events-none absolute w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none",
         className
       )}
       {...props}
     >
       {Array.from({ length: numCircles }, (_, i) => {
         const size = mainCircleSize + i * 70
-        // const opacity = mainCircleOpacity - i * 0.03  <-- ELIMINADO
+        
+        // LA MAGIA DE LA OPACIDAD:
+        // Si i = 0 (el primer círculo), la opacidad es exactamente 0.4 (40%).
+        // A medida que 'i' crece, la opacidad baja proporcionalmente hasta casi desaparecer,
+        // fundiéndose suavemente con el fondo #F7F7F7.
+        const opacity = 0.4 - (i * (0.4 / numCircles))
+        
         const animationDelay = `${i * 0.06}s`
-        const borderStyle = "solid"
 
         return (
           <div
             key={i}
-            // AUMENTAMOS la opacidad aquí. Prueba con /60, /70, /80.
-            className={`animate-ripple absolute rounded-full border shadow-xl bg-[#002EC3]/30 border-[#384E91]/50`}
+            // Usamos el color #002EC3 puro sin transparencias de Tailwind (sin el /30).
+            // La transparencia real la controlará la propiedad 'opacity' de abajo.
+            className={`animate-ripple absolute rounded-full border shadow-xl bg-[#002EC3] border-[#002EC3]`}
             style={
               {
                 "--i": i,
                 width: `${size}px`,
                 height: `${size}px`,
-                // opacity, <-- ELIMINADO del estilo en línea
+                opacity: opacity, // Aplicamos el cálculo progresivo
                 animationDelay,
-                borderStyle,
-                borderWidth: "1px",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%) scale(1)",

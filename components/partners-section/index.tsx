@@ -16,10 +16,10 @@ export default function PartnersSection() {
   return (
     // EL CAMBIO PRINCIPAL ESTÁ AQUÍ 👇
     // Agregamos 'relative' a la sección principal para que los gradientes se posicionen respecto a ella.
-    <section className="w-full pt-8 md:pt-12 pb-8 md:pb-12 bg-background overflow-hidden flex flex-col items-center relative">
+    <section className="w-full pt-8 md:pt-12 pb-8 md:pb-12 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
       
       {/* 1. Título (Alineado con la caja de 1020px) */}
-      <div className="w-full max-w-[1020px] px-4 text-center mb-10 md:mb-14 relative z-10">
+      <div className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-10">
         <h2 className="text-xl md:text-[26px] lg:text-[28px] leading-tight font-medium text-foreground">
           Mas de 150 empresas en mas de 30 países <br className="hidden md:block" />
           crecen con <span className="text-blue-600 font-semibold">BPM consultores</span>

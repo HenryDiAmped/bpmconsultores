@@ -13,7 +13,7 @@ const videosData: VideoCardProps[] = [
 export default function VideoCarouselSection() {
   return (
     // Reutilizamos la lógica de espaciado (pt y pb) para encajar bien con las otras secciones
-    <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 bg-background overflow-hidden flex flex-col items-center relative">
+    <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
       
       {/* 1. Título - Alineado al max-w-[1020px] de tu diseño base */}
       <div className="w-full max-w-[1020px] px-4 text-center mb-10 md:mb-14 relative z-20">
