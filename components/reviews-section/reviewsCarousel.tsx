@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const reviews = [
   {
@@ -51,7 +52,7 @@ export default function ReviewsCarousel() {
             const isActive = activeIndex === index;
 
             return (
-              <a
+              <Link
                 key={review.id}
                 href={review.url}
                 target="_blank"
@@ -125,7 +126,7 @@ export default function ReviewsCarousel() {
                     </button>
                   </div>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
