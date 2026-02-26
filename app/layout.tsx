@@ -3,6 +3,7 @@ import "./globals.css";
 import I18nProvider from "@/components/I18nProvider"
 import Header from "@/components/header"
 import { geistMono, bricolage } from "./fonts";
+import Footer from "@/components/footer/footer";
 
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
           <div className="min-h-screen pt-16">
             {children}
           </div>
+          <Footer/>
         </I18nProvider>
       </body>
     </html>
