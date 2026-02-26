@@ -4,6 +4,7 @@ import I18nProvider from "@/components/I18nProvider"
 import Header from "@/components/header"
 import { geistMono, bricolage } from "./fonts";
 import Footer from "@/components/footer/footer";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
           <div className="min-h-screen pt-16">
             {children}
           </div>
+          <WhatsAppButton />
           <Footer/>
         </I18nProvider>
       </body>
