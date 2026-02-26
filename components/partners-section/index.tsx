@@ -1,6 +1,5 @@
 import React from 'react';
 import { PartnerLogo, PartnerLogoProps } from '@/components/ui/partner-logo';
-import { inter } from "@/app/fonts"; // Asegúrate de importar la fuente Inter
 
 // Data mockeada (falsa)
 const partnersData: PartnerLogoProps[] = [
@@ -22,7 +21,7 @@ export default function PartnersSection() {
       <div className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-10">
         <h2 className="text-xl md:text-[26px] lg:text-[28px] leading-tight font-medium text-foreground">
           Mas de 150 empresas en mas de 30 países <br className="hidden md:block" />
-          crecen con <span className="text-blue-600 font-semibold">BPM consultores</span>
+          crecen con <span className="text-[#002EC3] font-semibold">BPM consultores</span>
         </h2>
       </div>
 

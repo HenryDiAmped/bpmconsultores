@@ -67,7 +67,7 @@ export default function BlogsSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-3xl md:text-[42px] font-medium text-black mb-16 text-center"
         >
-          Explora Nuestros <span className="text-[#0033CC]">Blogs</span> aquí
+          Explora Nuestros <span className="text-[#002EC3]">Blogs</span> aquí
         </motion.h2>
 
         {/* Grilla de Blogs */}
