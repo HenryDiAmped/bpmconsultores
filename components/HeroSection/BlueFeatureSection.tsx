@@ -33,14 +33,13 @@ export default function BlueFeatureSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  // EFECTO 1: Solo maneja el incremento de la barra de progreso
   useEffect(() => {
     const updateInterval = 50;
     const step = (updateInterval / AUTO_PLAY_DURATION) * 100;
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) return 100; // Se detiene exactamente en 100
+        if (prev >= 100) return 100; 
         return prev + step;
       });
     }, updateInterval);
@@ -48,7 +47,6 @@ export default function BlueFeatureSection() {
     return () => clearInterval(timer);
   }, [activeIndex]);
 
-  // EFECTO 2: Solo escucha cuando el progreso llega a 100 para saltar de pregunta
   useEffect(() => {
     if (progress >= 100) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -63,7 +61,7 @@ export default function BlueFeatureSection() {
   };
 
   return (
-    <section className="relative z-10 w-full px-4 pb-0 mt-12 bg-[#F7F7F7]">
+    <section className="relative z-10 w-full px-4 pb-0 bg-[#F7F7F7]">
       <div className="max-w-[1250px] mx-auto min-h-[300px]">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full relative">
