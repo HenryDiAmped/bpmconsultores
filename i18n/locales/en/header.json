@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "services": "Services",
+    "modules": "Modules",
+    "agentIA": "AI Agent",
+    "blog": "Blog",
+    "about": "About"
+  },
+  "languageButton": "Change language"
+}

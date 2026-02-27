@@ -1,0 +1,22 @@
+{
+  "contact": {
+    "title": "Contact Us"
+  },
+  "quickLinks": "Quick Links",
+  "location": "Our Location",
+  "copyright": "Copyright © {{year}} BPM Consultores, Inc. All rights reserved.",
+  "links": {
+    "home": "Home",
+    "services": "Our Services",
+    "modules": "Modules",
+    "agentIA": "AI Agent",
+    "about": "About Us",
+    "blog": "Blog"
+  },
+  "legal": {
+    "resources": "Legal resources center",
+    "privacy": "Privacy policy",
+    "security": "Security",
+    "accessibility": "Accessibility"
+  }
+}

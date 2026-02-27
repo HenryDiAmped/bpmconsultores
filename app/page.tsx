@@ -5,13 +5,13 @@ import VideoCarouselSection from '@/components/video-carouse-section';
 import TalentSection from '@/components/information-section/information-section';
 import HeroLanding from '@/components/HeroSection';
 import ReviewsCarousel from '@/components/reviews-section/reviewsCarousel';
-import BlogsSection from '@/components/blogs-section/BlogsSection'; 
+import BlogsSection from '@/components/blogs-section/BlogsSection';
 import PartnerHero from '@/components/union-section/PartnerHero';
 import FaqSection from '@/components/preguntas-section/FaqSection';
 export default function Home() {
   return (
     <main>
-      <HeroLanding/>      
+      <HeroLanding />
       <ImpactSection />
       <VideoSection />
       <PartnersSection />
@@ -19,8 +19,8 @@ export default function Home() {
       <VideoCarouselSection />
       <ReviewsCarousel />
       <PartnerHero />
-      <BlogsSection />        
-      <FaqSection /> 
+      <BlogsSection />
+      <FaqSection />
     </main>
   );
 }

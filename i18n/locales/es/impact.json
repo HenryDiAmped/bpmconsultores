@@ -1,0 +1,20 @@
+{
+  "title": "El impacto de una gestión basada en datos",
+  "stats": {
+    "stat1": {
+      "category": "Ecosistema integral",
+      "value": "+30",
+      "description": "Módulos de gestión activados"
+    },
+    "stat2": {
+      "category": "Ecosistema integral",
+      "value": "+30",
+      "description": "Módulos de gestión activados"
+    },
+    "stat3": {
+      "category": "Ecosistema integral",
+      "value": "+30",
+      "description": "Módulos de gestión activados"
+    }
+  }
+}

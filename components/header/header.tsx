@@ -12,11 +12,11 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: t('nav.services'), href: '/servicios' },
-    { name: 'Módulos', href: '/modulos' },
-    { name: 'Agente IA', href: '/agente-ia' },
-    { name: t('nav.blog'), href: '/blog' },
-    { name: t('nav.about'), href: '/nosotros' },
+    { name: t('header.nav.services'), href: '/servicios' },
+    { name: t('header.nav.modules'), href: '/modulos' },
+    { name: t('header.nav.agentIA'), href: '/agente-ia' },
+    { name: t('header.nav.blog'), href: '/blog' },
+    { name: t('header.nav.about'), href: '/nosotros' },
   ];
 
   const toggleLanguage = () => {
@@ -27,21 +27,21 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#F7F7F7] border-b border-gray-200">
       {/* AJUSTE: Cambiamos max-w-7xl por max-w-[1250px] */}
-      <nav 
-        className="mx-auto px-6 lg:px-8" 
-        style={{ maxWidth: '1320px' }} 
+      <nav
+        className="mx-auto px-6 lg:px-8"
+        style={{ maxWidth: '1320px' }}
         aria-label="Global"
       >
         <div className="flex items-center justify-between h-16">
           <div className="flex lg:flex-1">
             <Link href="/" className="flex items-center">
-              <Image 
+              <Image
                 src="/logo.png"
-                alt="Logo BPM Consultores" 
-                width={120} 
-                height={40} 
+                alt="Logo BPM Consultores"
+                width={120}
+                height={40}
                 className="h-8 w-auto"
-                priority 
+                priority
               />
             </Link>
           </div>

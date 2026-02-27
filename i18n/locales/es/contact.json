@@ -1,0 +1,28 @@
+{
+  "form": {
+    "firstName": "Nombres",
+    "lastName": "Apellido",
+    "email": "Email",
+    "company": "Empresa",
+    "message": "Mensaje",
+    "messagePlaceholder": "Déjanos un mensaje",
+    "submit": "Enviar Mensaje",
+    "submitting": "Enviando..."
+  },
+  "success": {
+    "title": "¡Mensaje Enviado!",
+    "description": "Gracias por contactarnos. Hemos recibido tu mensaje con éxito y nuestro equipo se pondrá en contacto contigo muy pronto.",
+    "button": "Aceptar y volver al inicio"
+  },
+  "email": {
+    "header": "BPM Consultores",
+    "greeting": "Hola, equipo:",
+    "intro": "Han recibido un nuevo mensaje desde el formulario de contacto. Aquí están los detalles:",
+    "name": "Nombre:",
+    "email": "Email:",
+    "company": "Empresa:",
+    "messageLabel": "Mensaje del cliente:",
+    "footer1": "© 2026 BPM Consultores. Todos los derechos reservados.",
+    "footer2": "BPM Consultores | Especialistas en crecimiento y expansión"
+  }
+}

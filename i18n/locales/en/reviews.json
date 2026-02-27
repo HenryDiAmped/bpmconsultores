@@ -1,0 +1,22 @@
+{
+  "title": "The most innovative companies use",
+  "subtitle": "BPM for their activities.",
+  "companies": {
+    "ibm": {
+      "name": "IBM",
+      "description": "Unify your operation with global integrations"
+    },
+    "oxxo": {
+      "name": "OXXO",
+      "description": "Optimize your store processes"
+    },
+    "lumen": {
+      "name": "LUMEN",
+      "description": "Connect your network infrastructure"
+    },
+    "siemens": {
+      "name": "SIEMENS",
+      "description": "Automate your industry"
+    }
+  }
+}
