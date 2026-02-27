@@ -1,5 +1,7 @@
-import React from 'react';
+'use client';
+
 import { PartnerLogo, PartnerLogoProps } from '@/components/ui/partner-logo';
+import { useTranslation } from 'react-i18next';
 
 // Data mockeada (falsa)
 const partnersData: PartnerLogoProps[] = [
@@ -12,6 +14,8 @@ const partnersData: PartnerLogoProps[] = [
 ];
 
 export default function PartnersSection() {
+  const { t } = useTranslation();
+
   return (
     // EL CAMBIO PRINCIPAL ESTÁ AQUÍ 👇
     // Agregamos 'relative' a la sección principal para que los gradientes se posicionen respecto a ella.
@@ -20,8 +24,8 @@ export default function PartnersSection() {
       {/* 1. Título (Alineado con la caja de 1020px) */}
       <div className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-10">
         <h2 className="text-xl md:text-[26px] lg:text-[28px] leading-tight font-medium text-foreground">
-          Mas de 150 empresas en mas de 30 países <br className="hidden md:block" />
-          crecen con <span className="text-[#002EC3] font-semibold">BPM consultores</span>
+          {t('partners.title')} <br className="hidden md:block" />
+          {t('partners.subtitle')} <span className="text-[#002EC3] font-semibold">{t('partners.highlight')}</span>
         </h2>
       </div>
 

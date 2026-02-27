@@ -4,52 +4,80 @@
   "description": "Las organizaciones con procesos desconectados frenan su crecimiento. En bpm unimos tu visión con la tecnología de Humand para que escalar sea más simple.",
   "ctaPrimary": "Solicitar demostración",
   "ctaSecondary": "Comienza gratis",
-  "cards": {
-    "card1": {
+  "cards": [
+    {
       "title": "Asesoría Gratuita",
-      "desc1": "Realizamos un diagnóstico profundo de tus procesos.",
-      "desc2": "Diseñamos una hoja de ruta personalizada."
+      "icon": "Users",
+      "desc": [
+        "Realizamos un diagnóstico profundo de tus procesos.",
+        "Diseñamos una hoja de ruta personalizada."
+      ]
     },
-    "card2": {
+    {
       "title": "Visión Consultiva",
-      "desc1": "Entendemos que la tecnología por sí sola no transforma.",
-      "desc2": "Actuamos como socios estratégicos."
+      "icon": "LayoutGrid",
+      "desc": [
+        "Entendemos que la tecnología por sí sola no transforma.",
+        "Actuamos como socios estratégicos."
+      ]
     },
-    "card3": {
+    {
       "title": "Seguimiento por un Año",
-      "desc1": "Acompañamiento constante durante los primeros 12 meses.",
-      "desc2": "Sesiones de revisión periódicas."
+      "icon": "Clock",
+      "desc": [
+        "Acompañamiento constante durante los primeros 12 meses.",
+        "Sesiones de revisión periódicas."
+      ]
     },
-    "card4": {
+    {
       "title": "Capacitación Continua",
-      "desc1": "Programas de formación dinámicos.",
-      "desc2": "Seguimiento detallado del progreso educativo."
+      "icon": "BarChart3",
+      "desc": [
+        "Programas de formación dinámicos.",
+        "Seguimiento detallado del progreso educativo."
+      ]
     },
-    "card5": {
+    {
       "title": "Onboarding Profesional",
-      "desc1": "Automatizamos la integración de nuevos colaboradores.",
-      "desc2": "Eliminamos el desorden de documentos manuales."
+      "icon": "Rocket",
+      "desc": [
+        "Automatizamos la integración de nuevos colaboradores.",
+        "Eliminamos el desorden de documentos manuales."
+      ]
     },
-    "card6": {
+    {
       "title": "Gestión de Planilla",
-      "desc1": "Automatizamos el ciclo de pago y tareas críticas.",
-      "desc2": "Integramos toda la información en una plataforma única."
+      "icon": "Users",
+      "desc": [
+        "Automatizamos el ciclo de pago y tareas críticas.",
+        "Integramos toda la información en una plataforma única."
+      ]
     },
-    "card7": {
+    {
       "title": "Evaluaciones Objetivas",
-      "desc1": "Brindamos acompañamiento constante.",
-      "desc2": "Garantizamos la adopción total del sistema."
+      "icon": "LayoutGrid",
+      "desc": [
+        "Brindamos acompañamiento constante.",
+        "Garantizamos la adopción total del sistema."
+      ]
     },
-    "card8": {
+    {
       "title": "Optimización Continua",
-      "desc1": "Ajustamos y refinamos tus flujos de trabajo.",
-      "desc2": "Analizamos dashboards de métricas de eficiencia."
+      "icon": "BarChart3",
+      "desc": [
+        "Ajustamos y refinamos tus flujos de trabajo.",
+        "Analizamos dashboards de métricas de eficiencia."
+      ]
     },
-    "card9": {
+    {
       "title": "Paquete Acelerador para Empresas en Crecimiento",
-      "desc1": "Implementación ágil de los módulos core a tarifa preferencial.",
-      "desc2": "Incluye diagnóstico inicial para alinear la tecnología.",
+      "icon": "Rocket",
+      "desc": [
+        "Implementación ágil de los módulos core a tarifa preferencial.",
+        "Incluye diagnóstico inicial para alinear la tecnología."
+      ],
+      "fullWidth": true,
       "cta": "Conocer los planes"
     }
-  }
+  ]
 }

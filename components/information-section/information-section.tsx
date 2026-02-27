@@ -1,51 +1,60 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Sparkles, LayoutGrid, Users, BarChart3, Clock, Rocket } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { JSX } from "react";
 
-const cards = [
-  { title: "Asesoría Gratuita", icon: <Users size={20}/>, desc: ["Realizamos un diagnóstico profundo de tus procesos.", "Diseñamos una hoja de ruta personalizada."] },
-  { title: "Visión Consultiva", icon: <LayoutGrid size={20}/>, desc: ["Entendemos que la tecnología por sí sola no transforma.", "Actuamos como socios estratégicos."] },
-  { title: "Seguimiento por un Año", icon: <Clock size={20}/>, desc: ["Acompañamiento constante durante los primeros 12 meses.", "Sesiones de revisión periódicas."] },
-  { title: "Capacitación Continua", icon: <BarChart3 size={20}/>, desc: ["Programas de formación dinámicos.", "Seguimiento detallado del progreso educativo."] },
-  { title: "Onboarding Profesional", icon: <Rocket size={20}/>, desc: ["Automatizamos la integración de nuevos colaboradores.", "Eliminamos el desorden de documentos manuales."] },
-  { title: "Gestión de Planilla", icon: <Users size={20}/>, desc: ["Automatizamos el ciclo de pago y tareas críticas.", "Integramos toda la información en una plataforma única."] },
-  { title: "Evaluaciones Objetivas", icon: <LayoutGrid size={20}/>, desc: ["Brindamos acompañamiento constante.", "Garantizamos la adopción total del sistema."] },
-  { title: "Optimización Continua", icon: <BarChart3 size={20}/>, desc: ["Ajustamos y refinamos tus flujos de trabajo.", "Analizamos dashboards de métricas de eficiencia."] },
-  { title: "Paquete Acelerador para Empresas en Crecimiento", icon: <Rocket size={20}/>, desc: ["Implementación ágil de los módulos core a tarifa preferencial.", "Incluye diagnóstico inicial para alinear la tecnología."], fullWidth: true },
-];
+// Mapeo de iconos
+const iconMap: Record<string, JSX.Element> = {
+  Users: <Users size={20} />,
+  LayoutGrid: <LayoutGrid size={20} />,
+  Clock: <Clock size={20} />,
+  BarChart3: <BarChart3 size={20} />,
+  Rocket: <Rocket size={20} />,
+};
 
 export default function InformationSection() {
+  const { t } = useTranslation();
+
+  // Obtenemos el array de cards del JSON
+  const cards = t('information.cards', { returnObjects: true }) as Array<{
+    title: string;
+    icon: string;
+    desc: string[];
+    fullWidth?: boolean;
+    cta?: string;
+  }>;
+
   return (
     <section className="w-full bg-[#f7f7f7] py-24 px-6">
       {/* CONTENEDOR LIMITADO A 1250PX */}
       <div className="mx-auto flex flex-col md:flex-row gap-16" style={{ maxWidth: "1250px" }}>
-        
+
         {/* SECCIÓN IZQUIERDA: TEXTO FIJO */}
         <div className="md:w-[40%] md:sticky md:top-24 md:h-fit space-y-8">
           <Badge variant="outline" className="border-blue-200 text-blue-700 bg-blue-50/50 px-4 py-1.5 rounded-full font-medium">
             <Sparkles className="w-4 h-4 mr-2 fill-blue-600" />
-            Con inteligencia artificial
+            {t('information.badge')}
           </Badge>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
-            Gestionar el talento no es suficiente. Con BPM Consultores, es momento de desarrollarlo.
+            {t('information.title')}
           </h2>
-          
+
           <p className="text-slate-600 text-xl leading-relaxed">
-            Las organizaciones con procesos desconectados frenan su crecimiento. En bpm unimos tu visión con la tecnología de Humand para que escalar sea más simple.
+            {t('information.description')}
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button className="bg-[#0047ff] hover:bg-blue-700 text-white px-10 py-7 text-lg rounded-xl shadow-lg shadow-blue-200 transition-all">
-              Solicitar demostración
+              {t('information.ctaPrimary')}
             </Button>
             <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-10 py-7 text-lg rounded-xl transition-all">
-              Comienza gratis
+              {t('information.ctaSecondary')}
             </Button>
           </div>
         </div>
@@ -58,13 +67,13 @@ export default function InformationSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }} // Delay escalonado para las primeras 4
+              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
               className={`${card.fullWidth ? "md:col-span-2" : ""}`}
             >
               <Card className="h-full border-slate-200/60 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl overflow-hidden bg-white">
                 <CardHeader className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                    {card.icon}
+                    {iconMap[card.icon]}
                   </div>
                   <CardTitle className="text-xl font-bold text-slate-800">{card.title}</CardTitle>
                 </CardHeader>
@@ -80,9 +89,9 @@ export default function InformationSection() {
                       </div>
                     ))}
                   </div>
-                  {card.fullWidth && (
+                  {card.fullWidth && card.cta && (
                     <Button className="bg-[#0028a5] hover:bg-blue-900 text-white mt-4 px-8 py-5 rounded-lg font-semibold">
-                      Conocer los planes
+                      {card.cta}
                     </Button>
                   )}
                 </CardContent>

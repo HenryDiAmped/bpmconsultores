@@ -2,10 +2,26 @@
   "title": "We Redesign Your Processes With",
   "subtitle": "The",
   "highlight": "Humand Modules",
-  "videos": {
-    "video1": "Automated Onboarding",
-    "video2": "Chats 2.0 Module (1)",
-    "video3": "Chats 2.0 Module (2)",
-    "video4": "Sammy AI"
-  }
+  "videos": [
+    {
+      "id": 1,
+      "title": "Automated Onboarding",
+      "videoId": "OXoR9tQoVfs"
+    },
+    {
+      "id": 2,
+      "title": "Chats 2.0 Module (1)",
+      "videoId": "oyRbd4w97cg"
+    },
+    {
+      "id": 3,
+      "title": "Chats 2.0 Module (2)",
+      "videoId": "R3BSYv-aV7s"
+    },
+    {
+      "id": 4,
+      "title": "Sammy AI",
+      "videoId": "nWeoIHbQxSA"
+    }
+  ]
 }

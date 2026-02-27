@@ -3,35 +3,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-const features = [
-  {
-    id: 0,
-    title: "¿Mides el clima laboral en tiempo real o esperas encuestas anuales?",
-    content: "Las encuestas anuales son fotografías del pasado. Con tecnología en tiempo real, puedes detectar problemas antes de que escalen.",
-  },
-  {
-    id: 1,
-    title: "¿Cuánto talento estás perdiendo sin darte cuenta?",
-    content: "Identifica la fuga de talento a tiempo con métricas predictivas.",
-  },
-  {
-    id: 2,
-    title: "¿Tus líderes gestionan personas o solo administran tareas?",
-    content: "Con la tecnología de Humand, empoderamos a tus líderes dándoles herramientas para medir el pulso de su equipo. Fomentamos el desarrollo continuo, el feedback constructivo y el reconocimiento, transformando jefes operativos en verdaderos gestores de talento.",
-  },
-  {
-    id: 3,
-    title: "¿Tomas decisiones basadas en datos o en intuiciones?",
-    content: "Convierte la intuición en acción respaldada por analítica de personas.",
-  }
-];
+import { useTranslation } from "react-i18next";
 
 const AUTO_PLAY_DURATION = 5000;
 
 export default function BlueFeatureSection() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  // Obtenemos el array de features del JSON
+  const features = t('hero.blueSection.features', { returnObjects: true }) as Array<{
+    title: string;
+    content: string;
+  }>;
 
   useEffect(() => {
     const updateInterval = 50;
@@ -39,7 +24,7 @@ export default function BlueFeatureSection() {
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) return 100; 
+        if (prev >= 100) return 100;
         return prev + step;
       });
     }, updateInterval);
@@ -53,7 +38,7 @@ export default function BlueFeatureSection() {
       setActiveIndex((current) => (current + 1) % features.length);
       setProgress(0);
     }
-  }, [progress]);
+  }, [progress, features.length]);
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
@@ -70,7 +55,7 @@ export default function BlueFeatureSection() {
           {/* CORRECCIÓN VISUAL: Añadido lg:rounded-br-[0.8rem] para la esquina superior derecha del hueco */}
           <div className="col-span-1 lg:col-span-12 bg-[#002EC3] rounded-t-[0.8rem] lg:rounded-bl-none lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pt-12 lg:px-12 lg:pb-8 flex flex-col justify-center">
             <h2 className="text-3xl md:text-4xl lg:text-[42px] font-semibold text-white leading-tight lg:w-[65%]">
-              ¿Tu empresa realmente conoce a su gente?
+              {t('hero.blueSection.mainTitle')}
             </h2>
           </div>
 
@@ -78,7 +63,7 @@ export default function BlueFeatureSection() {
           {/* CORRECCIÓN VISUAL: Añadido h-full para igualar alturas */}
           <div className="col-span-1 lg:col-span-6 bg-[#002EC3] rounded-b-[0.8rem] lg:rounded-t-none lg:rounded-bl-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pl-12 lg:pr-6 lg:pb-12 lg:pt-0 flex flex-col gap-8 h-full">
             <p className="text-white/90 text-sm md:text-base leading-relaxed pr-4">
-              La mayoría cree que sí. Los datos dicen otra cosa. Transforma la forma en que entiendes, mides y potencias a tu equipo a nivel global.
+              {t('hero.blueSection.description')}
             </p>
 
             <div className="flex flex-col gap-6">
@@ -87,7 +72,7 @@ export default function BlueFeatureSection() {
 
                 return (
                   <div
-                    key={feature.id}
+                    key={index}
                     className="flex gap-4 cursor-pointer group"
                     onClick={() => handleItemClick(index)}
                   >

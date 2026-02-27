@@ -1,50 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-const reviews = [
-  {
-    id: 1,
-    name: "IBM",
-    description: "Unifica tu operación con integraciones globales",
-    url: "https://www.youtube.com/watch?v=FapyzQ2RQtY",
-    videoId: "FapyzQ2RQtY",
-  },
-  { 
-    id: 2, 
-    name: "OXXO", 
-    description: "Optimiza tus procesos de tienda",
-    url: "https://www.youtube.com/watch?v=s5Ovk6S5oGQ&list=PLcp3hvhOUd6Fiw33pnC1a19vg_SsHIdLO&index=15",
-    videoId: "s5Ovk6S5oGQ",
-  },
-  { 
-    id: 3, 
-    name: "LUMEN", 
-    description: "Conecta tu infraestructura de red",
-    url: "https://www.youtube.com/watch?v=RgrcSqdC5v8",
-    videoId: "RgrcSqdC5v8",
-  },
-  { 
-    id: 4, 
-    name: "SIEMENS", 
-    description: "Automatiza tu industria",
-    url: "https://www.youtube.com/watch?v=RMEwwZU9HLs&list=PLcp3hvhOUd6Fiw33pnC1a19vg_SsHIdLO&index=5",
-    videoId: "RMEwwZU9HLs",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function ReviewsCarousel() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Obtenemos el array de companies del JSON
+  const reviews = t('reviews.companies', { returnObjects: true }) as Array<{
+    id: number;
+    name: string;
+    description: string;
+    url: string;
+    videoId: string;
+  }>;
 
   return (
     <section className="w-full bg-[#f7f7f7] py-16 font-sans">
       <div className="mx-auto w-full max-w-[1250px] px-4 text-center">
         
         <h2 className="mb-10 text-6xl font-medium text-gray-900">
-          Las empresas más innovadoras usan <br /> BPM para sus actividades.
+          {t('reviews.title')} <br /> {t('reviews.subtitle')}
         </h2>
 
         <div className="flex h-[320px] w-full gap-4">

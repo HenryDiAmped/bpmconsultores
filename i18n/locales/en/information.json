@@ -4,52 +4,80 @@
   "description": "Organizations with disconnected processes slow down their growth. At bpm we unite your vision with Humand technology to make scaling simpler.",
   "ctaPrimary": "Request demo",
   "ctaSecondary": "Start free",
-  "cards": {
-    "card1": {
+  "cards": [
+    {
       "title": "Free Consulting",
-      "desc1": "We perform a deep diagnosis of your processes.",
-      "desc2": "We design a personalized roadmap."
+      "icon": "Users",
+      "desc": [
+        "We perform a deep diagnosis of your processes.",
+        "We design a personalized roadmap."
+      ]
     },
-    "card2": {
+    {
       "title": "Consulting Vision",
-      "desc1": "We understand that technology alone does not transform.",
-      "desc2": "We act as strategic partners."
+      "icon": "LayoutGrid",
+      "desc": [
+        "We understand that technology alone does not transform.",
+        "We act as strategic partners."
+      ]
     },
-    "card3": {
+    {
       "title": "One Year Follow-up",
-      "desc1": "Constant support during the first 12 months.",
-      "desc2": "Periodic review sessions."
+      "icon": "Clock",
+      "desc": [
+        "Constant support during the first 12 months.",
+        "Periodic review sessions."
+      ]
     },
-    "card4": {
+    {
       "title": "Continuous Training",
-      "desc1": "Dynamic training programs.",
-      "desc2": "Detailed tracking of educational progress."
+      "icon": "BarChart3",
+      "desc": [
+        "Dynamic training programs.",
+        "Detailed tracking of educational progress."
+      ]
     },
-    "card5": {
+    {
       "title": "Professional Onboarding",
-      "desc1": "We automate the integration of new employees.",
-      "desc2": "We eliminate manual document clutter."
+      "icon": "Rocket",
+      "desc": [
+        "We automate the integration of new employees.",
+        "We eliminate manual document clutter."
+      ]
     },
-    "card6": {
+    {
       "title": "Payroll Management",
-      "desc1": "We automate the payment cycle and critical tasks.",
-      "desc2": "We integrate all information into a single platform."
+      "icon": "Users",
+      "desc": [
+        "We automate the payment cycle and critical tasks.",
+        "We integrate all information into a single platform."
+      ]
     },
-    "card7": {
+    {
       "title": "Objective Evaluations",
-      "desc1": "We provide constant support.",
-      "desc2": "We guarantee full system adoption."
+      "icon": "LayoutGrid",
+      "desc": [
+        "We provide constant support.",
+        "We guarantee full system adoption."
+      ]
     },
-    "card8": {
+    {
       "title": "Continuous Optimization",
-      "desc1": "We adjust and refine your workflows.",
-      "desc2": "We analyze efficiency metrics dashboards."
+      "icon": "BarChart3",
+      "desc": [
+        "We adjust and refine your workflows.",
+        "We analyze efficiency metrics dashboards."
+      ]
     },
-    "card9": {
+    {
       "title": "Accelerator Package for Growing Companies",
-      "desc1": "Agile implementation of core modules at preferential rate.",
-      "desc2": "Includes initial diagnosis to align technology.",
+      "icon": "Rocket",
+      "desc": [
+        "Agile implementation of core modules at preferential rate.",
+        "Includes initial diagnosis to align technology."
+      ],
+      "fullWidth": true,
       "cta": "Learn about plans"
     }
-  }
+  ]
 }

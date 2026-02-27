@@ -1,40 +1,8 @@
 "use client";
 
-import React from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
-// Datos de prueba basados en tu imagen
-const blogsData = [
-  {
-    id: 1,
-    category: "Blog",
-    title: "IA aplicada a Recursos Humanos: La clave para anticipar y reducir la rotación de talento",
-    imagePlaceholder: "bg-[#b4c0e8]", // El color morado/celeste de la imagen
-    link: "#",
-  },
-  {
-    id: 2,
-    category: "Blog",
-    title: "IA aplicada a Recursos Humanos: La clave para anticipar y reducir la rotación de talento",
-    imagePlaceholder: "bg-[#b4c0e8]",
-    link: "#",
-  },
-  {
-    id: 3,
-    category: "Blog",
-    title: "IA aplicada a Recursos Humanos: La clave para anticipar y reducir la rotación de talento",
-    imagePlaceholder: "bg-[#b4c0e8]",
-    link: "#",
-  },
-  {
-    id: 4,
-    category: "Blog",
-    title: "IA aplicada a Recursos Humanos: La clave para anticipar y reducir la rotación de talento",
-    imagePlaceholder: "bg-[#b4c0e8]",
-    link: "#",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 // Animaciones en cascada
 const containerVariants: Variants = {
@@ -55,6 +23,40 @@ const itemVariants: Variants = {
 };
 
 export default function BlogsSection() {
+  const { t } = useTranslation();
+
+  // Datos de prueba basados en tu imagen
+  const blogsData = [
+    {
+      id: 1,
+      category: t('blogsSection.category'),
+      title: t('blogsSection.defaultTitle'),
+      imagePlaceholder: "bg-[#b4c0e8]",
+      link: "#",
+    },
+    {
+      id: 2,
+      category: t('blogsSection.category'),
+      title: t('blogsSection.defaultTitle'),
+      imagePlaceholder: "bg-[#b4c0e8]",
+      link: "#",
+    },
+    {
+      id: 3,
+      category: t('blogsSection.category'),
+      title: t('blogsSection.defaultTitle'),
+      imagePlaceholder: "bg-[#b4c0e8]",
+      link: "#",
+    },
+    {
+      id: 4,
+      category: t('blogsSection.category'),
+      title: t('blogsSection.defaultTitle'),
+      imagePlaceholder: "bg-[#b4c0e8]",
+      link: "#",
+    },
+  ];
+
   return (
     <section className="w-full bg-[#f7f7f7] py-24 font-sans flex justify-center">
       <div className="mx-auto w-full max-w-[1250px] px-4 flex flex-col items-center">
@@ -67,7 +69,7 @@ export default function BlogsSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-3xl md:text-[42px] font-medium text-black mb-16 text-center"
         >
-          Explora Nuestros <span className="text-[#002EC3]">Blogs</span> aquí
+          {t('blogsSection.title')} <span className="text-[#002EC3]">{t('blogsSection.highlight')}</span> {t('blogsSection.subtitle')}
         </motion.h2>
 
         {/* Grilla de Blogs */}
@@ -100,7 +102,7 @@ export default function BlogsSection() {
 
               {/* Footer de la tarjeta: Enlace Leer Más */}
               <div className="flex items-center justify-between text-[#0033CC] font-bold text-[13px] mt-auto">
-                <span className="tracking-wide">LEER MAS</span>
+                <span className="tracking-wide">{t('blogsSection.readMore')}</span>
                 {/* La flecha se mueve ligeramente a la derecha al hacer hover en la tarjeta */}
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
               </div>

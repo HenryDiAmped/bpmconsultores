@@ -11,13 +11,11 @@ export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navigation = [
-    { name: t('header.nav.services'), href: '/servicios' },
-    { name: t('header.nav.modules'), href: '/modulos' },
-    { name: t('header.nav.agentIA'), href: '/agente-ia' },
-    { name: t('header.nav.blog'), href: '/blog' },
-    { name: t('header.nav.about'), href: '/nosotros' },
-  ];
+  // Obtenemos el array de navegación directamente del JSON
+  const navigation = t('header.navigation', { returnObjects: true }) as Array<{
+    name: string;
+    href: string;
+  }>;
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'es' ? 'en' : 'es';

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -23,6 +23,8 @@ const itemVariants: Variants = {
 };
 
 export default function PartnerHero() {
+  const { t } = useTranslation();
+
   return (
     <section className="w-full bg-[#fafafa] py-24 font-sans flex justify-center">
       <motion.div
@@ -71,27 +73,25 @@ export default function PartnerHero() {
         {/* 2. Título Principal (Sin restricción de max-w) */}
         <motion.div variants={itemVariants} className="w-full">
           <h2 className="text-3xl md:text-[38px] font-medium text-black leading-snug tracking-wide mb-6 w-full">
-            BPM Consultores - Socios de Negocio de HUMAND.
+            {t('partner.title')}
           </h2>
         </motion.div>
 
         {/* 3. Párrafo Descriptivo (Sin restricción de max-w) */}
         <motion.div variants={itemVariants} className="w-full">
           <p className="text-[15px] text-gray-600 leading-relaxed mb-10 font-normal w-full">
-            Nuestra plataforma garantiza que la información de tus colaboradores esté siempre centralizada y 
-            sincronizada en todo el mundo. Ya sea que tu equipo opere a nivel local o internacional, tus métricas se 
-            actualizan al instante, brindándote datos reales para tomar decisiones estratégicas unificadas.
+            {t('partner.description')}
           </p>
         </motion.div>
 
         {/* 4. Botones */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
           <button className="inline-flex h-12 items-center justify-center rounded-md bg-[#0044FF] px-8 text-[14px] font-medium text-white transition-all hover:bg-blue-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
-            Solicitar Una Demo
+            {t('partner.ctaPrimary')}
           </button>
           
           <button className="inline-flex h-12 items-center justify-center rounded-md border border-[#0044FF] bg-white px-8 text-[14px] font-medium text-[#0044FF] transition-all hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
-            Comienza Ya
+            {t('partner.ctaSecondary')}
           </button>
         </motion.div>
 

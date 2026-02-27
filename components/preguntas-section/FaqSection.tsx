@@ -1,52 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-
-// Datos de prueba (puedes reemplazarlos con tus datos reales)
-const faqsData = [
-  {
-    id: 1,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Claro que sí. Nuestro equipo está listo para analizar tus procesos actuales y encontrar las mejores oportunidades de mejora utilizando nuestras herramientas de BPM y las integraciones de HUMAND.",
-  },
-  {
-    id: 2,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Nuestra plataforma se adapta al tamaño y las necesidades específicas de tu negocio, permitiendo una escalabilidad perfecta sin importar en cuántos países operes.",
-  },
-  {
-    id: 3,
-    question: "Conversemos sobre tu empresa?",
-    answer: "El tiempo de implementación varía según la complejidad de los procesos, pero gracias a nuestra metodología ágil, solemos tener un MVP funcional en pocas semanas.",
-  },
-  {
-    id: 4,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Contamos con un equipo de soporte técnico disponible 24/7 y un gerente de cuenta dedicado para asegurar que tu equipo adopte la herramienta con éxito.",
-  },
-  {
-    id: 5,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Sí, nuestra API REST permite integraciones nativas con los ERPs y CRMs más populares del mercado, como SAP, Salesforce y Microsoft Dynamics.",
-  },
-  {
-    id: 6,
-    question: "Conversemos sobre tu empresa?",
-    answer: "La seguridad es nuestra prioridad. Cumplimos con normativas internacionales como ISO 27001 y GDPR, garantizando la encriptación de datos en tránsito y en reposo.",
-  },
-  {
-    id: 7,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Ofrecemos planes flexibles basados en la cantidad de usuarios activos y los módulos que tu empresa necesite. Contáctanos para un presupuesto personalizado.",
-  },
-  {
-    id: 8,
-    question: "Conversemos sobre tu empresa?",
-    answer: "Absolutamente. Puedes solicitar una demostración gratuita con uno de nuestros especialistas para que veas la plataforma funcionando en vivo.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 // Animaciones de entrada generales
 const containerVariants: Variants = {
@@ -113,6 +70,14 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 
 // Componente Principal
 export default function FaqSection() {
+  const { t } = useTranslation();
+
+  // Obtenemos el array de preguntas del JSON
+  const faqsData = t('faq.questions', { returnObjects: true }) as Array<{
+    question: string;
+    answer: string;
+  }>;
+
   return (
     <section className="w-full bg-[#fafafa] py-24 flex justify-center font-sans">
       <div className="mx-auto w-full max-w-[1250px] px-4 flex flex-col items-center">
@@ -124,7 +89,7 @@ export default function FaqSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-4xl md:text-[44px] font-medium text-black mb-14 text-center"
         >
-          Preguntas Frecuentes
+          {t('faq.title')}
         </motion.h2>
 
         <motion.div 
@@ -134,8 +99,8 @@ export default function FaqSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full"
         >
-          {faqsData.map((faq) => (
-            <FaqItem key={faq.id} question={faq.question} answer={faq.answer} />
+          {faqsData.map((faq, index) => (
+            <FaqItem key={index} question={faq.question} answer={faq.answer} />
           ))}
         </motion.div>
 

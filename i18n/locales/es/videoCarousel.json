@@ -2,10 +2,26 @@
   "title": "Rediseñamos Tus Procesos Con",
   "subtitle": "Los",
   "highlight": "Módulos de Humand",
-  "videos": {
-    "video1": "Onboarding Automatizado",
-    "video2": "Chats 2.0 Módulo (1)",
-    "video3": "Chats 2.0 Módulo (2)",
-    "video4": "Sammy AI"
-  }
+  "videos": [
+    {
+      "id": 1,
+      "title": "Onboarding Automatizado",
+      "videoId": "OXoR9tQoVfs"
+    },
+    {
+      "id": 2,
+      "title": "Chats 2.0 Módulo (1)",
+      "videoId": "oyRbd4w97cg"
+    },
+    {
+      "id": 3,
+      "title": "Chats 2.0 Módulo (2)",
+      "videoId": "R3BSYv-aV7s"
+    },
+    {
+      "id": 4,
+      "title": "Sammy AI",
+      "videoId": "nWeoIHbQxSA"
+    }
+  ]
 }

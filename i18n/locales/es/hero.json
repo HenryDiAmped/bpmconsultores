@@ -1,6 +1,29 @@
 {
-  "title": "Soluciones Estratégicas Para Transformar tu negocio con IA",
+  "partnerButton": "Conoce a nuestro partner",
+  "title": "Soluciones Estratégicas Para",
+  "titleBreak": "Transformar tu negocio con IA",
   "subtitle": "consultoría + soluciones digitales = eficiencia en RRHH",
   "cta": "Quiero una Demo",
-  "partnerLink": "Conoce a nuestro partner"
+  "blueSection": {
+    "mainTitle": "¿Tu empresa realmente conoce a su gente?",
+    "description": "La mayoría cree que sí. Los datos dicen otra cosa. Transforma la forma en que entiendes, mides y potencias a tu equipo a nivel global.",
+    "features": [
+      {
+        "title": "¿Mides el clima laboral en tiempo real o esperas encuestas anuales?",
+        "content": "Las encuestas anuales son fotografías del pasado. Con tecnología en tiempo real, puedes detectar problemas antes de que escalen."
+      },
+      {
+        "title": "¿Cuánto talento estás perdiendo sin darte cuenta?",
+        "content": "Identifica la fuga de talento a tiempo con métricas predictivas."
+      },
+      {
+        "title": "¿Tus líderes gestionan personas o solo administran tareas?",
+        "content": "Con la tecnología de Humand, empoderamos a tus líderes dándoles herramientas para medir el pulso de su equipo. Fomentamos el desarrollo continuo, el feedback constructivo y el reconocimiento, transformando jefes operativos en verdaderos gestores de talento."
+      },
+      {
+        "title": "¿Tomas decisiones basadas en datos o en intuiciones?",
+        "content": "Convierte la intuición en acción respaldada por analítica de personas."
+      }
+    ]
+  }
 }

@@ -1,10 +1,25 @@
 {
-  "nav": {
-    "services": "Services",
-    "modules": "Modules",
-    "agentIA": "AI Agent",
-    "blog": "Blog",
-    "about": "About"
-  },
+  "navigation": [
+    {
+      "name": "Services",
+      "href": "/servicios"
+    },
+    {
+      "name": "Modules",
+      "href": "/modulos"
+    },
+    {
+      "name": "AI Agent",
+      "href": "/agente-ia"
+    },
+    {
+      "name": "Blog",
+      "href": "/blog"
+    },
+    {
+      "name": "About",
+      "href": "/nosotros"
+    }
+  ],
   "languageButton": "Change language"
 }
