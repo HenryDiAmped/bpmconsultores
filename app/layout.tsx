@@ -3,7 +3,7 @@ import "./globals.css";
 import I18nProvider from "@/components/I18nProvider"
 import Header from "@/components/header"
 import { geistMono, bricolage } from "./fonts";
-import Footer from "@/components/footer/footer";
+import ModernFooter from "@/components/footer/ModernFooter";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 
@@ -28,8 +28,8 @@ export default function RootLayout({
             {children}
           </div>
           <WhatsAppButton />
-          <Footer/>
-        </I18nProvider>
+          <ModernFooter />
+          </I18nProvider>
       </body>
     </html>
   );

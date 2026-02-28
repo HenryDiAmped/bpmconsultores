@@ -3,15 +3,13 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ReviewsCarousel() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Obtenemos el array de companies del JSON
   const reviews = t('reviews.companies', { returnObjects: true }) as Array<{
     id: number;
     name: string;
@@ -21,99 +19,152 @@ export default function ReviewsCarousel() {
   }>;
 
   return (
-    <section className="w-full bg-[#f7f7f7] py-16 font-sans">
-      <div className="mx-auto w-full max-w-[1250px] px-4 text-center">
+    <section className="w-full bg-[#f7f7f7] pb-16 md:pb-24 font-sans overflow-hidden">
+      <div className="mx-auto w-full max-w-[1280px] px-4 md:px-6 flex flex-col items-center">
         
-        <motion.h2 
-          initial={{ opacity: 0, y: -30 }}
+        {/* TÍTULO ELEGANTE */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-10 text-6xl font-medium text-gray-900"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-12 md:mb-16"
         >
-          {t('reviews.title')} <br /> {t('reviews.subtitle')}
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-4">
+            {t('reviews.title')}
+          </h2>
+          <p className="text-lg md:text-xl text-[#002EC3] font-medium max-w-2xl mx-auto">
+            {t('reviews.subtitle')}
+          </p>
+        </motion.div>
 
-        <div className="flex h-[320px] w-full gap-4">
+        {/* CONTENEDOR DEL ACORDEÓN HORIZONTAL */}
+        <div className="flex flex-col md:flex-row h-[600px] md:h-[500px] w-full gap-3 md:gap-4">
           {reviews.map((review, index) => {
             const isActive = activeIndex === index;
+            const indexNumber = String(index + 1).padStart(2, '0');
 
             return (
-              <Link
+              <div
                 key={review.id}
-                href={review.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => {
+                   if (window.innerWidth >= 768) setActiveIndex(index);
+                }}
                 className={cn(
-                  "group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)]",
+                  "group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] bg-slate-100",
                   isActive
-                    ? "flex-[3_3_0%] shadow-xl" 
-                    : "flex-[1_1_0%] shadow-md"
+                    ? "flex-[5_5_0%] h-full shadow-2xl ring-1 ring-black/5" 
+                    : "flex-[1_1_0%] h-[100px] md:h-full shadow-md hover:shadow-lg"
                 )}
               >
-                {/* 1. Imagen estática de fondo (Se muestra mientras el iframe carga o si no está activo) */}
+                {/* 1. IMAGEN DE FONDO */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  className={cn(
+                    "absolute inset-0 bg-cover bg-center transition-transform duration-1000",
+                    isActive ? "scale-100" : "scale-105 group-hover:scale-110"
+                  )}
                   style={{
                     backgroundImage: `url(https://img.youtube.com/vi/${review.videoId}/maxresdefault.jpg)`
                   }}
                 />
 
-                {/* 2. Reproductor de YouTube (Solo se renderiza y reproduce cuando la tarjeta está activa) */}
-                {isActive && (
-                  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${review.videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=${review.videoId}&playsinline=1`}
-                      title={review.name}
-                      allow="autoplay; encrypted-media"
-                      className="absolute left-1/2 top-1/2 h-[300%] w-[300%] -translate-x-1/2 -translate-y-1/2 opacity-100 transition-opacity duration-1000"
-                    />
-                  </div>
-                )}
-
-                {/* 3. Overlay oscuro para garantizar que el texto blanco siempre se lea bien sobre el video */}
-                <div 
-                  className={cn(
-                    "absolute inset-0 z-10 transition-colors duration-500",
-                    isActive ? "bg-black/40" : "bg-black/60" 
-                  )} 
-                />
-
-                {/* 4. Contenedor de Textos y Botón (z-index mayor para estar sobre el video y el overlay) */}
-                <div
-                  className={cn(
-                    "relative z-20 flex h-full w-full flex-col transition-all duration-500",
-                    isActive ? "justify-between p-8" : "justify-center items-center p-6"
+                {/* 2. VIDEO AUTOPLAY */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8 }}
+                      className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+                    >
+                      <iframe
+                        src={`https://www.youtube.com/embed/${review.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${review.videoId}&playsinline=1`}
+                        title={review.name}
+                        allow="autoplay; encrypted-media"
+                        className="absolute left-1/2 top-1/2 h-[300%] w-[300%] -translate-x-1/2 -translate-y-1/2 opacity-90"
+                      />
+                    </motion.div>
                   )}
-                >
-                  <h3
-                    className={cn(
-                      "text-white transition-all duration-300 drop-shadow-md",
-                      isActive ? "text-2xl font-medium text-left w-full" : "text-xl font-medium text-center"
-                    )}
-                  >
-                    {review.name}
-                  </h3>
+                </AnimatePresence>
 
-                  <div
-                    className={cn(
-                      "flex w-full items-end justify-between transition-all duration-500",
-                      isActive
-                        ? "translate-y-0 opacity-100 delay-150"
-                        : "pointer-events-none absolute bottom-8 translate-y-8 opacity-0"
-                    )}
-                  >
-                    <p className="max-w-[70%] text-left text-base text-gray-100 drop-shadow-md">
-                      {review.description}
-                    </p>
+                {/* 3. GRADIENTES OVERLAY */}
+                <div className={cn(
+                  "absolute inset-0 z-10 transition-all duration-500",
+                  isActive 
+                    ? "bg-gradient-to-t from-black/90 via-black/40 to-transparent" 
+                    : "bg-black/40 group-hover:bg-black/20" 
+                )} />
+
+                {/* 4. CONTENIDO INTERNO */}
+                <div className={cn(
+                  "relative z-20 flex h-full w-full flex-col transition-all duration-500 p-6",
+                  isActive ? "justify-between" : "justify-end md:justify-end items-start md:items-center"
+                )}>
+                  
+                  {/* Número superior */}
+                  <div className={cn(
+                    "font-mono text-sm tracking-widest transition-all duration-500",
+                    isActive ? "text-white/80 opacity-100" : "text-white/60 md:absolute md:top-6 md:opacity-100 opacity-0"
+                  )}>
+                    {indexNumber}
+                  </div>
+
+                  {/* Textos y Botón */}
+                  <div className={cn(
+                    "flex flex-col w-full transition-all duration-700 delay-100",
+                    isActive ? "translate-y-0 opacity-100" : "md:absolute md:bottom-8"
+                  )}>
                     
-                    <button className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-[#0056D2] shadow-lg transition-transform hover:scale-110 pointer-events-auto">
-                      <Play className="h-6 w-6 fill-current ml-1" /> 
-                    </button>
+                    {/* Título */}
+                    <h3 className={cn(
+                      "text-white font-bold tracking-tight transition-all duration-500 origin-bottom-left whitespace-nowrap",
+                      isActive 
+                        ? "text-3xl md:text-4xl mb-4" 
+                        : "text-xl md:text-2xl md:-rotate-90 md:translate-y-[-100px] md:-translate-x-4 mb-0"
+                    )}>
+                      {review.name}
+                    </h3>
+
+                    {/* Caja de descripción y Botón interactivo */}
+                    <div className={cn(
+                      "overflow-hidden transition-all duration-500 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end w-full",
+                      isActive ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+                    )}>
+                      {/* Flex-1 asegura que el texto ocupe el espacio disponible sin saltar cuando el botón crece */}
+                      <p className="flex-1 pr-4 text-sm md:text-base text-gray-200/90 leading-relaxed font-light">
+                        {review.description}
+                      </p>
+                      
+                      {/* === NUEVO BOTÓN: Píldora expansible con efecto pulso === */}
+                      <div className="relative flex shrink-0 items-center justify-center">
+                        {/* Efecto de sonar/latido detrás del botón */}
+                        <span 
+                          className="absolute h-full w-full rounded-full bg-white/40 animate-ping opacity-70 pointer-events-none" 
+                          style={{ animationDuration: '3s' }} 
+                        />
+                        
+                        {/* Botón interactivo */}
+                        <a 
+                          href={review.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn relative flex h-14 items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white shadow-2xl transition-all duration-500 hover:bg-white hover:text-[#002EC3] hover:px-5 w-14 hover:w-36 overflow-hidden z-10"
+                        >
+                          <Play className="h-5 w-5 fill-current shrink-0 transition-transform duration-500 group-hover/btn:scale-110 ml-1 group-hover/btn:ml-0" /> 
+                          
+                          {/* Texto oculto que se desliza al expandir */}
+                          <span className="max-w-0 overflow-hidden opacity-0 transition-all duration-500 group-hover/btn:max-w-[100px] group-hover/btn:opacity-100 group-hover/btn:ml-2 whitespace-nowrap font-bold text-[15px] tracking-wide">
+                            Ver video
+                          </span>
+                        </a>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

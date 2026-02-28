@@ -1,14 +1,29 @@
 import * as React from 'react';
 
+// 1. Agregamos todos los campos nuevos a la interfaz
 interface EmailTemplateProps {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   company: string;
-  message: string;
+  department: string;
+  industry: string;
+  employees: string;
+  role: string;
 }
 
-export function EmailTemplate({ firstName, lastName, email, company, message }: EmailTemplateProps) {
+export function EmailTemplate({
+  firstName,
+  lastName,
+  email,
+  phone,
+  company,
+  department,
+  industry,
+  employees,
+  role,
+}: EmailTemplateProps) {
   return (
     <div style={styles.main}>
       <div style={styles.container}>
@@ -17,21 +32,33 @@ export function EmailTemplate({ firstName, lastName, email, company, message }: 
           <h1 style={styles.headerText}>BPM Consultores</h1>
         </div>
 
-        {/* Cuerpo del Correo */}
+        {/* Cuerpo del Correo (Enfocado en el Cliente) */}
         <div style={styles.content}>
-          <p style={styles.greeting}>Hola, equipo:</p>
+          <p style={styles.greeting}>Hola, {firstName}:</p>
           <p style={styles.text}>
-            Han recibido un nuevo mensaje desde el formulario de contacto. Aquí están los detalles:
+            ¡Gracias por contactar a <strong>BPM Consultores</strong>! Hemos recibido tu solicitud correctamente.
+          </p>
+          <p style={styles.text}>
+            Nuestro equipo de especialistas en Inteligencia Artificial ya está revisando tu información y nos pondremos en contacto contigo al correo <strong>{email}</strong> o al teléfono <strong>{phone}</strong> en menos de 24 horas laborables para conversar sobre cómo podemos impulsar a <strong>{company}</strong>.
           </p>
 
+          <p style={styles.text}>
+            Aquí tienes un resumen de los datos que nos enviaste:
+          </p>
+
+          {/* Caja de Información (Resumen para el cliente) */}
           <div style={styles.infoBox}>
-            <p style={styles.infoRow}><strong>Nombre:</strong> {firstName} {lastName}</p>
-            <p style={styles.infoRow}><strong>Email:</strong> {email}</p>
+            <p style={styles.infoRow}><strong>Nombre completo:</strong> {firstName} {lastName}</p>
             <p style={styles.infoRow}><strong>Empresa:</strong> {company}</p>
+            <p style={styles.infoRow}><strong>Industria:</strong> {industry}</p>
+            <p style={styles.infoRow}><strong>Tamaño de la empresa:</strong> {employees}</p>
+            <p style={styles.infoRow}><strong>Departamento y Cargo:</strong> {department} - {role}</p>
           </div>
 
-          <p style={styles.text}><strong>Mensaje del cliente:</strong></p>
-          <p style={styles.messageBox}>{message}</p>
+          <p style={{ ...styles.text, marginTop: '24px' }}>
+            ¡Hablamos pronto!<br />
+            <strong>El equipo de BPM Consultores</strong>
+          </p>
         </div>
 
         {/* Línea Divisoria */}
@@ -40,10 +67,13 @@ export function EmailTemplate({ firstName, lastName, email, company, message }: 
         {/* Pie de Página (Footer) */}
         <div style={styles.footer}>
           <p style={styles.footerText}>
-            © 2026 BPM Consultores. Todos los derechos reservados.
+            © {new Date().getFullYear()} BPM Consultores. Todos los derechos reservados.
           </p>
           <p style={styles.footerText}>
-            BPM Consultores | Especialistas en crecimiento y expansión
+            BPM Consultores | Soluciones Estratégicas para Transformar tu Negocio con IA
+          </p>
+          <p style={styles.footerText}>
+            Lima, Perú. Atención a toda Latinoamérica.
           </p>
         </div>
       </div>
@@ -51,22 +81,23 @@ export function EmailTemplate({ firstName, lastName, email, company, message }: 
   );
 }
 
+// Los estilos se mantienen exactamente iguales para conservar tu diseño
 const styles = {
   main: {
-    backgroundColor: '#f3f4f6', // Fondo gris claro exterior
+    backgroundColor: '#f3f4f6',
     padding: '40px 20px',
     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
   },
   container: {
     maxWidth: '600px',
     margin: '0 auto',
-    backgroundColor: '#ffffff', // Fondo blanco de la tarjeta
+    backgroundColor: '#ffffff',
     borderRadius: '8px',
     overflow: 'hidden',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
   },
   header: {
-    backgroundColor: '#0052cc', // Azul de tu imagen
+    backgroundColor: '#0052cc',
     padding: '30px 20px',
     textAlign: 'center' as const,
   },
@@ -109,9 +140,9 @@ const styles = {
     backgroundColor: '#f9fafb',
     padding: '16px',
     borderRadius: '6px',
-    borderLeft: '4px solid #0052cc', // Borde azul para destacar el mensaje
+    borderLeft: '4px solid #0052cc',
     margin: '0',
-    whiteSpace: 'pre-wrap' as const, // Mantiene los saltos de línea del mensaje original
+    whiteSpace: 'pre-wrap' as const,
     fontStyle: 'italic',
   },
   hr: {
@@ -126,7 +157,7 @@ const styles = {
   },
   footerText: {
     fontSize: '12px',
-    color: '#999999', // Color gris para el texto de copyright
+    color: '#999999',
     margin: '0 0 6px',
   },
 };

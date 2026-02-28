@@ -30,7 +30,7 @@ export default function InformationSection() {
   }>;
 
   return (
-    <section className="w-full bg-[#f7f7f7] py-24 px-6">
+    <section className="w-full bg-[#f7f7f7] py-8 px-6">
       {/* CONTENEDOR LIMITADO A 1250PX */}
       <div className="mx-auto flex flex-col md:flex-row gap-16" style={{ maxWidth: "1250px" }}>
 

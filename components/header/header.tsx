@@ -1,128 +1,177 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Globe, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Obtenemos el array de navegación directamente del JSON
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navigation = t('header.navigation', { returnObjects: true }) as Array<{
     name: string;
     href: string;
   }>;
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'es' ? 'en' : 'es';
-    i18n.changeLanguage(newLang);
+    i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F7F7F7] border-b border-gray-200">
-      {/* AJUSTE: Cambiamos max-w-7xl por max-w-[1250px] */}
-      <nav
-        className="mx-auto px-6 lg:px-8"
-        style={{ maxWidth: '1320px' }}
-        aria-label="Global"
-      >
-        <div className="flex items-center justify-between h-16">
-          <div className="flex lg:flex-1">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Logo BPM Consultores"
-                width={120}
-                height={40}
-                className="h-8 w-auto"
-                priority
-              />
-            </Link>
-          </div>
+    <header 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
+        // AQUÍ ESTÁ LA MAGIA:
+        // Inicial: Color sólido F7F7F7.
+        // Scrolled: Transparente al 70% con blur (efecto cristal) y sombra.
+        scrolled 
+          ? "bg-[#F7F7F7]/70 backdrop-blur-lg border-b border-gray-200/50 py-3 shadow-sm" 
+          : "bg-[#F7F7F7] py-6"
+      )}
+    >
+      <nav className="mx-auto px-6 lg:px-8 max-w-[1320px] flex items-center justify-between relative">
+        
+        {/* LOGO (Izquierda) */}
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="flex z-10"
+        >
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Logo BPM Consultores"
+              width={140}
+              height={45}
+              className="h-9 w-auto"
+              priority
+            />
+          </Link>
+        </motion.div>
 
-          <div className="hidden lg:flex lg:gap-x-16">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors"
-              >
+        {/* NAVEGACIÓN DESKTOP (Centro Matemático Perfecto) */}
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="group relative px-5 py-3 text-[15px] font-semibold leading-6 text-gray-800 transition-all rounded-lg hover:bg-blue-50/60"
+            >
+              <span className="relative z-10 transition-colors group-hover:text-[#002EC3]">
                 {item.name}
-              </Link>
+              </span>
+              {/* Línea animada sutil */}
+              <span className="absolute bottom-2 left-5 h-[2px] w-0 bg-[#002EC3] transition-all duration-300 group-hover:w-[calc(100%-40px)]" />
+            </Link>
+          ))}
+        </div>
+
+        {/* ACCIONES Y REDES (Derecha) */}
+        <div className="hidden lg:flex items-center gap-x-6 z-10">
+          <div className="flex gap-x-5 border-r border-gray-300 pr-6">
+            {[
+              { Icon: Linkedin, href: "https://linkedin.com" },
+              { Icon: Instagram, href: "https://instagram.com" },
+              { Icon: Facebook, href: "https://facebook.com" }
+            ].map(({ Icon, href }, idx) => (
+              <motion.a
+                key={idx}
+                href={href}
+                whileHover={{ y: -3, scale: 1.1 }}
+                className="text-[#002EC3] transition-opacity hover:opacity-80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon size={20} strokeWidth={2.5} />
+              </motion.a>
             ))}
           </div>
 
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 items-center">
-            {/* Social Icons */}
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors">
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </Link>
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-pink-600 transition-colors">
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </Link>
-            <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-700 transition-colors">
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </Link>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={toggleLanguage}
-              className="ml-4"
-            >
-              {i18n.language.toUpperCase()}
-            </Button>
-          </div>
-
-          <div className="flex lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 font-bold hover:bg-blue-50/80 text-gray-800 transition-colors"
+          >
+            <Globe size={18} className="text-[#002EC3]" />
+            {i18n.language.toUpperCase()}
+          </Button>
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-md">
-            <div className="space-y-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50 rounded-md"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-3 py-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={toggleLanguage}
-                  className="w-full"
-                >
-                  {i18n.language.toUpperCase()}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* BOTÓN MÓVIL (Derecha en pantallas pequeñas) */}
+        <div className="flex lg:hidden z-10">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="relative text-[#002EC3]"
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </Button>
+        </div>
       </nav>
+
+      {/* MENÚ MÓVIL */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-40 bg-[#F7F7F7] lg:hidden flex flex-col pt-24 px-8"
+          >
+            <div className="space-y-4">
+              {navigation.map((item, i) => (
+                <motion.div
+                  initial={{ x: 20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  key={item.name}
+                >
+                  <Link
+                    href={item.href}
+                    className="block w-full py-4 text-3xl font-bold text-gray-900 border-b border-gray-200 active:text-[#002EC3]"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-10"
+            >
+               <Button
+                  variant="outline"
+                  onClick={() => {
+                    toggleLanguage();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full flex justify-center items-center gap-2 py-6 text-lg border-gray-300 bg-white"
+                >
+                  <Globe size={20} className="text-[#002EC3]" />
+                  Cambiar a {i18n.language === 'es' ? 'Inglés' : 'Español'}
+                </Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
