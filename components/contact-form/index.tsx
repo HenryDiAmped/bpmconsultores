@@ -4,8 +4,15 @@ import { useState } from "react";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { formSchema } from "@/lib/schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,8 +28,13 @@ export default function ContactPage() {
             firstName: "",
             lastName: "",
             email: "",
+            phone: "",
             company: "",
-            message: "",
+            department: "",
+            industry: "",
+            employees: "",
+            role: "",
+            terms: false,
         }
     });
 
@@ -47,9 +59,7 @@ export default function ContactPage() {
             ========================================== */}
             <div className="relative w-full lg:w-5/12 bg-[#F7F7F7] p-10 lg:p-16 xl:p-20 overflow-hidden border-r border-gray-200">
                 
-                {/* EL TOQUE PREMIUM: En lugar del Ripple, usamos un "Ambient Glow".
-                    Es una luz suave difuminada que da un aspecto tecnológico y limpio. 
-                */}
+                {/* Ambient Glow */}
                 <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#002EC3] opacity-[0.07] rounded-full blur-3xl pointer-events-none"></div>
                 <div className="absolute top-1/2 -right-32 w-96 h-96 bg-[#002EC3] opacity-[0.05] rounded-full blur-3xl pointer-events-none"></div>
 
@@ -175,6 +185,8 @@ export default function ContactPage() {
 
                             <Form {...form}>
                                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                    
+                                    {/* Fila 1: Nombre y Apellido */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <FormField control={form.control} name="firstName" render={({ field }) => (
                                             <FormItem>
@@ -194,32 +206,148 @@ export default function ContactPage() {
                                         )}/>
                                     </div>
 
-                                    <FormField control={form.control} name="email" render={({ field }) => (
+                                    {/* Fila 2: Correo y Celular */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <FormField control={form.control} name="email" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Correo Electrónico</FormLabel>
+                                                <FormControl>
+                                                    <Input type="email" placeholder="tucorreo@empresa.com" {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 py-6 px-4 rounded-xl text-base transition-all" />
+                                                </FormControl>
+                                            </FormItem>
+                                        )}/>
+                                        <FormField control={form.control} name="phone" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Número Celular</FormLabel>
+                                                <FormControl>
+                                                    <Input type="tel" placeholder="+51 999 999 999" {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 py-6 px-4 rounded-xl text-base transition-all" />
+                                                </FormControl>
+                                            </FormItem>
+                                        )}/>
+                                    </div>
+
+                                    {/* Fila 3: Empresa y Departamento */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <FormField control={form.control} name="company" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Nombre de Empresa</FormLabel>
+                                                <FormControl>
+                                                    <Input placeholder="Ej. Tech Solutions" {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 py-6 px-4 rounded-xl text-base transition-all" />
+                                                </FormControl>
+                                            </FormItem>
+                                        )}/>
+                                        
+                                        <FormField control={form.control} name="department" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Departamento</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="bg-white border-gray-200 shadow-sm focus:ring-[#002EC3] focus:ring-offset-2 h-auto py-[14px] px-4 rounded-xl text-base transition-all">
+                                                            <SelectValue placeholder="Selecciona una opción" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {/* Puedes cambiar estas opciones por las de tu preferencia */}
+                                                        <SelectItem value="lima">Lima</SelectItem>
+                                                        <SelectItem value="arequipa">Arequipa</SelectItem>
+                                                        <SelectItem value="cusco">Cusco</SelectItem>
+                                                        <SelectItem value="piura">Piura</SelectItem>
+                                                        <SelectItem value="otro">Otro</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}/>
+                                    </div>
+
+                                    {/* Fila 4: Industria y Número de Colaboradores */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <FormField control={form.control} name="industry" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Industria a la que perteneces</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="bg-white border-gray-200 shadow-sm focus:ring-[#002EC3] focus:ring-offset-2 h-auto py-[14px] px-4 rounded-xl text-base transition-all">
+                                                            <SelectValue placeholder="Selecciona tu industria" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="tecnologia">Tecnología / Software</SelectItem>
+                                                        <SelectItem value="finanzas">Finanzas / Banca</SelectItem>
+                                                        <SelectItem value="retail">Retail / Comercio</SelectItem>
+                                                        <SelectItem value="salud">Salud / Medicina</SelectItem>
+                                                        <SelectItem value="manufactura">Manufactura</SelectItem>
+                                                        <SelectItem value="servicios">Servicios Profesionales</SelectItem>
+                                                        <SelectItem value="otro">Otro</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}/>
+
+                                        <FormField control={form.control} name="employees" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-semibold text-gray-700">Número de colaboradores</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="bg-white border-gray-200 shadow-sm focus:ring-[#002EC3] focus:ring-offset-2 h-auto py-[14px] px-4 rounded-xl text-base transition-all">
+                                                            <SelectValue placeholder="Selecciona la cantidad" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="1-10">1 a 10 colaboradores</SelectItem>
+                                                        <SelectItem value="11-50">11 a 50 colaboradores</SelectItem>
+                                                        <SelectItem value="51-200">51 a 200 colaboradores</SelectItem>
+                                                        <SelectItem value="201-500">201 a 500 colaboradores</SelectItem>
+                                                        <SelectItem value="500+">Más de 500</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}/>
+                                    </div>
+
+                                    {/* Fila 5: Rol / Cargo */}
+                                    <FormField control={form.control} name="role" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-sm font-semibold text-gray-700">Correo Electrónico</FormLabel>
-                                            <FormControl>
-                                                <Input type="email" placeholder="tucorreo@empresa.com" {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 py-6 px-4 rounded-xl text-base transition-all" />
-                                            </FormControl>
+                                            <FormLabel className="text-sm font-semibold text-gray-700">Te desempeñas en</FormLabel>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger className="bg-white border-gray-200 shadow-sm focus:ring-[#002EC3] focus:ring-offset-2 h-auto py-[14px] px-4 rounded-xl text-base transition-all">
+                                                        <SelectValue placeholder="Ej. Recursos Humanos, TI, Ventas..." />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="rrhh">Recursos Humanos / Talento</SelectItem>
+                                                    <SelectItem value="ti">Tecnología / TI</SelectItem>
+                                                    <SelectItem value="ventas">Ventas / Comercial</SelectItem>
+                                                    <SelectItem value="marketing">Marketing</SelectItem>
+                                                    <SelectItem value="operaciones">Operaciones / Logística</SelectItem>
+                                                    <SelectItem value="gerencia">Gerencia / Dirección</SelectItem>
+                                                    <SelectItem value="otro">Otro departamento</SelectItem>
+                                                </SelectContent>
+                                            </Select>
                                         </FormItem>
                                     )}/>
 
-                                    <FormField control={form.control} name="company" render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-sm font-semibold text-gray-700">Empresa</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Nombre de tu empresa" {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 py-6 px-4 rounded-xl text-base transition-all" />
-                                            </FormControl>
-                                        </FormItem>
-                                    )}/>
-
-                                    <FormField control={form.control} name="message" render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-sm font-semibold text-gray-700">¿Cómo podemos ayudarte?</FormLabel>
-                                            <FormControl>
-                                                <Textarea placeholder="Cuéntanos brevemente sobre tu proyecto..." {...field} className="bg-white border-gray-200 shadow-sm focus-visible:ring-[#002EC3] focus-visible:ring-offset-2 min-h-[140px] resize-none px-4 py-4 rounded-xl text-base transition-all" />
-                                            </FormControl>
-                                        </FormItem>
-                                    )}/>
+                                    {/* Checkbox de Términos */}
+                                    <FormField
+                                        control={form.control}
+                                        name="terms"
+                                        render={({ field }) => (
+                                            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-xl p-4 border border-gray-100 bg-gray-50/50">
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                        className="data-[state=checked]:bg-[#002EC3] data-[state=checked]:border-[#002EC3]"
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel className="text-sm text-gray-600 font-medium cursor-pointer">
+                                                        Acepto las <a href="#" className="text-[#002EC3] hover:underline">políticas de privacidad</a> y los términos de servicio.
+                                                    </FormLabel>
+                                                </div>
+                                            </FormItem>
+                                        )}
+                                    />
 
                                     <div className="pt-4">
                                         <Button

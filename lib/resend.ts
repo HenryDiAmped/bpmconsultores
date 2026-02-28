@@ -14,13 +14,17 @@ export const send = async (emailFormData: z.infer<typeof formSchema>)=>{
         const { error } = await resend.emails.send({
             from: 'BPM Consultores <onboarding@resend.dev>',
             to: ['minvosoftware@gmail.com'],
-            subject: 'Correo de prueba',
+            subject: 'Hemos recibido tu solicitud - BPM Consultores',
             react: EmailTemplate({ 
                 firstName: emailFormData.firstName,
                 lastName: emailFormData.lastName,
                 email: emailFormData.email,
+                phone: emailFormData.phone,
                 company: emailFormData.company,
-                message: emailFormData.message,
+                department: emailFormData.department,
+                industry: emailFormData.industry,
+                employees: emailFormData.employees,
+                role: emailFormData.role,
             }) as ReactElement,
         });
 
