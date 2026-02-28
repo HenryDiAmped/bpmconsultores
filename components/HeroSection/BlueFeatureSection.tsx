@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+// 1. Ya importas motion y AnimatePresence, perfecto.
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
@@ -46,7 +47,16 @@ export default function BlueFeatureSection() {
   };
 
   return (
-    <section className="relative z-10 w-full px-4 pb-0 bg-[#F7F7F7]">
+    // === 2. Animamos la entrada de TODA la sección ===
+    <motion.section 
+      className="relative z-10 w-full px-4 pb-0 bg-[#F7F7F7]"
+      // Definimos la animación de entrada
+      initial={{ opacity: 0, y: 50 }} // Empieza invisible y 50px abajo
+      animate={{ opacity: 1, y: 0 }}   // Sube y aparece
+      // Súper importante: El delay debe ser alto (0.6s o 0.7s) 
+      // para que aparezca DESPUÉS de que el botón CTA del Hero haya entrado.
+      transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+    >
       <div className="max-w-[1250px] mx-auto min-h-[300px]">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full relative">
@@ -141,6 +151,6 @@ export default function BlueFeatureSection() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

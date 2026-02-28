@@ -1,6 +1,10 @@
+'use client';
+
 import HeroSection from "./HeroSection";
 import BlueFeatureSection from "./BlueFeatureSection";
 import { Ripple } from "@/components/ui/ripple";
+// 1. Importamos motion
+import { motion } from "framer-motion";
 
 export default function HeroLanding() {
   return (
@@ -16,9 +20,16 @@ export default function HeroLanding() {
         {/* 2. El Ripple posicionado en la frontera:
             bottom-0 lo pega exactamente donde termina este contenedor y empieza la sección azul.
             translate-y-1/2 empuja el núcleo del Ripple para que quede justo a la mitad de la línea de corte. */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 pointer-events-none z-0">
+        {/* --- 3. Animamos el contenedor del Ripple (Fade in suave) --- */}
+        <motion.div 
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 pointer-events-none z-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          // Aparece un poco después de que inicie la cascada del Hero
+          transition={{ duration: 1, delay: 0.5 }} 
+        >
           <Ripple mainCircleSize={220} />
-        </div>
+        </motion.div>
 
       </div>
 
