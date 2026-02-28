@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface VideoSectionProps {
   // El ID de tu video ya está configurado por defecto
@@ -24,7 +25,16 @@ export default function VideoSection({
       <div className="max-w-[1250px] mx-auto">
         
         {/* Contenedor Exterior (El marco blanco con sombra de tu diseño) */}
-        <div className="p-2 sm:p-3 bg-white border border-gray-200 rounded-[1.2rem] shadow-sm">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ 
+            duration: 0.7, 
+            ease: [0.34, 1.56, 0.64, 1] // Bounce effect
+          }}
+          className="p-2 sm:p-3 bg-white border border-gray-200 rounded-[1.2rem] shadow-sm"
+        >
           
           {/* Contenedor Interior (El área del video en proporción 16:9) */}
           <div 
@@ -67,7 +77,7 @@ export default function VideoSection({
               ></iframe>
             )}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

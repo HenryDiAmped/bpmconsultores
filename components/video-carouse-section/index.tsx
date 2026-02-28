@@ -2,6 +2,7 @@
 
 import { VideoCard, VideoCardProps } from '@/components/ui/video-card';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 export default function VideoCarouselSection() {
   const { t } = useTranslation();
@@ -12,12 +13,18 @@ export default function VideoCarouselSection() {
   return (
     <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
 
-      <div className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-20">
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-20"
+      >
         <h2 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-medium text-foreground">
           {t('videoCarousel.title')} <br className="hidden md:block" />
           {t('videoCarousel.subtitle')} <span className="text-[#002EC3] font-semibold">{t('videoCarousel.highlight')}</span>
         </h2>
-      </div>
+      </motion.div>
 
       <div className="w-full max-w-[1280px] mx-auto flex items-center relative z-0">
         <div className="flex animate-marquee-slow w-max hover:[animation-play-state:paused]">

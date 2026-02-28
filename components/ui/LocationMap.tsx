@@ -1,16 +1,18 @@
 export function LocationMap() {
   return (
-    <div className="w-full h-[200px] rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+    // La clase "group" es la que permite que el mapa reaccione cuando pasas el mouse por esta caja
+    <div className="w-full h-full relative group bg-gray-100">
       <iframe
-        // Cambia este enlace por el tuyo de Google Maps
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.92!2d-77.03!3d-12.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAzJzAwLjAiUyA3N8KwMDEnNDguMCJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe"
-        width="100%"
+        // 🚨 IMPORTANTE: Reemplaza este 'src' por tu enlace real de Google Maps
+ src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31198.77819647611!2d-76.99523521287276!3d-12.190793283205187!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9ca1955f84f%3A0x25862b51e1017cdb!2sUniversidad%20Privada%20del%20Norte%20(UPN)!5e0!3m2!1sen!2sus!4v1772261598585!5m2!1sen!2sus"        width="100%"
         height="100%"
         style={{ border: 0 }}
         allowFullScreen={false}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Ubicación de BPM Consultores"
+        // === AQUÍ ESTÁ LA MAGIA DE LOS FILTROS ===
+        className="w-full h-full grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
       />
     </div>
   );

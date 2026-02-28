@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 export default function ReviewsCarousel() {
   const { t } = useTranslation();
@@ -23,9 +24,15 @@ export default function ReviewsCarousel() {
     <section className="w-full bg-[#f7f7f7] py-16 font-sans">
       <div className="mx-auto w-full max-w-[1250px] px-4 text-center">
         
-        <h2 className="mb-10 text-6xl font-medium text-gray-900">
+        <motion.h2 
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-10 text-6xl font-medium text-gray-900"
+        >
           {t('reviews.title')} <br /> {t('reviews.subtitle')}
-        </h2>
+        </motion.h2>
 
         <div className="flex h-[320px] w-full gap-4">
           {reviews.map((review, index) => {

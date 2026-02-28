@@ -2,6 +2,7 @@
 
 import { PartnerLogo, PartnerLogoProps } from '@/components/ui/partner-logo';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 // Data mockeada (falsa)
 const partnersData: PartnerLogoProps[] = [
@@ -22,12 +23,18 @@ export default function PartnersSection() {
     <section className="w-full pt-8 md:pt-12 pb-8 md:pb-12 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
       
       {/* 1. Título (Alineado con la caja de 1020px) */}
-      <div className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full max-w-[1250px] px-4 text-center mb-10 md:mb-14 relative z-10"
+      >
         <h2 className="text-xl md:text-[26px] lg:text-[28px] leading-tight font-medium text-foreground">
           {t('partners.title')} <br className="hidden md:block" />
           {t('partners.subtitle')} <span className="text-[#002EC3] font-semibold">{t('partners.highlight')}</span>
         </h2>
-      </div>
+      </motion.div>
 
       {/* 2. Contenedor del Carrusel (Ancho máximo 1280px) */}
       <div className="w-full max-w-[1280px] mx-auto flex items-center relative z-0">
