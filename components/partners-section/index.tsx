@@ -20,7 +20,7 @@ export default function PartnersSection() {
   return (
     // EL CAMBIO PRINCIPAL ESTÁ AQUÍ 👇
     // Agregamos 'relative' a la sección principal para que los gradientes se posicionen respecto a ella.
-    <section className="w-full pt-8 md:pt-12 pb-8 md:pb-12 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
+    <section className="w-full  pb-8 md:pb-12 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
       
       {/* 1. Título (Alineado con la caja de 1020px) */}
       <motion.div 

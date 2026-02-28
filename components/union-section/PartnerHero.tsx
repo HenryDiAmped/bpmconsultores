@@ -26,7 +26,7 @@ export default function PartnerHero() {
   const { t } = useTranslation();
 
   return (
-    <section className="w-full bg-[#fafafa] py-24 font-sans flex justify-center">
+    <section className="w-full bg-[#fafafa] pb-24 font-sans flex justify-center">
       <motion.div
         className="mx-auto w-full max-w-[1250px] px-4 flex flex-col items-center text-center"
         variants={containerVariants}

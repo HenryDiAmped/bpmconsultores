@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-// 1. Ya importas motion y AnimatePresence, perfecto.
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -12,14 +11,20 @@ export default function BlueFeatureSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  
+  // 1. Referencia para detectar visibilidad
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
 
-  // Obtenemos el array de features del JSON
   const features = t('hero.blueSection.features', { returnObjects: true }) as Array<{
     title: string;
     content: string;
   }>;
 
+  // 2. Temporizador inteligente (se pausa si no está en vista)
   useEffect(() => {
+    if (!isInView) return;
+
     const updateInterval = 50;
     const step = (updateInterval / AUTO_PLAY_DURATION) * 100;
 
@@ -31,11 +36,10 @@ export default function BlueFeatureSection() {
     }, updateInterval);
 
     return () => clearInterval(timer);
-  }, [activeIndex]);
+  }, [activeIndex, isInView]);
 
   useEffect(() => {
     if (progress >= 100) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveIndex((current) => (current + 1) % features.length);
       setProgress(0);
     }
@@ -47,30 +51,25 @@ export default function BlueFeatureSection() {
   };
 
   return (
-    // === 2. Animamos la entrada de TODA la sección ===
     <motion.section 
+      // IMPORTANTE: Agregamos el ref aquí para que useInView funcione
+      ref={sectionRef} 
       className="relative z-10 w-full px-4 pb-0 bg-[#F7F7F7]"
-      // Definimos la animación de entrada
-      initial={{ opacity: 0, y: 50 }} // Empieza invisible y 50px abajo
-      animate={{ opacity: 1, y: 0 }}   // Sube y aparece
-      // Súper importante: El delay debe ser alto (0.6s o 0.7s) 
-      // para que aparezca DESPUÉS de que el botón CTA del Hero haya entrado.
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
     >
       <div className="max-w-[1250px] mx-auto min-h-[300px]">
-
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full relative">
 
-          {/* === TÍTULO (Fila 1) === */}
-          {/* CORRECCIÓN VISUAL: Añadido lg:rounded-br-[0.8rem] para la esquina superior derecha del hueco */}
-          <div className="col-span-1 lg:col-span-12 bg-[#002EC3] rounded-t-[0.8rem] lg:rounded-bl-none lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pt-12 lg:px-12 lg:pb-8 flex flex-col justify-center">
+          {/* TÍTULO */}
+          <div className="col-span-1 lg:col-span-12 bg-[#002EC3] rounded-t-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pt-12 lg:px-12 lg:pb-8 flex flex-col justify-center">
             <h2 className="text-3xl md:text-4xl lg:text-[42px] font-semibold text-white leading-tight lg:w-[65%]">
               {t('hero.blueSection.mainTitle')}
             </h2>
           </div>
 
-          {/* === ACORDEONES (Fila 2, Izquierda) === */}
-          {/* CORRECCIÓN VISUAL: Añadido h-full para igualar alturas */}
+          {/* ACORDEONES (Izquierda) */}
           <div className="col-span-1 lg:col-span-6 bg-[#002EC3] rounded-b-[0.8rem] lg:rounded-t-none lg:rounded-bl-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pl-12 lg:pr-6 lg:pb-12 lg:pt-0 flex flex-col gap-8 h-full">
             <p className="text-white/90 text-sm md:text-base leading-relaxed pr-4">
               {t('hero.blueSection.description')}
@@ -86,6 +85,7 @@ export default function BlueFeatureSection() {
                     className="flex gap-4 cursor-pointer group"
                     onClick={() => handleItemClick(index)}
                   >
+                    {/* Barra de progreso lateral */}
                     <div className="relative w-[3px] bg-white/30 rounded-full shrink-0 overflow-hidden"
                       style={{ minHeight: isActive ? '100%' : '36px' }}>
                       {isActive && (
@@ -115,6 +115,16 @@ export default function BlueFeatureSection() {
                             <p className="text-white/80 text-sm leading-relaxed pr-4 pt-1 pb-2">
                               {feature.content}
                             </p>
+
+                            {/* IMAGEN MÓVIL: Se inyecta aquí para que aparezca bajo el texto */}
+                            <div className="block lg:hidden w-full h-[200px] sm:h-[250px] relative mt-4 mb-2 bg-[#AEC0F5] rounded-[0.8rem] shadow-inner overflow-hidden">
+                              <Image
+                                src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
+                                alt={feature.title}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -125,12 +135,11 @@ export default function BlueFeatureSection() {
             </div>
           </div>
 
-          {/* === CAJA CELESTE E IMAGEN (Fila 2, Derecha) === */}
-          {/* CORRECCIÓN VISUAL: flex y h-full en el contenedor padre para que herede la altura del grid */}
-          <div className="col-span-1 lg:col-span-6 relative p-6 pb-0 md:p-10 md:pb-0 lg:pr-0 lg:pl-4 lg:pt-4 lg:pb-0 flex flex-col h-full mt-8 lg:mt-0">
-
+          {/* CAJA DE IMAGEN ESCRITORIO (Derecha) */}
+          <div className="hidden lg:flex col-span-1 lg:col-span-6 relative p-6 pb-0 md:p-10 md:pb-0 lg:pr-0 lg:pl-4 lg:pt-4 lg:pb-0 flex-col h-full mt-8 lg:mt-0">
+            {/* Esquina decorativa */}
             <svg
-              className="hidden lg:block absolute top-0 left-0 w-[0.8rem] h-[0.8rem] pointer-events-none"
+              className="absolute top-0 left-0 w-[0.8rem] h-[0.8rem] pointer-events-none"
               viewBox="0 0 100 100"
               fill="#002EC3"
               xmlns="http://www.w3.org/2000/svg"
@@ -138,11 +147,10 @@ export default function BlueFeatureSection() {
               <path d="M0 0 H100 A100 100 0 0 0 0 100 V0 Z" />
             </svg>
 
-            {/* CORRECCIÓN VISUAL: flex-grow empuja la caja hasta el fondo para nivelarse con el contenedor izquierdo */}
-            <div className="w-full h-full flex-grow min-h-[250px] lg:min-h-[300px] bg-[#AEC0F5] rounded-[0.8rem] relative shadow-inner overflow-hidden">
+            <div className="w-full h-full flex-grow min-h-[300px] bg-[#AEC0F5] rounded-[0.8rem] relative shadow-inner overflow-hidden">
               <Image
                 src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
-                alt="Descripción de la imagen"
+                alt="Visualización de feature"
                 fill
                 className="object-cover"
               />
