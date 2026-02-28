@@ -1,7 +1,7 @@
 'use client';
 
 //import { useTranslation } from 'react-i18next';
-import ContactForm from "@/components/contact-form"
+import ContactStructure from "@/components/contact-structure"
 
 export default function ContactoPage() {
   //const { t } = useTranslation();
@@ -9,7 +9,7 @@ export default function ContactoPage() {
   return (
     <main style={{ padding: 0 }}>
       {/*<h1>{t('contact.title')}</h1>*/}
-      <ContactForm/>
+      <ContactStructure/>
     </main>
   )
 }
