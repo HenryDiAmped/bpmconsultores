@@ -21,7 +21,7 @@ export default function BlueFeatureSection() {
     content: string;
   }>;
 
-  // 2. Temporizador inteligente (se pausa si no está en vista)
+  // 2. Temporizador inteligente UNIFICADO (Soluciona el warning de React)
   useEffect(() => {
     if (!isInView) return;
 
@@ -29,21 +29,23 @@ export default function BlueFeatureSection() {
     const step = (updateInterval / AUTO_PLAY_DURATION) * 100;
 
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 100;
-        return prev + step;
+      setProgress((prevProgress) => {
+        const nextProgress = prevProgress + step;
+        
+        // Si el progreso llega o supera el 100%
+        if (nextProgress >= 100) {
+          // Cambiamos al siguiente tab de forma asíncrona pero en el mismo ciclo
+          setActiveIndex((current) => (current + 1) % features.length);
+          // Retornamos 0 para reiniciar la barra de progreso inmediatamente
+          return 0; 
+        }
+        
+        return nextProgress;
       });
     }, updateInterval);
 
     return () => clearInterval(timer);
-  }, [activeIndex, isInView]);
-
-  useEffect(() => {
-    if (progress >= 100) {
-      setActiveIndex((current) => (current + 1) % features.length);
-      setProgress(0);
-    }
-  }, [progress, features.length]);
+  }, [activeIndex, isInView, features.length]); 
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
@@ -51,26 +53,28 @@ export default function BlueFeatureSection() {
   };
 
   return (
-    <motion.section 
-      // IMPORTANTE: Agregamos el ref aquí para que useInView funcione
+    <section 
       ref={sectionRef} 
-      className="relative z-10 w-full px-4 pb-0 bg-[#F7F7F7]"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+      // MODIFICACIÓN: Cambiamos pb-12 por pb-0 para quitar el padding inferior
+      className="relative z-10 w-full px-4 pb-0 bg-transparent overflow-hidden"
     >
-      <div className="max-w-[1250px] mx-auto min-h-[300px]">
+      <motion.div 
+        className="max-w-[1250px] mx-auto min-h-[300px]"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full relative">
 
           {/* TÍTULO */}
-          <div className="col-span-1 lg:col-span-12 bg-[#002EC3] rounded-t-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pt-12 lg:px-12 lg:pb-8 flex flex-col justify-center">
+          <div className="col-span-1 lg:col-span-12 bg-[#002EC3] rounded-t-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pt-12 lg:px-12 lg:pb-8 flex flex-col justify-center shadow-lg lg:shadow-none relative z-10">
             <h2 className="text-3xl md:text-4xl lg:text-[42px] font-semibold text-white leading-tight lg:w-[65%]">
               {t('hero.blueSection.mainTitle')}
             </h2>
           </div>
 
           {/* ACORDEONES (Izquierda) */}
-          <div className="col-span-1 lg:col-span-6 bg-[#002EC3] rounded-b-[0.8rem] lg:rounded-t-none lg:rounded-bl-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pl-12 lg:pr-6 lg:pb-12 lg:pt-0 flex flex-col gap-8 h-full">
+          <div className="col-span-1 lg:col-span-6 bg-[#002EC3] rounded-b-[0.8rem] lg:rounded-t-none lg:rounded-bl-[0.8rem] lg:rounded-br-[0.8rem] p-6 md:p-10 lg:pl-12 lg:pr-6 lg:pb-12 lg:pt-0 flex flex-col gap-8 h-full shadow-lg lg:shadow-none relative z-10">
             <p className="text-white/90 text-sm md:text-base leading-relaxed pr-4">
               {t('hero.blueSection.description')}
             </p>
@@ -116,7 +120,7 @@ export default function BlueFeatureSection() {
                               {feature.content}
                             </p>
 
-                            {/* IMAGEN MÓVIL: Se inyecta aquí para que aparezca bajo el texto */}
+                            {/* IMAGEN MÓVIL */}
                             <div className="block lg:hidden w-full h-[200px] sm:h-[250px] relative mt-4 mb-2 bg-[#AEC0F5] rounded-[0.8rem] shadow-inner overflow-hidden">
                               <Image
                                 src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
@@ -139,7 +143,7 @@ export default function BlueFeatureSection() {
           <div className="hidden lg:flex col-span-1 lg:col-span-6 relative p-6 pb-0 md:p-10 md:pb-0 lg:pr-0 lg:pl-4 lg:pt-4 lg:pb-0 flex-col h-full mt-8 lg:mt-0">
             {/* Esquina decorativa */}
             <svg
-              className="absolute top-0 left-0 w-[0.8rem] h-[0.8rem] pointer-events-none"
+              className="absolute top-0 left-0 w-[0.8rem] h-[0.8rem] pointer-events-none z-20"
               viewBox="0 0 100 100"
               fill="#002EC3"
               xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +151,7 @@ export default function BlueFeatureSection() {
               <path d="M0 0 H100 A100 100 0 0 0 0 100 V0 Z" />
             </svg>
 
-            <div className="w-full h-full flex-grow min-h-[300px] bg-[#AEC0F5] rounded-[0.8rem] relative shadow-inner overflow-hidden">
+            <div className="w-full h-full flex-grow min-h-[300px] bg-[#AEC0F5] rounded-[0.8rem] relative shadow-inner overflow-hidden z-10">
               <Image
                 src="https://i.pinimg.com/736x/2d/c1/61/2dc1612f332ae062dd3436067b30e896.jpg"
                 alt="Visualización de feature"
@@ -158,7 +162,7 @@ export default function BlueFeatureSection() {
           </div>
 
         </div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }

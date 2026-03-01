@@ -1,20 +1,16 @@
 {
   "navigation": [
     {
-      "name": "Servicios",
+      "name": "Inicio",
       "href": "/servicios"
     },
     {
-      "name": "Módulos",
+      "name": "Contacto",
       "href": "/modulos"
     },
     {
-      "name": "Agente IA",
-      "href": "/agente-ia"
-    },
-    {
       "name": "Blog",
-      "href": "/blog"
+      "href": "/agente-ia"
     },
     {
       "name": "Nosotros",
