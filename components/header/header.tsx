@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+// 1. Añadimos 'Variants' a la importación
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, Globe, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -39,8 +40,8 @@ export default function Header() {
     i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
   };
 
-  // Variantes de animación para la tarjeta flotante
-  const menuVariants = {
+  // 2. Le indicamos a TypeScript que esto es de tipo 'Variants'
+  const menuVariants: Variants = {
     closed: { opacity: 0, y: -20, scale: 0.95 },
     open: { 
       opacity: 1, 
@@ -50,7 +51,7 @@ export default function Header() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     closed: { y: 20, opacity: 0 },
     open: { y: 0, opacity: 1 }
   };
