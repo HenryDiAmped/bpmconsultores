@@ -15,10 +15,4 @@ export const formSchema = z.object({
     industry: z.string().min(1, { message: "Selecciona una industria" }),
     employees: z.string().min(1, { message: "Selecciona la cantidad de colaboradores" }),
     role: z.string().min(1, { message: "Selecciona tu rol o cargo" }),
-        
-    // Checkbox de Términos
-    // Usamos 'refine' para obligar a que el valor sea 'true' (marcado)
-    terms: z.boolean().refine((val) => val === true, {
-        message: "Debes aceptar las políticas de privacidad y los términos de servicio.",
-    }),
 });
