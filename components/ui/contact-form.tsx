@@ -35,7 +35,6 @@ export function ContactForm() {
             industry: "",
             employees: "",
             role: "",
-            terms: false,
         }
     });
 
@@ -217,20 +216,6 @@ export function ContactForm() {
                                                 <SelectItem value="otro">Otro departamento</SelectItem>
                                             </SelectContent>
                                         </Select>
-                                    </FormItem>
-                                )}/>
-
-                                {/* Checkbox */}
-                                <FormField control={form.control} name="terms" render={({ field }) => (
-                                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-xl p-4 border border-gray-100 bg-gray-50/50">
-                                        <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} className="data-[state=checked]:bg-[#002EC3] data-[state=checked]:border-[#002EC3]" />
-                                        </FormControl>
-                                        <div className="space-y-1 leading-none">
-                                            <FormLabel className="text-sm text-gray-600 font-medium cursor-pointer">
-                                                Acepto las <a href="#" className="text-[#002EC3] hover:underline">políticas de privacidad</a> y los términos de servicio.
-                                            </FormLabel>
-                                        </div>
                                     </FormItem>
                                 )}/>
 

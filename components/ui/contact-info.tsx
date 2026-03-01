@@ -7,7 +7,7 @@ export function ContactInfo() {
 
       {/* 1. Título y Descripción */}
       <div className="relative z-10 mb-16">
-        <h1 className="text-4xl lg:text-[3.5rem] font-extrabold tracking-tight text-gray-900 leading-[1.1] mb-6">
+        <h1 className="text-4xl lg:text-[3rem] font-extrabold tracking-tight text-gray-900 leading-[1.1] mb-6">
           Impulsemos tu <br />
           <span className="text-[#002EC3]">negocio hoy.</span>
         </h1>
