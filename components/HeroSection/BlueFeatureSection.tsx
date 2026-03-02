@@ -11,54 +11,73 @@ export default function BlueFeatureSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  
-  // 1. Referencia para detectar visibilidad
+
+  // Referencia para detectar visibilidad
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.2 });
+
+  // Refs para evitar doble ejecución en Strict Mode
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const progressRef = useRef(0);
 
   const features = t('hero.blueSection.features', { returnObjects: true }) as Array<{
     title: string;
     content: string;
   }>;
 
-  // 2. Temporizador inteligente UNIFICADO (Soluciona el warning de React)
+  // Temporizador con useRef para evitar problemas de Strict Mode
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) {
+      // Limpiar timer si no está visible
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+      return;
+    }
 
     const updateInterval = 50;
     const step = (updateInterval / AUTO_PLAY_DURATION) * 100;
 
-    const timer = setInterval(() => {
-      setProgress((prevProgress) => {
-        const nextProgress = prevProgress + step;
-        
-        // Si el progreso llega o supera el 100%
-        if (nextProgress >= 100) {
-          // Cambiamos al siguiente tab de forma asíncrona pero en el mismo ciclo
-          setActiveIndex((current) => (current + 1) % features.length);
-          // Retornamos 0 para reiniciar la barra de progreso inmediatamente
-          return 0; 
-        }
-        
-        return nextProgress;
-      });
+    // Limpiar timer anterior si existe
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    timerRef.current = setInterval(() => {
+      progressRef.current += step;
+
+      if (progressRef.current >= 100) {
+        // Cambiar al siguiente índice
+        setActiveIndex((current) => (current + 1) % features.length);
+        progressRef.current = 0;
+        setProgress(0);
+      } else {
+        setProgress(progressRef.current);
+      }
     }, updateInterval);
 
-    return () => clearInterval(timer);
-  }, [activeIndex, isInView, features.length]); 
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [isInView, features.length]);
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
     setProgress(0);
+    progressRef.current = 0;
   };
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       // MODIFICACIÓN: Cambiamos pb-12 por pb-0 para quitar el padding inferior
       className="relative z-10 w-full px-4 pb-0 bg-transparent overflow-hidden"
     >
-      <motion.div 
+      <motion.div
         className="max-w-[1250px] mx-auto min-h-[300px]"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
