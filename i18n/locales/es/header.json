@@ -2,19 +2,15 @@
   "navigation": [
     {
       "name": "Inicio",
-      "href": "/servicios"
+      "href": "/"
     },
     {
       "name": "Contacto",
-      "href": "/modulos"
+      "href": "/contacto"
     },
     {
       "name": "Blog",
-      "href": "/agente-ia"
-    },
-    {
-      "name": "Nosotros",
-      "href": "/nosotros"
+      "href": "/blog"
     }
   ],
   "languageButton": "Cambiar idioma"
