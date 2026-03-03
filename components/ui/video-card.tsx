@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 
 export interface VideoCardProps {
@@ -14,7 +13,7 @@ export function VideoCard({ title, videoId }: VideoCardProps) {
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
   return (
-    <Link 
+    <a 
       href={youtubeUrl} 
       target="_blank" 
       rel="noopener noreferrer"
@@ -49,6 +48,6 @@ export function VideoCard({ title, videoId }: VideoCardProps) {
           {title}
         </span>
       </div>
-    </Link>
+    </a>
   );
 }

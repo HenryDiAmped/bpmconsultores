@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Plus, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // Animaciones de entrada escalonada
 const containerVariants: Variants = {
@@ -128,12 +129,12 @@ export default function FaqSection() {
                 <p className="text-[15px] text-slate-500 mb-6 font-medium">
                   Nuestro equipo de expertos está listo para analizar tu caso específico.
                 </p>
-                <a 
+                <Link
                   href="/contacto" 
                   className="inline-block font-semibold text-white bg-[#002EC3] hover:bg-blue-800 shadow-lg shadow-blue-600/20 transition-all px-6 py-3.5 rounded-xl w-full text-center"
                 >
                   Hablar con un asesor
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>
