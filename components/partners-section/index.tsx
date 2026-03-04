@@ -21,9 +21,9 @@ export default function PartnersSection() {
     // EL CAMBIO PRINCIPAL ESTÁ AQUÍ 👇
     // Agregamos 'relative' a la sección principal para que los gradientes se posicionen respecto a ella.
     <section className="w-full  pb-8 md:pb-12 bg-[#f7f7f7] overflow-hidden flex flex-col items-center relative">
-      
+
       {/* 1. Título (Alineado con la caja de 1020px) */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -38,10 +38,10 @@ export default function PartnersSection() {
 
       {/* 2. Contenedor del Carrusel (Ancho máximo 1280px) */}
       <div className="w-full max-w-[1280px] mx-auto flex items-center relative z-0">
-        
+
         {/* 3. Pista animada (Marquee) */}
         <div className="flex animate-marquee w-max">
-          
+
           {/* Grupo 1 */}
           <div className="flex items-center gap-[50px] pr-[50px]">
             {partnersData.map((partner) => (
@@ -78,7 +78,7 @@ export default function PartnersSection() {
           animation-play-state: paused;
         }
       `}</style>
-      
+
     </section>
   );
 }
