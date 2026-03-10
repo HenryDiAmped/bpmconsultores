@@ -1,13 +1,14 @@
 'use client';
 
+import HumandPresentation from '@/components/humand-presentation';
 import { useTranslation } from 'react-i18next';
 
-export default function ModulosPage() {
+export default function HumandPartnerPage() {
   const { t } = useTranslation();
 
   return (
     <main style={{ padding: 40 }}>
-      <h1>hola modulos</h1>
+      <HumandPresentation />
     </main>
   )
 }
