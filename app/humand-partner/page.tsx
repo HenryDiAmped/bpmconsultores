@@ -1,6 +1,6 @@
 'use client';
 
-import HumandPresentation from '@/components/humand-presentation/HumandSection';
+import HumandSection from '@/components/humand-section/HumandSection';
 import { useTranslation } from 'react-i18next';
 
 export default function HumandPartnerPage() {
@@ -8,7 +8,7 @@ export default function HumandPartnerPage() {
 
   return (
     <main style={{ padding: 40 }}>
-      <HumandPresentation />
+      <HumandSection />
     </main>
   )
 }
