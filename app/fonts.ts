@@ -17,7 +17,8 @@ export const bricolage = Bricolage_Grotesque({
 })
 
 //Inter
-export const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-})
+export const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800'], // Pesos clave para un diseño moderno
+});

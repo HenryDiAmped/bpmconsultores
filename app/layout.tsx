@@ -1,35 +1,29 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import I18nProvider from "@/components/I18nProvider"
-import Header from "@/components/header"
-import { geistMono, bricolage } from "./fonts";
+import Header from "@/components/header";
 import ModernFooter from "@/components/footer/ModernFooter";
-import WhatsAppButton from "@/components/ui/whatsapp-button";
-
+import { inter } from "./fonts";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
-  description: "Especialistas en crecimiento y expansión",
+  description: "Portal oficial de BPM Consultores",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
-      <body
-        className={`${bricolage.className} ${geistMono.className} antialiased`}
-      >
-        <I18nProvider>
-          <Header />
-          <div className="min-h-screen pt-16">
-            {children}
-          </div>
-          <WhatsAppButton />
+      <body className={inter.className}>
+        <Header />
+        <main>
+          {children}
+        </main>
+        <footer>
           <ModernFooter />
-          </I18nProvider>
+        </footer>
       </body>
     </html>
   );

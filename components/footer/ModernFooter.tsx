@@ -1,130 +1,152 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { useTranslation } from 'react-i18next';
-import { LocationMap } from "@/components/ui/LocationMap";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { LocationMap } from "@/components/ui/LocationMap"; // Asegúrate de tener este componente
+import { MapPin, Phone, Mail, Instagram, Linkedin, Facebook, ArrowRight } from "lucide-react";
 
+// --- ANIMACIONES ---
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
   }
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
 };
 
 export default function ModernFooter() {
-  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#002EC3] border-t border-white/10 relative overflow-hidden w-full">
+    <footer className="w-full bg-slate-950 relative overflow-hidden border-t border-white/10 pt-20 lg:pt-28 pb-8">
       
-      {/* Efecto de resplandor de fondo (glow) superior */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-white/10 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* --- EFECTOS DE FONDO --- */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        {/* Brillo superior sutil */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#002EC3]/50 to-transparent" />
+        {/* Resplandor radial de fondo */}
+        <div className="absolute -top-[200px] right-[-10%] w-[600px] h-[600px] bg-[#002EC3] opacity-[0.03] blur-[120px] rounded-full" />
+      </div>
 
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-8 pb-8 relative z-10">
+      <div className="mx-auto max-w-[1320px] px-6 lg:px-8 relative z-10">
         
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="pt-10 lg:pt-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20"
         >
+          
           {/* ========================================= */}
-          {/* HEADER DEL FOOTER: Logo Centrado Superior */}
+          {/* COLUMNA 1: MARCA Y REDES (Ocupa 4/12)     */}
           {/* ========================================= */}
-          <motion.div variants={itemVariants} className="flex justify-center mb-12 lg:mb-16">
-            <Image 
-              src="/logo.png" 
-              alt="BPM Consultores Logo" 
-              width={200} 
-              height={60} 
-              className="w-auto h-12 lg:h-16 brightness-0 invert opacity-100 object-contain" 
-            />
+          <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col items-start">
+            <Link href="/" className="mb-8 inline-block">
+              <Image 
+                src="/logo.png" 
+                alt="BPM Consultores Logo" 
+                width={180} 
+                height={50} 
+                className="w-auto h-10 brightness-0 invert object-contain" 
+              />
+            </Link>
+            
+            <p className="text-gray-400 font-light leading-relaxed text-sm md:text-base max-w-sm mb-8">
+              Transformamos y escalamos empresas a través de soluciones tecnológicas innovadoras, optimizando procesos para un futuro digital eficiente y sostenible.
+            </p>
+
+            {/* Redes Sociales */}
+            <div className="flex items-center gap-3">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group hover:bg-[#002EC3] hover:border-[#002EC3] transition-all duration-300">
+                <Linkedin className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group hover:bg-[#002EC3] hover:border-[#002EC3] transition-all duration-300">
+                <Facebook className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group hover:bg-[#002EC3] hover:border-[#002EC3] transition-all duration-300">
+                <Instagram className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+              </a>
+            </div>
           </motion.div>
 
           {/* ========================================= */}
-          {/* GRID DE CONTENIDO: 3 Columnas Alineadas   */}
+          {/* COLUMNA 2: CONTACTO DIRECTO (Ocupa 4/12)  */}
           {/* ========================================= */}
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8 xl:gap-16">
+          <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col lg:px-8">
+            <h3 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-8">
+              Información de Contacto
+            </h3>
             
-            {/* COLUMNA 1: Contacto */}
-            <motion.div variants={itemVariants} className="flex flex-col">
-              <h3 className="text-xl font-bold text-white mb-6 tracking-tight">Contacto</h3>
-              
-              <ul className="space-y-6">
-                <li className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0 bg-white/10 p-2 rounded-lg">
-                    <MapPin className="w-5 h-5 text-white" />
+            <ul className="space-y-6">
+              <li>
+                <div className="flex items-start gap-4 group">
+                  <div className="mt-0.5 shrink-0">
+                    <MapPin className="w-5 h-5 text-[#002EC3] group-hover:text-blue-400 transition-colors" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white mb-1">Dirección</p>
-                    <p className="text-sm leading-relaxed text-blue-100/80 whitespace-pre-line">
-                      {t('footer.contact.address', 'Av. Principal 123, Ciudad\nEdificio Tech, Piso 4')}
+                    <p className="text-white font-medium text-sm mb-1">Ubicación</p>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      Av. Principal 123, Ciudad<br />Edificio Tech, Piso 4
                     </p>
                   </div>
-                </li>
-                
-                <li className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0 bg-white/10 p-2 rounded-lg">
-                    <Phone className="w-5 h-5 text-white" />
+                </div>
+              </li>
+              
+              <li>
+                <div className="flex items-start gap-4 group">
+                  <div className="mt-0.5 shrink-0">
+                    <Phone className="w-5 h-5 text-[#002EC3] group-hover:text-blue-400 transition-colors" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white mb-1">Teléfono</p>
-                    <a href={`tel:${t('footer.contact.phone', '+1 234 567 890')}`} className="text-sm leading-relaxed text-blue-100/80 hover:text-white transition-colors">
-                      {t('footer.contact.phone', '+1 234 567 890')}
+                    <p className="text-white font-medium text-sm mb-1">Llámanos</p>
+                    <a href="tel:+51999999999" className="text-sm text-gray-400 hover:text-white transition-colors">
+                      +51 999 999 999
                     </a>
                   </div>
-                </li>
-                
-                <li className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0 bg-white/10 p-2 rounded-lg">
-                    <Mail className="w-5 h-5 text-white" />
+                </div>
+              </li>
+              
+              <li>
+                <div className="flex items-start gap-4 group">
+                  <div className="mt-0.5 shrink-0">
+                    <Mail className="w-5 h-5 text-[#002EC3] group-hover:text-blue-400 transition-colors" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white mb-1">Correo Electrónico</p>
-                    <a href={`mailto:${t('footer.contact.email', 'contacto@bpmconsultores.com')}`} className="text-sm leading-relaxed text-blue-100/80 hover:text-white transition-colors">
-                      {t('footer.contact.email', 'contacto@bpmconsultores.com')}
+                    <p className="text-white font-medium text-sm mb-1">Escríbenos</p>
+                    <a href="mailto:contacto@bpmconsultores.com" className="text-sm text-gray-400 hover:text-white transition-colors block">
+                      contacto@bpmconsultores.com
                     </a>
                   </div>
-                </li>
-              </ul>
-            </motion.div>
+                </div>
+              </li>
+            </ul>
+          </motion.div>
 
-            {/* COLUMNA 2: Misión y Visión */}
-            <motion.div variants={itemVariants} className="flex flex-col items-center text-center lg:border-x lg:border-white/10 lg:px-8">
-              <div className="mb-10 lg:mt-0 w-full">
-                <h3 className="text-xl font-bold text-white mb-4 tracking-tight">Nuestra Misión</h3>
-                <p className="text-sm leading-relaxed text-blue-100/80 max-w-sm mx-auto">
-                  Transformar y escalar empresas a través de soluciones tecnológicas innovadoras, optimizando procesos para un futuro digital eficiente.
-                </p>
-              </div>
+          {/* ========================================= */}
+          {/* COLUMNA 3: MAPA (Ocupa 4/12)              */}
+          {/* ========================================= */}
+          <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col">
+            <h3 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-8 flex items-center justify-between">
+              Nuestra Sede
+              <Link href="/contacto" className="text-[#002EC3] flex items-center gap-1 hover:text-blue-400 transition-colors">
+                Cómo llegar <ArrowRight className="w-3 h-3" />
+              </Link>
+            </h3>
+            
+            {/* Contenedor del mapa con estilo premium */}
+            <div className="w-full h-[200px] lg:h-[220px] rounded-sm overflow-hidden relative border border-white/10 bg-white/5 group">
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
+              <LocationMap />
+            </div>
+          </motion.div>
 
-              <div className="w-full">
-                <h3 className="text-xl font-bold text-white mb-4 tracking-tight">Nuestra Visión</h3>
-                <p className="text-sm leading-relaxed text-blue-100/80 max-w-sm mx-auto">
-                  Ser el socio tecnológico líder a nivel regional, reconocido por impulsar la evolución digital y el crecimiento sostenible empresarial.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* COLUMNA 3: Mapa */}
-            <motion.div variants={itemVariants} className="flex flex-col w-full h-full">
-              <h3 className="text-xl font-bold text-white mb-6 tracking-tight">Ubicación</h3>
-              <div className="w-full h-[250px] lg:h-[280px] rounded-2xl overflow-hidden relative border border-white/20 shadow-lg bg-white/5">
-                <LocationMap />
-              </div>
-            </motion.div>
-
-          </div>
         </motion.div>
 
         {/* ========================================= */}
@@ -134,21 +156,12 @@ export default function ModernFooter() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 sm:mt-24 flex w-full items-center justify-center"
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          {/* Línea Izquierda */}
-          <div className="h-[1px] flex-1 bg-white/20"></div>
-          
-          {/* Contenido Central */}
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 px-4 md:px-8 shrink-0">
-            <p className="text-xs md:text-sm text-blue-100/70 font-medium text-center tracking-wide">
-              &copy; {new Date().getFullYear()} BPM Consultores, Inc. Todos los derechos reservados.
-            </p>
-          </div>
-
-          {/* Línea Derecha */}
-          <div className="h-[1px] flex-1 bg-white/20"></div>
+          <p className="text-xs text-gray-500 tracking-wide text-center md:text-left">
+            &copy; {currentYear} BPM Consultores. Todos los derechos reservados.
+          </p>
         </motion.div>
         
       </div>
