@@ -1,6 +1,6 @@
 'use client';
 
-import HumandPresentation from '@/components/humand-presentation';
+import HumandPresentation from '@/components/humand-presentation/HumandSection';
 import { useTranslation } from 'react-i18next';
 
 export default function HumandPartnerPage() {

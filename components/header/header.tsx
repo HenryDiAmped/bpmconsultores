@@ -8,14 +8,13 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-// Importamos useRouter de Next.js
 import { useRouter } from 'next/navigation'; 
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const router = useRouter(); // Inicializamos el router
+  const router = useRouter(); 
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -32,32 +31,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 1. Aquí devolvemos la ruta de Blog a su página original (/blog)
   const navigation = [
-    { name: 'Soluciones', href: '/soluciones' },
-    { name: 'Humand Partner', href: '/humand-partner' },
+    { name: 'Soluciones', href: '#soluciones' },
+    { name: 'Humand Partner', href: '#humand-partner' },
     { name: 'Blog', href: '/blog' }
   ];
 
-  // --- NUEVA LÓGICA DE CAMBIO DE IDIOMA ---
   const toggleLanguage = () => {
-    // Detectamos el idioma actual de forma segura (por defecto 'es')
     const currentLang = i18n?.language || 'es';
     const nextLang = currentLang === 'es' ? 'en' : 'es';
 
-    // 1. Intentamos el método directo si la librería lo permite
     if (i18n && typeof i18n.changeLanguage === 'function') {
       i18n.changeLanguage(nextLang);
     } 
-    // 2. Método seguro para Next.js App Router (Cookie + Reload)
     else {
-      // Guardamos la preferencia en la cookie estándar de Next.js i18n
       document.cookie = `NEXT_LOCALE=${nextLang}; path=/; max-age=31536000`;
-      
-      // NOTA: Si usas rutas en la URL como midominio.com/es/ o midominio.com/en/
-      // descomenta la siguiente línea en lugar de window.location.reload()
-      // window.location.href = `/${nextLang}${window.location.pathname.replace(/^\/(es|en)/, '')}`;
-      
-      // Recargamos la página para que el servidor envíe el contenido en el nuevo idioma
       window.location.reload(); 
     }
   };
@@ -99,7 +88,6 @@ export default function Header() {
     >
       <nav className="mx-auto px-6 lg:px-8 max-w-[1320px] flex items-center justify-between relative">
         
-        {/* LOGO */}
         <motion.div whileHover={{ scale: 1.05 }} className="flex z-20">
           <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
             <Image
@@ -116,7 +104,6 @@ export default function Header() {
           </Link>
         </motion.div>
 
-        {/* NAVEGACIÓN DESKTOP */}
         <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
           {navigation.map((item) => (
             <Link
@@ -141,7 +128,6 @@ export default function Header() {
           ))}
         </div>
 
-        {/* ACCIONES DESKTOP */}
         <div className="hidden lg:flex items-center gap-x-4 z-10">
           <Button
             variant="ghost"
@@ -164,7 +150,7 @@ export default function Header() {
             {currentLangText}
           </Button>
 
-          <Link href="/contacto">
+          <Link href="#contacto">
             <Button 
               className={cn(
                 "font-semibold px-6 py-5 rounded-none transition-all border",
@@ -178,7 +164,6 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* BOTÓN MÓVIL (Hamburguesa) */}
         <div className="flex lg:hidden z-20">
           {!mobileMenuOpen && (
             <Button
@@ -195,7 +180,6 @@ export default function Header() {
           )}
         </div>
 
-        {/* MENÚ MÓVIL (Tarjeta Flotante) */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -234,7 +218,7 @@ export default function Header() {
                 variants={itemVariants}
                 className="mt-8 pt-6 border-t border-white/20 flex flex-col gap-6"
               >
-                <Link href="/contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
+                <Link href="#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
                   <Button className="w-full bg-[#002EC3] text-white hover:bg-[#002EC3]/80 font-bold py-6 text-lg rounded-none transition-all shadow-md">
                     Conversemos
                   </Button>

@@ -67,12 +67,13 @@ export default function HeroSection() {
       <div className="relative z-30 h-full flex flex-col justify-center px-6 lg:px-8 max-w-[1320px] mx-auto">
 
         <AnimatePresence mode="wait">
+          {/* H1: Tamaños reducidos en todos los breakpoints (ej: lg:text-7xl a lg:text-6xl) */}
           <motion.h1 
             key="h1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mb-6"
           >
             Transformamos los procesos de Recursos Humanos en un motor de{' '}
             <span className="text-white/90 font-light italic">eficiencia organizacional</span>
@@ -80,12 +81,13 @@ export default function HeroSection() {
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
+          {/* H2: Tamaños reducidos de text-base/lg/xl a text-sm/base/lg */}
           <motion.h2 
             key="h2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl text-gray-200 font-normal mb-8 md:mb-10 max-w-2xl leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-gray-200 font-normal mb-8 md:mb-10 max-w-2xl leading-relaxed"
           >
             Diseñamos, estandarizamos y digitalizamos los procesos de gestión de
             personas para que tu organización opere con mayor productividad, control
@@ -101,7 +103,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex"
           >
-            <Link href="/contacto">
+            <Link href="#contacto">
               <Button 
                 className="bg-[#002EC3] hover:bg-white hover:text-[#002EC3] text-white font-medium px-8 py-6 rounded-none text-base transition-all duration-300 flex items-center gap-3 group border border-[#002EC3] hover:border-white"
               >
@@ -117,8 +119,6 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 w-full z-40 pb-4 md:pb-8">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center md:items-end justify-between gap-6 md:gap-8">
           
-          {/* Temporizadores */}
-          {/* Agregamos items-stretch aquí para que todos los contenedores tengan la misma altura */}
           <div className="w-full flex-1 flex items-stretch gap-3 sm:gap-8 max-w-3xl">
             {SLIDES.map((slide, index) => {
               const isActive = index === currentIndex;
@@ -126,7 +126,6 @@ export default function HeroSection() {
               return (
                 <div 
                   key={index} 
-                  // Convertimos cada item en un flex-col con justify-end
                   className="flex-1 cursor-pointer group flex flex-col justify-end"
                   onClick={() => setCurrentIndex(index)}
                 >
@@ -136,7 +135,6 @@ export default function HeroSection() {
                     {slide.title}
                   </p>
                   
-                  {/* Como el contenedor tiene justify-end, esta barra siempre estará abajo del todo */}
                   <div className="h-[2px] w-full bg-white/20 relative overflow-hidden">
                     {isActive && (
                       <motion.div
@@ -153,7 +151,6 @@ export default function HeroSection() {
             })}
           </div>
 
-          {/* Botón Scroll Indicator */}
           <div 
             onClick={handleScrollDown}
             className="flex flex-col items-center gap-2 cursor-pointer group pb-2 md:pb-0"
