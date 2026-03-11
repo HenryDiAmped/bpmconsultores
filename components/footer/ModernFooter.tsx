@@ -135,7 +135,7 @@ export default function ModernFooter() {
           <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col">
             <h3 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-8 flex items-center justify-between">
               Nuestra Sede
-              <Link href="/contacto" className="text-[#002EC3] flex items-center gap-1 hover:text-blue-400 transition-colors">
+              <Link href="/#contacto" className="text-[#002EC3] flex items-center gap-1 hover:text-blue-400 transition-colors">
                 Cómo llegar <ArrowRight className="w-3 h-3" />
               </Link>
             </h3>
