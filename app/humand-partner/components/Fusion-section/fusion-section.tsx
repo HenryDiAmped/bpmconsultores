@@ -62,7 +62,7 @@ export function FusionSection() {
 
         {/* CONTENEDOR DE LA ECUACIÓN (Activa la secuencia de izquierda a derecha) */}
         <motion.div 
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -71,7 +71,7 @@ export function FusionSection() {
           
           {/* 1. TECNOLOGÍA */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             className="w-48 h-48 md:w-56 md:h-56 rounded-full border border-blue-400/50 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.15)] group cursor-pointer"
           >
@@ -81,13 +81,13 @@ export function FusionSection() {
           </motion.div>
 
           {/* SÍMBOLO MÁS */}
-          <motion.div variants={itemVariants} className="text-white/70">
+          <motion.div variants={itemVariants as any} className="text-white/70">
             <Plus strokeWidth={2} className="w-12 h-12 md:w-16 md:h-16" />
           </motion.div>
 
           {/* 2. CONSULTORÍA */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             className="w-48 h-48 md:w-56 md:h-56 rounded-full border border-white/30 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] group cursor-pointer"
           >
@@ -97,13 +97,13 @@ export function FusionSection() {
           </motion.div>
 
           {/* SÍMBOLO IGUAL */}
-          <motion.div variants={itemVariants} className="text-white/70 rotate-90 lg:rotate-0">
+          <motion.div variants={itemVariants as any} className="text-white/70 rotate-90 lg:rotate-0">
             <Equal strokeWidth={2} className="w-12 h-12 md:w-16 md:h-16" />
           </motion.div>
 
           {/* 3. ESTRATEGIA Y RESULTADOS (EL GRAN RESULTADO) */}
           <motion.div 
-            variants={resultVariants}
+            variants={resultVariants as any}
             className="relative"
           >
             {/* Separé la animación continua del "brillo" en un contenedor interno 

@@ -139,6 +139,23 @@ export default function ModernFooter() {
           <p className="text-xs md:text-sm text-gray-500 font-light tracking-wide">
             &copy; {currentYear} BPM Consultores, Inc. Todos los derechos reservados.
           </p>
+          
+          {/* Policy Links */}
+          <div className="flex items-center gap-4 text-xs">
+            <Link 
+              href="/politica-privacidad" 
+              className="text-gray-500 hover:text-white transition-colors"
+            >
+              Política de Privacidad
+            </Link>
+            <span className="text-gray-700">•</span>
+            <Link 
+              href="/politica-cookies" 
+              className="text-gray-500 hover:text-white transition-colors"
+            >
+              Política de Cookies
+            </Link>
+          </div>
         </motion.div>
         
       </div>
