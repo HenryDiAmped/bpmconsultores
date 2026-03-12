@@ -132,14 +132,8 @@ export default function ContactSection() {
                       <div className="w-16 h-16 bg-blue-50 text-[#002EC3] rounded-full flex items-center justify-center mx-auto mb-2">
                         <CheckCircle2 className="w-8 h-8" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">¡Enviado!</h3>
+                      <h3 className="text-2xl font-bold text-gray-900">¡Formulario Enviado!</h3>
                       <p className="text-gray-500 text-sm">Hemos recibido tus datos correctamente.</p>
-                      <button
-                        onClick={() => { setIsSuccess(false); form.reset(); }}
-                        className="mt-4 text-[#002EC3] text-xs uppercase tracking-widest font-bold hover:underline"
-                      >
-                        Enviar otro mensaje
-                      </button>
                     </motion.div>
                   ) : (
                     <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
