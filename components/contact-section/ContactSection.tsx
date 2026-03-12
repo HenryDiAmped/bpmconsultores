@@ -12,6 +12,13 @@ import Script from "next/script";
 import { formSchema } from "@/lib/schema";
 import { send } from "@/lib/resend";
 
+declare global {
+  interface Window {
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    turnstile: any;
+  }
+}
+
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -31,14 +38,33 @@ export default function ContactSection() {
   const { register, handleSubmit, formState: { errors }, setValue, watch } = form;
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    try {
-      await send(values);
-      setIsSuccess(true);
-    } catch (error) {
-      console.error("Error al enviar:", error);
-    } finally {
-      setIsSubmitting(false);
+    const token = window.turnstile.getResponse();
+
+    const serverValidation = await fetch('/api/cf', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token }),
+    });
+
+    const { success } = await serverValidation.json();
+
+    if (success) {
+      console.log('se envio el correo');
+      //Envio de correo
+      setIsSubmitting(true);
+      try {
+        await send(values);
+        setIsSuccess(true);
+      } catch (error) {
+        console.error("Error al enviar:", error);
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      window.turnstile.reset();
+      alert('Intenta Enviar de nuevo');
     }
   }
 
