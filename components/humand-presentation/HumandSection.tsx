@@ -17,16 +17,22 @@ export default function HumandSection() {
       </div>
 
       <div className="mx-auto px-6 lg:px-8 max-w-[1200px] relative z-10">
-        
-        {/* --- CABECERA --- */}
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16 lg:mb-20">
+{/* --- CABECERA --- */}
+        <div className="flex flex-col items-center text-center max-w-[1000px] mx-auto mb-16 lg:mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15] mb-6"
+            className="flex flex-wrap md:flex-nowrap items-center justify-center gap-x-3 gap-y-2 text-3xl md:text-4xl lg:text-[2.8rem] font-bold text-gray-900 tracking-tight leading-tight mb-6 w-full"
           >
-            Transformación Digital con <span className="text-[#002EC3] font-normal tracking-wide">humand</span>
+            <span className="whitespace-nowrap md:whitespace-normal">
+              Transformación Digital con
+            </span>
+            <img 
+              src="https://humandcdn.b-cdn.net/wp-content/uploads/2024/10/logo-humand-blue.svg" 
+              alt="Humand Logo" 
+              className="h-8 md:h-10 lg:h-[3rem] w-auto object-contain shrink-0 -translate-y-1 -md:translate-y-2"
+            />
           </motion.h2>
 
           <motion.p 
@@ -34,12 +40,11 @@ export default function HumandSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base md:text-lg lg:text-xl text-gray-700 font-light leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-gray-700 font-light leading-relaxed max-w-3xl mx-auto"
           >
             Como <strong className="text-[#002EC3] font-semibold">Partners e Implementadores Oficiales</strong>, integramos la plataforma líder para conectar a tu equipo y automatizar tu cultura organizacional.
           </motion.p>
         </div>
-
         {/* --- GRID --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
