@@ -8,13 +8,16 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useRouter } from 'next/navigation'; 
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter(); 
+  const pathname = usePathname();
+  const isPartnerPage = pathname === '/humand-partner';
+  const isSolid = scrolled || isPartnerPage;
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -31,10 +34,10 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 1. Aquí devolvemos la ruta de Blog a su página original (/blog)
+  // 1. AÑADIMOS EL "/" ANTES DEL "#" PARA FORZAR LA RUTA AL INICIO
   const navigation = [
-    { name: 'Soluciones', href: '#soluciones' },
-    { name: 'Humand Partner', href: '#humand-partner' },
+    { name: 'Soluciones', href: '/#soluciones' },
+    { name: 'Humand Partner', href: '/#humand-partner' },
     { name: 'Blog', href: '/blog' }
   ];
 
@@ -81,7 +84,7 @@ export default function Header() {
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
-        scrolled
+        isSolid
           ? "bg-white/95 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm" 
           : "bg-transparent py-6"
       )}
@@ -97,36 +100,39 @@ export default function Header() {
               height={45}
               className={cn(
                 "h-9 w-auto transition-all duration-500",
-                !scrolled && "brightness-0 invert"
+                !isSolid && "brightness-0 invert"
               )}
               priority
             />
           </Link>
         </motion.div>
 
-        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                "group relative px-5 py-3 text-[15px] font-semibold leading-6 transition-all rounded-lg",
-                scrolled ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
-              )}
-            >
-              <span className={cn(
-                "relative z-10 transition-colors",
-                scrolled ? "group-hover:text-[#002EC3]" : "group-hover:text-blue-200"
-              )}>
-                {item.name}
-              </span>
-              <span className={cn(
-                "absolute bottom-2 left-5 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-40px)]",
-                scrolled ? "bg-[#002EC3]" : "bg-blue-400"
-              )} />
-            </Link>
-          ))}
-        </div>
+      <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      "group relative px-5 py-3 text-[15px] font-semibold leading-6 transition-all rounded-lg",
+                      /* CAMBIO AQUÍ: Usamos isSolid para que el texto sea oscuro */
+                      isSolid ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                    )}
+                  >
+                    <span className={cn(
+                      "relative z-10 transition-colors",
+                      /* CAMBIO AQUÍ: El color al pasar el mouse */
+                      isSolid ? "group-hover:text-[#002EC3]" : "group-hover:text-blue-200"
+                    )}>
+                      {item.name}
+                    </span>
+                    <span className={cn(
+                      "absolute bottom-2 left-5 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-40px)]",
+                      /* CAMBIO AQUÍ: El color de la línea inferior */
+                      isSolid ? "bg-[#002EC3]" : "bg-blue-400"
+                    )} />
+                  </Link>
+                ))}
+              </div>
 
         <div className="hidden lg:flex items-center gap-x-4 z-10">
           <Button
@@ -150,7 +156,8 @@ export default function Header() {
             {currentLangText}
           </Button>
 
-          <Link href="#contacto">
+          {/* 2. AÑADIMOS EL "/" AL BOTÓN DE CONTACTO */}
+          <Link href="/#contacto">
             <Button 
               className={cn(
                 "font-semibold px-6 py-5 rounded-none transition-all border",
@@ -218,7 +225,8 @@ export default function Header() {
                 variants={itemVariants}
                 className="mt-8 pt-6 border-t border-white/20 flex flex-col gap-6"
               >
-                <Link href="#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
+                {/* 3. AÑADIMOS EL "/" AL BOTÓN DE CONTACTO MÓVIL */}
+                <Link href="/#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
                   <Button className="w-full bg-[#002EC3] text-white hover:bg-[#002EC3]/80 font-bold py-6 text-lg rounded-none transition-all shadow-md">
                     Conversemos
                   </Button>

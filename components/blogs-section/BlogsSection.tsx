@@ -3,7 +3,6 @@
 import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 // --- ANIMACIONES ---
 const containerVariants: Variants = {
@@ -69,8 +68,7 @@ export default function BlogsSection() {
     },
   ];
 
-  const titleText = "Insights sobre ";
-  const highlightText = "gestión organizacional y talento";
+  const titleText = "Insights sobre gestión organizacional y talento";
 
   return (
     <section className="w-full bg-slate-50 py-24 border-t border-gray-200 flex justify-center relative overflow-hidden">
@@ -80,51 +78,34 @@ export default function BlogsSection() {
 
       <div className="mx-auto w-full max-w-[1320px] px-6 lg:px-8">
         
-        {/* HEADER DE LA SECCIÓN */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div className="max-w-3xl">
-            
-            {/* TÍTULO H2 CON TYPEWRITER */}
-            <motion.h2 
-              variants={typewriterContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15]"
-            >
-              {titleText.split("").map((char, index) => (
-                <motion.span key={`title-${index}`} variants={typewriterLetter}>
-                  {char}
-                </motion.span>
-              ))}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#002EC3] to-blue-500 italic font-light inline-block">
-                {highlightText.split("").map((char, index) => (
-                  <motion.span key={`highlight-${index}`} variants={typewriterLetter}>
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
-            </motion.h2>
-
-          </div>
-
-          {/* BOTÓN DESKTOP (Nuevo diseño: Alto contraste y animación de llenado) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.5, duration: 0.6 }} // Aparece después del Typewriter
-            className="hidden md:block shrink-0"
+        {/* HEADER DE LA SECCIÓN (Centrado y alineado a la imagen) */}
+        <div className="flex flex-col items-center text-center w-full mb-16">
+          
+          {/* TÍTULO H2 CON TYPEWRITER */}
+          <motion.h2 
+            variants={typewriterContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15] mb-3"
           >
-            <Link href="/blog" className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-gray-900 rounded-none overflow-hidden">
-              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
-              <span className="absolute inset-0 w-full h-full transition-all duration-500 ease-out transform -translate-x-full bg-[#002EC3] group-hover:translate-x-0" />
-              <span className="relative flex items-center gap-2">
-                Ver todos los artículos
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </motion.div>
+            {titleText.split("").map((char, index) => (
+              <motion.span key={`title-${index}`} variants={typewriterLetter}>
+                {char}
+              </motion.span>
+            ))}
+          </motion.h2>
+
+          {/* SUBTÍTULO ANIMADO */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.2, duration: 0.6 }} // Aparece justo cuando termina el typewriter
+            className="text-lg md:text-xl font-bold text-gray-900"
+          >
+            Explora Nuestros <span className="text-[#002EC3]">Blogs</span> aquí
+          </motion.p>
         </div>
 
         {/* GRILLA DE ARTÍCULOS */}
@@ -145,46 +126,54 @@ export default function BlogsSection() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#002EC3] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-20" />
 
                 {/* Contenedor de Imagen */}
-                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <div className="absolute inset-0 bg-[linear-gradient(45deg,#00000003_25%,transparent_25%,transparent_75%,#00000003_75%,#00000003),linear-gradient(45deg,#00000003_25%,transparent_25%,transparent_75%,#00000003_75%,#00000003)] bg-[size:20px_20px] bg-slate-50 transition-transform duration-700 group-hover:scale-110" />
+                <div className="relative w-full aspect-[4/3] bg-[#B0BCE1] overflow-hidden">
+                  {/* Patrón sutil para la imagen de relleno */}
+                  <div className="absolute inset-0 bg-[linear-gradient(45deg,#00000003_25%,transparent_25%,transparent_75%,#00000003_75%,#00000003),linear-gradient(45deg,#00000003_25%,transparent_25%,transparent_75%,#00000003_75%,#00000003)] bg-[size:20px_20px] transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Contenido del Card */}
+                {/* Contenido del Card (Diseño adaptado a la imagen) */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow bg-white z-10">
-                  <div className="flex justify-between items-center mb-5">
-                    <span className="text-[10px] md:text-[11px] text-[#002EC3] font-bold uppercase tracking-widest bg-blue-50/50 px-2.5 py-1.5 rounded-sm">
-                      {blog.category}
-                    </span>
-                    <span className="text-[11px] text-gray-400 font-medium">
-                      {blog.date}
-                    </span>
-                  </div>
+                  
+                  {/* Categoría superior */}
+                  <span className="text-xs text-gray-500 font-medium mb-4">
+                    Blog
+                  </span>
 
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 leading-[1.4] mb-8 flex-grow group-hover:text-[#002EC3] transition-colors duration-300 line-clamp-3">
+                  {/* Título */}
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 leading-[1.4] mb-8 flex-grow group-hover:text-[#002EC3] transition-colors duration-300 line-clamp-4">
                     {blog.title}
                   </h3>
 
-                  {/* Footer de la tarjeta */}
-                  <div className="flex items-center gap-2 text-gray-500 font-semibold text-[13px] mt-auto border-t border-gray-100 pt-5 group-hover:text-[#002EC3] transition-colors duration-300">
-                    <span className="tracking-wide uppercase text-[11px]">Leer artículo</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  {/* Footer de la tarjeta: "LEER MAS" a la izquierda, flecha a la derecha */}
+                  <div className="flex items-center justify-between text-[#002EC3] font-bold text-[12px] mt-auto transition-colors duration-300">
+                    <span className="tracking-wide uppercase">LEER MAS</span>
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </div>
+                  
                 </div>
               </motion.article>
             </Link>
           ))}
         </motion.div>
 
-        {/* Botón móvil (Mismo diseño de alto contraste) */}
-        <div className="mt-12 flex justify-center md:hidden">
-          <Link href="/blog" className="w-full">
-             <Button className="w-full bg-gray-900 hover:bg-[#002EC3] text-white rounded-none py-6 font-semibold transition-colors duration-300 flex items-center justify-center gap-2">
+        {/* BOTÓN GLOBAL (Centrado en la parte inferior para Desktop y Mobile) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-16 flex justify-center w-full"
+        >
+          <Link href="/blog" className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-gray-900 rounded-none overflow-hidden hover:shadow-lg w-full md:w-auto">
+            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
+            <span className="absolute inset-0 w-full h-full transition-all duration-500 ease-out transform -translate-x-full bg-[#002EC3] group-hover:translate-x-0" />
+            <span className="relative flex items-center gap-2">
               Ver todos los artículos
-              <ArrowRight className="w-4 h-4" />
-            </Button>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

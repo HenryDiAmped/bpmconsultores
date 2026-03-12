@@ -64,34 +64,34 @@ export default function HeroSection() {
       </div>
 
       {/* 2. CONTENIDO PRINCIPAL */}
-      <div className="relative z-30 h-full flex flex-col justify-center px-6 lg:px-8 max-w-[1320px] mx-auto">
+      <div className="relative z-30 h-full flex flex-col justify-center items-center text-center px-6 lg:px-8 max-w-[1320px] mx-auto">
 
         <AnimatePresence mode="wait">
-          {/* H1: Tamaños reducidos en todos los breakpoints (ej: lg:text-7xl a lg:text-6xl) */}
+          {/* H1: Reducido a text-5xl máximo y con saltos de línea forzados en desktop */}
           <motion.h1 
             key="h1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] max-w-4xl mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.2] max-w-4xl mb-6 mx-auto text-center"
           >
-            Transformamos los procesos de Recursos Humanos en un motor de{' '}
+            Transformamos los procesos de <br className="hidden md:block" />
+            Recursos Humanos en un motor de <br className="hidden md:block" />
             <span className="text-white/90 font-light italic">eficiencia organizacional</span>
           </motion.h1>
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
-          {/* H2: Tamaños reducidos de text-base/lg/xl a text-sm/base/lg */}
+          {/* H2: Reducido a text-base máximo, max-w-3xl para que quepa bien en 2 líneas */}
           <motion.h2 
             key="h2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-sm sm:text-base md:text-lg text-gray-200 font-normal mb-8 md:mb-10 max-w-2xl leading-relaxed"
+            className="text-sm sm:text-base text-gray-200 font-normal mb-8 md:mb-10 max-w-3xl leading-relaxed text-center mx-auto"
           >
-            Diseñamos, estandarizamos y digitalizamos los procesos de gestión de
-            personas para que tu organización opere con mayor productividad, control
-            y capacidad de escalar.
+            Diseñamos, estandarizamos y digitalizamos los procesos de gestión de personas para <br className="hidden md:block" />
+            que tu organización opere con mayor productividad, control y capacidad de escalar.
           </motion.h2>
         </AnimatePresence>
 
@@ -101,9 +101,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex"
+            className="flex justify-center w-full"
           >
-            <Link href="#contacto">
+            <Link href="/#contacto">
               <Button 
                 className="bg-[#002EC3] hover:bg-white hover:text-[#002EC3] text-white font-medium px-8 py-6 rounded-none text-base transition-all duration-300 flex items-center gap-3 group border border-[#002EC3] hover:border-white"
               >

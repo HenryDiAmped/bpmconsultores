@@ -107,14 +107,16 @@ export default function SolucionesSection() {
     <section className="w-full bg-slate-50 relative overflow-hidden flex flex-col border-t border-gray-200">
       <div className="mx-auto px-6 lg:px-8 max-w-[1320px] py-24 w-full">
         
-        {/* HEADER SECTION (Alineado a la Izquierda) */}
-        <div className="max-w-3xl mb-16 text-left">
+{/* HEADER SECTION (Centrado) */}
+        <div className="w-full mx-auto mb-16 text-center flex flex-col items-center">
           <motion.h2 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6"
+            // Al quitar el max-w del contenedor padre, el texto tomará todo el ancho necesario para quedar en 1 línea en desktop.
+            // Se ajustaron los tamaños responsivos para que se vea bien en móviles también.
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6 w-full"
           >
             {tituloText.split("").map((char, index) => (
               <motion.span key={index} variants={letterVariants}>
@@ -128,9 +130,11 @@ export default function SolucionesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl"
+            // Centramos el texto con mx-auto y usamos max-w-3xl
+            className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl mx-auto"
           >
-            En BPM Consultores ayudamos a las organizaciones a transformar su operatividad. Maximizamos la eficiencia y preparamos su estructura para un crecimiento sostenible.
+            En BPM Consultores ayudamos a las organizaciones a transformar su operatividad.<br className="hidden md:block" /> 
+            Maximizamos la eficiencia y preparamos su estructura para un crecimiento sostenible.
           </motion.p>
         </div>
 

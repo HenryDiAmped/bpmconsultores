@@ -26,58 +26,27 @@ const VALORES = [
   }
 ];
 
-// --- DATOS TRUST BAR ---
-const TRUST_ITEMS = [
-  "Metodología Comprobada",
-  "Acompañamiento Estratégico",
-  "Resultados Sostenibles",
-  "Transformación Digital",
-  "Eficiencia Operativa"
-];
-
 export default function ValorSection() {
   return (
     <section className="w-full bg-gradient-to-r from-slate-950 via-slate-900 to-[#002EC3] flex flex-col relative border-t border-white/5">
-      
-      {/* 1. TRUST BAR (MARQUEE INFINITO) */}
-      <div className="w-full bg-black/40 backdrop-blur-sm py-4 overflow-hidden flex whitespace-nowrap border-b border-white/10">
-        <motion.div 
-          className="flex gap-12 items-center"
-          animate={{ x: [0, -1000] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 25,
-            ease: "linear",
-          }}
-        >
-          {/* Duplicamos el array 3 veces para asegurar un scroll continuo sin cortes */}
-          {[...TRUST_ITEMS, ...TRUST_ITEMS, ...TRUST_ITEMS].map((item, index) => (
-            <div key={index} className="flex items-center gap-12">
-              <span className="text-white/90 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
-                {item}
-              </span>
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-none rotate-45" /> 
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
       {/* 2. EL VALOR AÑADIDO (DISEÑO EDITORIAL OSCURO CORREGIDO) */}
       <div className="mx-auto px-6 lg:px-8 max-w-[1320px] py-24 w-full">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+{/* Cambiamos lg:gap-24 por lg:gap-16 para dar más espacio a los textos */}
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-16 items-start">
           
-          {/* Columna Izquierda (Sticky) */}
-          <div className="lg:w-1/3 lg:sticky lg:top-32">
+          {/* Columna Izquierda (Sticky) - Ampliada ligeramente a 5/12 */}
+          <div className="lg:w-5/12 lg:sticky lg:top-32">
             <div className="overflow-hidden mb-6">
               <motion.h2 
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1]"
+                // Ajuste de texto responsivo: más controlado en lg, más grande en xl
+                className="text-3xl md:text-4xl lg:text-[2.2rem] xl:text-[2.75rem] font-bold text-white tracking-tight leading-[1.2]"
               >
-                El Valor Añadido de <br />
+                {/* Envolvemos en un span con whitespace-nowrap para impedir el salto */}
+                <span className="whitespace-nowrap">El Valor Añadido de</span> <br />
                 <span className="text-blue-300">BPM Consultores</span>
               </motion.h2>
             </div>
@@ -87,14 +56,14 @@ export default function ValorSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-lg text-blue-100/70 font-light leading-relaxed"
+              className="text-lg text-blue-100/70 font-light leading-relaxed pr-4 xl:pr-8"
             >
               No solo entregamos un diagnóstico; nos aseguramos de que los resultados perduren a través del tiempo, creando bases sólidas para tu escalabilidad.
             </motion.p>
           </div>
 
-          {/* Columna Derecha (Lista Editorial sin intención de clic) */}
-          <div className="lg:w-2/3 w-full flex flex-col">
+          {/* Columna Derecha - Ajustada a 7/12 para complementar */}
+          <div className="lg:w-7/12 w-full flex flex-col">
             <Separator className="bg-white/10" />
             
             {VALORES.map((valor, index) => {
@@ -106,7 +75,7 @@ export default function ValorSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.15, duration: 0.6 }}
-                  className="group relative flex gap-8 md:gap-12 py-10" // Quitamos cursor-pointer y reordenamos flex
+                  className="group relative flex gap-8 md:gap-12 py-10"
                 >
                   {/* Fondo sutil que aparece en hover para indicar enfoque */}
                   <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 -mx-6 px-6 rounded-sm" />

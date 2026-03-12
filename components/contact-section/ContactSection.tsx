@@ -56,7 +56,7 @@ export default function ContactSection() {
       <div className="mx-auto px-6 lg:px-8 max-w-[1320px] relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           
-          {/* COLUMNA IZQUIERDA: Textos */}
+        {/* COLUMNA IZQUIERDA: Textos */}
           <div className="w-full lg:w-1/2">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -64,8 +64,9 @@ export default function ContactSection() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6"
             >
-              Cuéntanos tus desafíos, <br />
-              <span className="text-blue-300">nosotros trazamos la ruta.</span>
+              Cuéntanos tus <br />
+              desafíos, <br />
+              <span className="text-blue-300">nosotros <br /> trazamos la ruta.</span>
             </motion.h1>
             
             <motion.h2 
@@ -75,7 +76,7 @@ export default function ContactSection() {
               transition={{ delay: 0.1 }}
               className="text-base md:text-lg text-blue-100/80 font-light leading-relaxed max-w-lg"
             >
-              Agenda una evaluación preliminar sin compromiso como primer paso para transformar tu organización con nuestros expertos.
+              Agenda una <span className="text-blue-300 font-semibold">evaluación preliminar sin compromiso</span> como primer paso para transformar tu organización con nuestros expertos.
             </motion.h2>
           </div>
 

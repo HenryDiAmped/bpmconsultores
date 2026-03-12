@@ -1,14 +1,25 @@
 'use client';
 
-import HumandPresentation from '@/components/humand-presentation/HumandSection';
-import { useTranslation } from 'react-i18next';
+import { PartnerHero } from './components/Hero-section/partnerHero';
+import {EstadisticaSection}  from './components/Estadisticas-section/estadisticaSection';
+import {PresenciaSection} from './components/Presencia-section/presencia-section';
+import { FusionSection } from './components/Fusion-section/fusion-section'; 
+import { ValorSection } from './components/Valor-section/valor-section';
+import { ImplementacionSection } from './components/Implementacion-section/ImplementacionSection';
+import { TrayectoriaSection } from './components/trayectoria-section/TrayectoriaSection';
+
 
 export default function HumandPartnerPage() {
-  const { t } = useTranslation();
 
   return (
-    <main style={{ padding: 40 }}>
-      <HumandPresentation />
+    <main>
+      <PartnerHero />
+      <EstadisticaSection />
+      <PresenciaSection />
+      <FusionSection />
+      <ValorSection />
+      <ImplementacionSection />
+      <TrayectoriaSection />
     </main>
-  )
+  );
 }
