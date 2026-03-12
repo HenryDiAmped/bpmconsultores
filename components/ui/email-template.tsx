@@ -2,25 +2,19 @@ import * as React from 'react';
 
 // 1. Agregamos todos los campos nuevos a la interfaz
 interface EmailTemplateProps {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
-  phone: string;
   company: string;
-  department: string;
-  industry: string;
+  phone: string;
   employees: string;
   role: string;
 }
 
 export function EmailTemplate({
-  firstName,
-  lastName,
+  fullName,
   email,
-  phone,
   company,
-  department,
-  industry,
+  phone,
   employees,
   role,
 }: EmailTemplateProps) {
@@ -34,7 +28,7 @@ export function EmailTemplate({
 
         {/* Cuerpo del Correo (Enfocado en el Cliente) */}
         <div style={styles.content}>
-          <p style={styles.greeting}>Hola, {firstName}:</p>
+          <p style={styles.greeting}>Hola, {fullName}:</p>
           <p style={styles.text}>
             ¡Gracias por contactar a <strong>BPM Consultores</strong>! Hemos recibido tu solicitud correctamente.
           </p>
@@ -48,11 +42,10 @@ export function EmailTemplate({
 
           {/* Caja de Información (Resumen para el cliente) */}
           <div style={styles.infoBox}>
-            <p style={styles.infoRow}><strong>Nombre completo:</strong> {firstName} {lastName}</p>
+            <p style={styles.infoRow}><strong>Nombre completo:</strong> {fullName}</p>
             <p style={styles.infoRow}><strong>Empresa:</strong> {company}</p>
-            <p style={styles.infoRow}><strong>Industria:</strong> {industry}</p>
             <p style={styles.infoRow}><strong>Tamaño de la empresa:</strong> {employees}</p>
-            <p style={styles.infoRow}><strong>Departamento y Cargo:</strong> {department} - {role}</p>
+            <p style={styles.infoRow}><strong>Departamento y Cargo:</strong> {role}</p>
           </div>
 
           <p style={{ ...styles.text, marginTop: '24px' }}>
