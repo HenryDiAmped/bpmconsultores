@@ -89,7 +89,7 @@ export function ValorSection() {
   // --- COMPONENTE TARJETA ---
   const CategoriaCard = ({ data, className = "" }: { data: any, className?: string }) => (
     <motion.div 
-      variants={cardVariants}
+      variants={cardVariants as any}
       whileHover={{ scale: 1.01, y: -2 }} 
       // Se eliminó el h-full obligatorio para que la altura se adapte al contenido de forma natural como en la imagen
       className={`bg-transparent border-[3px] border-[#4466F2] rounded-[2.5rem] p-7 flex flex-col w-full h-fit transition-all duration-300 ${className}`}
@@ -97,7 +97,7 @@ export function ValorSection() {
       <h3 className="text-slate-600 font-semibold text-[1.15rem] mb-5">{data.titulo}</h3>
       
       <motion.div 
-        variants={tagsContainerVariants}
+        variants={tagsContainerVariants as any}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -106,7 +106,7 @@ export function ValorSection() {
         {data.items.map((item: any, i: number) => (
           <motion.div 
             key={i} 
-            variants={tagVariants}
+            variants={tagVariants as any}
             whileHover={{ scale: 1.03 }}
             // Ajuste de sombras y colores para que el botón parezca "flotar" en blanco puro
             className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-2xl text-[13px] md:text-sm text-slate-800 font-medium shadow-[0_2px_12px_rgba(0,0,0,0.04)] cursor-default transition-all"
@@ -148,7 +148,7 @@ export function ValorSection() {
             
             {/* LADO IZQUIERDO: COLUMNA 1 (3 TARJETAS) */}
             <motion.div 
-              variants={containerVariants}
+              variants={containerVariants as any}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
@@ -165,7 +165,7 @@ export function ValorSection() {
 
             {/* LADO DERECHO: COLUMNA 2 (2 TARJETAS) */}
             <motion.div 
-              variants={containerVariants}
+              variants={containerVariants as any}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}

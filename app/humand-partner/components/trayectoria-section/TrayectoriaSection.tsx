@@ -33,7 +33,7 @@ export function TrayectoriaSection() {
       
       {/* Tarjeta interior clara */}
       <motion.div
-        variants={containerVariants}
+        variants={containerVariants as any}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -43,18 +43,18 @@ export function TrayectoriaSection() {
           
           {/* LADO IZQUIERDO: Textos */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6 md:gap-8">
-            <motion.p variants={itemVariants} className="text-lg md:text-xl lg:text-[1.35rem] leading-relaxed text-[#002EC3]">
+            <motion.p variants={itemVariants as any} className="text-lg md:text-xl lg:text-[1.35rem] leading-relaxed text-[#002EC3]">
               Contamos con una <span className="font-bold">trayectoria de más de 7 años</span> impulsando la transformación y el talento en las organizaciones.
             </motion.p>
             
-            <motion.p variants={itemVariants} className="text-lg md:text-xl lg:text-[1.35rem] leading-relaxed text-[#002EC3]">
+            <motion.p variants={itemVariants as any} className="text-lg md:text-xl lg:text-[1.35rem] leading-relaxed text-[#002EC3]">
               En lugar de soluciones genéricas, nos enfocamos en <span className="font-bold">obtener resultados medibles</span> a través de un acompañamiento estratégico que nunca pierde de vista el <span className="font-bold">factor humano</span>, asegurando que cada cambio sea adoptado con éxito por toda la organización.
             </motion.p>
           </div>
 
           {/* LADO DERECHO: Imagen */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="w-full lg:w-1/2"
           >
             {/* Nota: Asegúrate de colocar la imagen correcta en la ruta o cambiar el src */}
@@ -71,7 +71,7 @@ export function TrayectoriaSection() {
 
         {/* BOTÓN INFERIOR */}
         <motion.div 
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="flex justify-center"
         >
           <a 

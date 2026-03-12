@@ -63,7 +63,7 @@ export function ImplementacionSection() {
 
         {/* GRID DE TARJETAS */}
         <motion.div 
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -75,7 +75,7 @@ export function ImplementacionSection() {
             return (
               <motion.div 
                 key={index}
-                variants={cardVariants}
+                variants={cardVariants as any}
                 whileHover={{ scale: 1.03, y: -5 }}
                 className="flex flex-col items-center text-center border-[3px] border-[#8da3f6] hover:border-[#4466F2] rounded-[2.5rem] p-8 md:p-10 transition-colors duration-300 bg-transparent h-full shadow-sm hover:shadow-[0_10px_30px_rgba(68,102,242,0.1)]"
               >
