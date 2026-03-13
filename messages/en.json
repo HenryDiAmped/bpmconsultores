@@ -175,6 +175,7 @@
       "placeholders": {
         "name": "e.g. John Doe",
         "company": "Your company",
+        "phone": "e.g. +1 234 567 8900",
         "select": "Select"
       },
       "roles": {

@@ -175,6 +175,7 @@
       "placeholders": {
         "name": "Ej. Juan Pérez",
         "company": "Tu empresa",
+        "phone": "Ej. 999 999 999",
         "select": "Seleccionar"
       },
       "roles": {
