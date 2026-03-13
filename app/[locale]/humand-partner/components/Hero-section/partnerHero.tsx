@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function PartnerHero() {
+  const t = useTranslations('humandPartner.hero');
   const partners = [
     { src: "https://humandcdn.b-cdn.net/wp-content/uploads/2023/05/YC.png", alt: "Y Combinator", pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" },
     { src: "https://humandcdn.b-cdn.net/wp-content/uploads/2023/05/Amazon.png", alt: "Amazon", pos: "top-1/2 right-0 translate-x-1/2 -translate-y-1/2" },
@@ -23,7 +25,7 @@ export function PartnerHero() {
           className="flex flex-col items-center text-center mb-16 md:mb-24 w-full"
         >
           <h1 className="flex flex-wrap lg:flex-nowrap justify-center items-center gap-3 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1] mb-6">
-            <span className="whitespace-nowrap">BPM Consultores</span>
+            <span className="whitespace-nowrap">{t('title_main')}</span>
             <span className="flex items-center justify-center gap-3 text-2xl md:text-3xl text-slate-400 font-normal">
               + 
               <img 
@@ -36,13 +38,13 @@ export function PartnerHero() {
 
           <div className="flex flex-col items-center gap-4">
             <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed">
-              <span className="text-[#002EC3] font-semibold">Digitaliza la experiencia</span> de tus colaboradores y transforma la comunicación de tu equipo.
+              <span className="text-[#002EC3] font-semibold">{t('subtitle_part1')}</span> {t('subtitle_part2')}
             </p>
             <div className="flex items-start md:items-center gap-2 text-base md:text-lg font-medium text-slate-800 max-w-xl text-left md:text-center">
               <svg className="w-6 h-6 text-[#002EC3] shrink-0 mt-0.5 md:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Implementación experta, configuración de flujos y capacitación garantizada.</span>
+              <span>{t('benefits')}</span>
             </div>
           </div>
         </motion.div>

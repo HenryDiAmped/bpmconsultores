@@ -301,5 +301,56 @@
         "btn": "Conversemos con un experto"
       }
     }
+  },
+  "legal": {
+    "last_updated": "Última actualización:",
+    "back_to_home": "← Volver al inicio",
+    "privacy": {
+      "title": "Política de Privacidad"
+    },
+    "cookies": {
+      "title": "Política de Cookies"
+    }
+  },
+  "humandPartner": {
+    "hero": {
+      "title_main": "BPM Consultores",
+      "subtitle_part1": "Digitaliza la experiencia",
+      "subtitle_part2": "de tus colaboradores y transforma la comunicación de tu equipo.",
+      "benefits": "Implementación experta, configuración de flujos y capacitación garantizada."
+    },
+    "stats": {
+      "title_part1": "Humand es la plataforma",
+      "title_span": "todo en uno",
+      "title_part2": "que centraliza:",
+      "title_sub": "comunicaciones, capacitaciones, nóminas y mucho más, en una sola App.",
+      "items": {
+        "s1": "Reducción de hrs. hombre de capacitación y entrenamiento",
+        "s2": "Reducción de costos de comunicación",
+        "s3": "Reducción de costos de IT",
+        "s4": "Reducción de esperas en la comunicación",
+        "s5": "Reducción de correos electrónicos",
+        "s6": "Tasa de adopción promedio"
+      },
+      "companies": {
+        "title": "+1.500 empresas",
+        "desc": "Usan Humand, conectando a 1.6 millones de colaboradores alrededor del mundo."
+      },
+      "industries": {
+        "title": "+40 industrias",
+        "desc": "Transformadas a nivel global, con soluciones probadas en todos los sectores y mercados."
+      }
+    },
+    "presence": {
+      "title": "Humand está presente en"
+    },
+    "fusion": {
+      "title": "La fórmula de nuestro",
+      "title_span": "éxito",
+      "item1": "Tecnología",
+      "item2": "Consultoría",
+      "result1": "Estrategia y",
+      "resultspan": "resultados"
+    }
   }
 }

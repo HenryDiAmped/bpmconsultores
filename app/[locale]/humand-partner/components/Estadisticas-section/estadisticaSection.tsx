@@ -3,17 +3,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const STATS = [
-  { percent: '18%', label: 'Reducción de hrs. hombre de capacitación y entrenamiento' },
-  { percent: '25%', label: 'Reducción de costos de comunicación' },
-  { percent: '25%', label: 'Reducción de costos de IT' },
-  { percent: '34%', label: 'Reducción de esperas en la comunicación' },
-  { percent: '30%', label: 'Reducción de correos electrónicos' },
-  { percent: '82%', label: 'Tasa de adopción promedio' },
-];
+import { useTranslations } from 'next-intl';
 
 export function EstadisticaSection() {
+  const t = useTranslations('humandPartner.stats');
+
+  const STATS = [
+    { percent: '18%', label: t('items.s1') },
+    { percent: '25%', label: t('items.s2') },
+    { percent: '25%', label: t('items.s3') },
+    { percent: '34%', label: t('items.s4') },
+    { percent: '30%', label: t('items.s5') },
+    { percent: '82%', label: t('items.s6') },
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -46,11 +48,10 @@ export function EstadisticaSection() {
             className="lg:w-5/12 text-white text-center lg:text-left"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.3] tracking-tight">
-              Humand es la plataforma <br className="hidden md:block"/>
-              <span className="font-bold">todo en uno</span> que <br className="hidden md:block"/>
-              centraliza: <br className="hidden md:block"/>
+              {t('title_part1')} <br className="hidden md:block"/>
+              <span className="font-bold">{t('title_span')}</span> {t('title_part2')} <br className="hidden md:block"/>
               <span className="text-white/90 text-xl md:text-2xl lg:text-[2rem] mt-4 block leading-snug">
-                comunicaciones, capacitaciones, nóminas y mucho más, en una sola App.
+                {t('title_sub')}
               </span>
             </h2>
           </motion.div>
@@ -63,9 +64,9 @@ export function EstadisticaSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="border border-white/20 hover:border-white/50 bg-white/5 transition-all duration-300 rounded-[2rem] p-8 md:p-10 backdrop-blur-sm"
             >
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">+1.500 empresas</h3>
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">{t('companies.title')}</h3>
               <p className="text-white/80 text-base md:text-xl font-light">
-                Usan Humand, conectando a 1.6 millones de colaboradores alrededor del mundo.
+                {t('companies.desc')}
               </p>
             </motion.div>
 
@@ -76,9 +77,9 @@ export function EstadisticaSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="border border-white/20 hover:border-white/50 bg-white/5 transition-all duration-300 rounded-[2rem] p-8 md:p-10 backdrop-blur-sm"
             >
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">+40 industrias</h3>
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">{t('industries.title')}</h3>
               <p className="text-white/80 text-base md:text-xl font-light">
-                Transformadas a nivel global, con soluciones probadas en todos los sectores y mercados.
+                {t('industries.desc')}
               </p>
             </motion.div>
           </div>

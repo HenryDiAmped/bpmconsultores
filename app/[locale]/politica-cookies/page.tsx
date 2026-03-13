@@ -6,17 +6,21 @@ export const metadata: Metadata = {
   description: 'Información sobre el uso de cookies en el sitio web de BPM Consultores',
 };
 
+import { useTranslations } from 'next-intl';
+
 export default function PoliticaCookiesPage() {
+  const t = useTranslations('legal');
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8 md:p-12">
         {/* Header */}
         <div className="mb-8 border-b border-gray-200 pb-6">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Política de Cookies
+            {t('cookies.title')}
           </h1>
           <p className="text-sm text-gray-500">
-            Última actualización: {new Date().toLocaleDateString('es-ES', {
+            {t('last_updated')} {new Date().toLocaleDateString('es-ES', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
@@ -333,7 +337,7 @@ export default function PoliticaCookiesPage() {
             href="/"
             className="inline-flex items-center text-[#002EC3] hover:underline font-medium"
           >
-            ← Volver al inicio
+            {t('back_to_home')}
           </a>
         </div>
       </div>

@@ -17,9 +17,10 @@ const PARTNERS = [
 export function PresenciaSection() {
   return (
     <section className="w-full bg-white py-20 md:py-28 overflow-hidden relative">
-      
+
       {/* Estilos actualizados con la regla de pausa en hover */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes scroll-left {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -33,9 +34,9 @@ export function PresenciaSection() {
       `}} />
 
       <div className="mx-auto max-w-[1320px] px-6 lg:px-8 flex flex-col items-center">
-        
+
         {/* 1. TÍTULO */}
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -46,7 +47,7 @@ export function PresenciaSection() {
         </motion.h2>
 
         {/* 2. CARRUSEL DE LOGOS */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -57,14 +58,14 @@ export function PresenciaSection() {
           {/* Se retiró la clase de Tailwind arbitraria, la pausa la maneja el CSS puro */}
           <div className="flex w-max items-center gap-12 md:gap-20 pr-12 md:pr-20 animate-scroll-left">
             {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS].map((partner, index) => (
-              <a 
-                key={index} 
+              <a
+                key={index}
                 href={partner.url}
-                target="_blank" 
-                rel="noopener noreferrer" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-[140px] md:w-[180px] h-[70px] md:h-[90px]"
               >
-                <img 
+                <img
                   src={partner.src}
                   alt={partner.alt}
                   className="w-full h-full object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-300 cursor-pointer"
