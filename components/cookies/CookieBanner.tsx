@@ -3,8 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCookies } from '@/lib/cookies/CookieContext';
 import { Cookie } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function CookieBanner() {
+  const { t } = useTranslation('cookies');
   const { showBanner, acceptAll, rejectAll, openPreferences } = useCookies();
 
   return (
@@ -47,34 +49,32 @@ export function CookieBanner() {
                       id="cookie-banner-title"
                       className="text-xl md:text-2xl font-bold text-gray-900 mb-3"
                     >
-                      Usamos cookies
+                      {t('banner.title')}
                     </h2>
                     <p 
                       id="cookie-banner-description"
                       className="text-gray-600 text-sm md:text-base leading-relaxed mb-4"
                     >
-                      Utilizamos cookies esenciales para el funcionamiento del sitio y cookies opcionales 
-                      para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. 
-                      Puedes aceptar todas, rechazarlas o personalizar tus preferencias.
+                      {t('banner.description')}
                     </p>
                     <p className="text-xs text-gray-500">
-                      Al continuar navegando, aceptas nuestra{' '}
+                      {t('banner.policy_text')}{' '}
                       <a 
                         href="/politica-cookies" 
                         className="text-[#002EC3] hover:underline font-medium"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Política de Cookies
+                        {t('banner.cookie_policy')}
                       </a>
-                      {' '}y{' '}
+                      {' '}{t('banner.and')}{' '}
                       <a 
                         href="/politica-privacidad" 
                         className="text-[#002EC3] hover:underline font-medium"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Política de Privacidad
+                        {t('banner.privacy_policy')}
                       </a>
                       .
                     </p>
@@ -85,28 +85,28 @@ export function CookieBanner() {
                     <button
                       onClick={acceptAll}
                       className="px-6 py-3 bg-[#002EC3] text-white font-medium rounded-md hover:bg-[#002EC3]/90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#002EC3] focus:ring-offset-2"
-                      aria-label="Aceptar todas las cookies"
+                      aria-label={t('aria.accept_all')}
                       tabIndex={0}
                     >
-                      Aceptar todas
+                      {t('buttons.accept_all')}
                     </button>
                     
                     <button
                       onClick={rejectAll}
                       className="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-md hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-                      aria-label="Rechazar cookies opcionales"
+                      aria-label={t('aria.reject_all')}
                       tabIndex={0}
                     >
-                      Rechazar todas
+                      {t('buttons.reject_all')}
                     </button>
                     
                     <button
                       onClick={openPreferences}
                       className="px-6 py-3 border-2 border-[#002EC3] text-[#002EC3] font-medium rounded-md hover:bg-[#002EC3]/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#002EC3] focus:ring-offset-2"
-                      aria-label="Personalizar preferencias de cookies"
+                      aria-label={t('aria.customize')}
                       tabIndex={0}
                     >
-                      Personalizar
+                      {t('buttons.customize')}
                     </button>
                   </div>
                 </div>

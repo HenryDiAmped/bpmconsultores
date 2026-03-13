@@ -1,0 +1,39 @@
+{
+  "banner": {
+    "title": "Usamos cookies",
+    "description": "Utilizamos cookies esenciales para el funcionamiento del sitio y cookies opcionales para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes aceptar todas, rechazarlas o personalizar tus preferencias.",
+    "policy_text": "Al continuar navegando, aceptas nuestra",
+    "privacy_policy": "Política de Privacidad",
+    "cookie_policy": "Política de Cookies",
+    "and": "y"
+  },
+  "buttons": {
+    "accept_all": "Aceptar todas",
+    "reject_all": "Rechazar todas",
+    "customize": "Personalizar"
+  },
+  "preferences": {
+    "title": "Preferencias de Cookies",
+    "description": "Gestiona tus preferencias de cookies. Las cookies esenciales son necesarias para el funcionamiento del sitio.",
+    "essential": {
+      "title": "Cookies Esenciales",
+      "description": "Necesarias para el funcionamiento básico del sitio web. No se pueden desactivar.",
+      "always_active": "Siempre activas"
+    },
+    "analytics": {
+      "title": "Cookies de Análisis",
+      "description": "Nos ayudan a entender cómo los visitantes interactúan con el sitio web."
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "description": "Se utilizan para rastrear visitantes en sitios web y mostrar anuncios relevantes."
+    },
+    "save": "Guardar preferencias",
+    "accept_all": "Aceptar todas"
+  },
+  "aria": {
+    "accept_all": "Aceptar todas las cookies",
+    "reject_all": "Rechazar cookies opcionales",
+    "customize": "Personalizar preferencias de cookies"
+  }
+}

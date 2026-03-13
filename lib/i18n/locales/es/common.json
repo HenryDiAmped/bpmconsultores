@@ -1,0 +1,28 @@
+{
+  "buttons": {
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "continue": "Continuar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "loading": "Cargando..."
+  },
+  "messages": {
+    "success": "Operación exitosa",
+    "error": "Ha ocurrido un error",
+    "required": "Este campo es requerido",
+    "invalid_email": "Correo electrónico inválido",
+    "invalid_phone": "Número de teléfono inválido"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "blog": "Blog"
+  }
+}

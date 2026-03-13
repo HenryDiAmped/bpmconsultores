@@ -5,8 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCookies } from '@/lib/cookies/CookieContext';
 import { COOKIE_CATEGORIES } from '@/lib/cookies/constants';
 import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function CookiePreferences() {
+  const { t } = useTranslation('cookies');
   const { showPreferences, consent, updatePreferences, closePreferences } = useCookies();
   
   const [preferences, setPreferences] = useState({

@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('header');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter(); 
@@ -36,9 +36,9 @@ export default function Header() {
 
   // 1. AÑADIMOS EL "/" ANTES DEL "#" PARA FORZAR LA RUTA AL INICIO
   const navigation = [
-    { name: 'Soluciones', href: '/#soluciones' },
-    { name: 'Humand Partner', href: '/#humand-partner' },
-    { name: 'Blog', href: '/blog' }
+    { name: t('navigation.solutions'), href: '/#soluciones' },
+    { name: t('navigation.humand_partner'), href: '/#humand-partner' },
+    { name: t('navigation.blog'), href: '/blog' }
   ];
 
   const toggleLanguage = () => {
@@ -73,12 +73,12 @@ export default function Header() {
   const currentFlag = isEnglish 
     ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg' 
     : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg';
-  const currentLangText = isEnglish ? 'EN' : 'ES';
+  const currentLangText = t('language.current');
 
   const targetFlag = isEnglish 
     ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg' 
     : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg';
-  const targetLangText = isEnglish ? 'Español' : 'Inglés';
+  const targetLangText = isEnglish ? t('language.spanish') : t('language.english');
 
   return (
     <header 
@@ -95,7 +95,7 @@ export default function Header() {
           <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
             <Image
               src="/logo.png"
-              alt="Logo BPM Consultores"
+              alt={t('aria.logo')}
               width={140}
               height={45}
               className={cn(
@@ -149,7 +149,7 @@ export default function Header() {
             <div className="w-5 h-5 rounded-full overflow-hidden border border-gray-300/50 flex items-center justify-center shrink-0">
               <img 
                 src={currentFlag} 
-                alt={`Bandera ${currentLangText}`} 
+                alt={`${t('aria.flag')} ${currentLangText}`} 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -166,7 +166,7 @@ export default function Header() {
                   : "bg-[#002EC3] text-white border-[#002EC3] hover:border-white hover:bg-white hover:text-[#002EC3]"
               )}
             >
-              Conversemos
+              {t('buttons.lets_talk')}
             </Button>
           </Link>
         </div>
@@ -228,7 +228,7 @@ export default function Header() {
                 {/* 3. AÑADIMOS EL "/" AL BOTÓN DE CONTACTO MÓVIL */}
                 <Link href="/#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
                   <Button className="w-full bg-[#002EC3] text-white hover:bg-[#002EC3]/80 font-bold py-6 text-lg rounded-none transition-all shadow-md">
-                    Conversemos
+                    {t('buttons.lets_talk')}
                   </Button>
                 </Link>
 
@@ -243,11 +243,11 @@ export default function Header() {
                   <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 flex items-center justify-center shrink-0">
                     <img 
                       src={targetFlag} 
-                      alt={`Bandera ${targetLangText}`} 
+                      alt={`${t('aria.flag')} ${targetLangText}`} 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  Cambiar a {targetLangText}
+                  {isEnglish ? t('buttons.change_to_spanish') : t('buttons.change_to_english')}
                 </Button>
               </motion.div>
             </motion.div>

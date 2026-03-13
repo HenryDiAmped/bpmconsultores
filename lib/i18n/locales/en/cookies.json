@@ -1,0 +1,39 @@
+{
+  "banner": {
+    "title": "We use cookies",
+    "description": "We use essential cookies for site functionality and optional cookies to improve your experience, analyze traffic and personalize content. You can accept all, reject them or customize your preferences.",
+    "policy_text": "By continuing to browse, you accept our",
+    "privacy_policy": "Privacy Policy",
+    "cookie_policy": "Cookie Policy",
+    "and": "and"
+  },
+  "buttons": {
+    "accept_all": "Accept all",
+    "reject_all": "Reject all",
+    "customize": "Customize"
+  },
+  "preferences": {
+    "title": "Cookie Preferences",
+    "description": "Manage your cookie preferences. Essential cookies are necessary for the site to function.",
+    "essential": {
+      "title": "Essential Cookies",
+      "description": "Necessary for basic website functionality. Cannot be disabled.",
+      "always_active": "Always active"
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "description": "Help us understand how visitors interact with the website."
+    },
+    "marketing": {
+      "title": "Marketing Cookies",
+      "description": "Used to track visitors across websites and display relevant ads."
+    },
+    "save": "Save preferences",
+    "accept_all": "Accept all"
+  },
+  "aria": {
+    "accept_all": "Accept all cookies",
+    "reject_all": "Reject optional cookies",
+    "customize": "Customize cookie preferences"
+  }
+}

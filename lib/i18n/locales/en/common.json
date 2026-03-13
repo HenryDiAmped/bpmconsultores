@@ -1,0 +1,28 @@
+{
+  "buttons": {
+    "accept": "Accept",
+    "reject": "Reject",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading..."
+  },
+  "messages": {
+    "success": "Operation successful",
+    "error": "An error has occurred",
+    "required": "This field is required",
+    "invalid_email": "Invalid email address",
+    "invalid_phone": "Invalid phone number"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog"
+  }
+}

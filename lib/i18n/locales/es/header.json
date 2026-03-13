@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "solutions": "Soluciones",
+    "humand_partner": "Humand Partner",
+    "blog": "Blog"
+  },
+  "buttons": {
+    "lets_talk": "Conversemos",
+    "change_to_english": "Cambiar a Inglés",
+    "change_to_spanish": "Cambiar a Español"
+  },
+  "language": {
+    "current": "ES",
+    "spanish": "Español",
+    "english": "Inglés"
+  },
+  "aria": {
+    "logo": "Logo BPM Consultores",
+    "menu": "Menú de navegación",
+    "close_menu": "Cerrar menú",
+    "flag": "Bandera"
+  }
+}

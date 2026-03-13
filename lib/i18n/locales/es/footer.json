@@ -1,0 +1,20 @@
+{
+  "contact": {
+    "title": "Contáctanos",
+    "whatsapp": "Whatsapp",
+    "email": "Correo"
+  },
+  "social": {
+    "title": "Síguenos en nuestras",
+    "subtitle": "redes sociales:"
+  },
+  "location": {
+    "title": "Ubicación:",
+    "city": "Lima, Perú"
+  },
+  "copyright": "BPM Consultores, Inc. Todos los derechos reservados.",
+  "policies": {
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies"
+  }
+}
