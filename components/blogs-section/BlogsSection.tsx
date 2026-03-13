@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 // --- ANIMACIONES ---
 const containerVariants: Variants = {
@@ -39,6 +39,7 @@ const typewriterLetter: Variants = {
 
 export default function BlogsSection() {
   const t = useTranslations('blogs');
+  const locale = useLocale();
 
   const getBlogsData = () => [
     {
@@ -47,7 +48,7 @@ export default function BlogsSection() {
       title: t('articles.a1.title'),
       date: t('articles.a1.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif",
-      postUrl: "/blog/liderar-cambio-organizacional" 
+      postUrl: `/${locale}/blog/liderar-cambio-organizacional`
     },
     {
       id: 2,
@@ -55,7 +56,7 @@ export default function BlogsSection() {
       title: t('articles.a2.title'),
       date: t('articles.a2.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp",
-      postUrl: "/blog/5-indicadores-kpis"
+      postUrl: `/${locale}/blog/5-indicadores-kpis`
     },
     {
       id: 3,
@@ -63,7 +64,7 @@ export default function BlogsSection() {
       title: t('articles.a3.title'),
       date: t('articles.a3.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif",
-      postUrl: "/blog/digitalizacion-rrhh"
+      postUrl: `/${locale}/blog/digitalizacion-rrhh`
     },
     {
       id: 4,
@@ -71,7 +72,7 @@ export default function BlogsSection() {
       title: t('articles.a4.title'),
       date: t('articles.a4.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif",
-      postUrl: "/blog/mapeo-procesos-software"
+      postUrl: `/${locale}/blog/mapeo-procesos-software`
     },
   ];
 
@@ -169,7 +170,7 @@ export default function BlogsSection() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-16 flex justify-center w-full"
         >
-          <Link href="/blog" className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-gray-900 rounded-none overflow-hidden hover:shadow-lg w-full md:w-auto">
+          <Link href={`/${locale}/blog`} className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-gray-900 rounded-none overflow-hidden hover:shadow-lg w-full md:w-auto">
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
             <span className="absolute inset-0 w-full h-full transition-all duration-500 ease-out transform -translate-x-full bg-[#002EC3] group-hover:translate-x-0" />
             <span className="relative flex items-center gap-2">
