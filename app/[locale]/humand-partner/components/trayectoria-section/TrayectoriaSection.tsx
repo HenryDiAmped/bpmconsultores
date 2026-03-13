@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function TrayectoriaSection() {
+  const t = useTranslations('humandPartner.trayectoria');
+
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, type: "spring", bounce: 0.3, staggerChildren: 0.2 } }
@@ -24,10 +27,10 @@ export function TrayectoriaSection() {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center mb-12">
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             <motion.p variants={itemVariants as any} className="text-xl md:text-2xl lg:text-3xl leading-snug text-slate-800 font-light">
-              Contamos con una <span className="font-bold text-[#002EC3]">trayectoria de más de 7 años</span> impulsando la transformación y el talento en las organizaciones.
+              {t('p1')} <span className="font-bold text-[#002EC3]">{t('p1_span')}</span> {t('p1_end')}
             </motion.p>
             <motion.p variants={itemVariants as any} className="text-base md:text-lg text-slate-600 leading-relaxed">
-              En lugar de soluciones genéricas, nos enfocamos en <span className="font-semibold text-slate-800">obtener resultados medibles</span> a través de un acompañamiento estratégico que nunca pierde de vista el <span className="font-semibold text-slate-800">factor humano</span>, asegurando que cada cambio sea adoptado con éxito por toda la organización.
+              {t('p2')} <span className="font-semibold text-slate-800">{t('p2_span1')}</span> {t('p2_mid')} <span className="font-semibold text-slate-800">{t('p2_span2')}</span>{t('p2_end')}
             </motion.p>
           </div>
 
@@ -47,7 +50,7 @@ export function TrayectoriaSection() {
             href="#contacto"
             className="bg-[#002EC3] hover:bg-[#112CA0] text-white text-base md:text-lg font-semibold py-4 px-8 md:px-10 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center"
           >
-            Solicita una Demo guiada
+            {t('cta')}
           </a>
         </motion.div>
       </motion.div>

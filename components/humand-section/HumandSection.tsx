@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-// import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Smartphone, Zap } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function HumandSection() {
   const t = useTranslations('humand');
+  const locale = useLocale();
   return (
     <section className="relative w-full bg-[#F7F7F7] overflow-hidden py-16 lg:py-24 border-t border-gray-200">
       
@@ -69,7 +69,7 @@ export default function HumandSection() {
               {t('cta_card.p2')}
             </p>
 
-            <Link href="/humand-partner">
+            <Link href={`/${locale}/humand-partner`}>
               <Button className="bg-[#1D4ED8] hover:bg-blue-800 text-white font-semibold text-base md:text-lg px-8 py-5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105">
                 {t('cta_card.btn')}
               </Button>

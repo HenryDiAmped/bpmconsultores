@@ -356,6 +356,73 @@
       "item2": "Consulting",
       "result1": "Strategy and",
       "resultspan": "results"
+    },
+    "valor": {
+      "title": "With",
+      "title_span": "Humand technology",
+      "title_end": "you have access to",
+      "cta": "Manage payroll, training, internal communication in",
+      "cta_span": "real time",
+      "cta_end": "and much more, for an always-aligned organization.",
+      "col1": {
+        "cat1_title": "Corporate Culture",
+        "cat1_i1": "Referral Program",
+        "cat1_i2": "People Experience",
+        "cat1_i3": "Birthdays & Anniversaries",
+        "cat1_i4": "Marketplace",
+        "cat1_i5": "Events",
+        "cat1_i6": "Recognitions",
+        "cat2_title": "Internal Communication",
+        "cat2_i1": "Chat",
+        "cat2_i2": "Internal Social Network",
+        "cat2_i3": "Live Streaming",
+        "cat2_i4": "News",
+        "cat2_i5": "Org Chart",
+        "cat2_i6": "Resource Library",
+        "cat2_i7": "Benefits",
+        "cat3_title": "Operations",
+        "cat3_i1": "Forms, procedures and approvals",
+        "cat3_i2": "Service Management",
+        "cat3_i3": "Attendance Control"
+      },
+      "col2": {
+        "cat1_title": "Talent Development",
+        "cat1_i1": "Surveys",
+        "cat1_i2": "Performance Evaluation",
+        "cat1_i3": "Key Objectives and Results",
+        "cat1_i4": "Learning",
+        "cat1_i5": "Career Plan",
+        "cat1_i6": "Internal Job Search",
+        "cat2_title": "HR Management",
+        "cat2_i1": "Documents",
+        "cat2_i2": "Onboarding",
+        "cat2_i3": "Vacations & Leave",
+        "cat2_i4": "Employee Digital File",
+        "cat2_i5": "Files",
+        "cat2_i6": "Space Booking",
+        "cat2_i7": "Quick Access",
+        "cat2_i8": "Policies"
+      }
+    },
+    "implementacion": {
+      "title": "And with the implementation of",
+      "title_span": "BPM Consultores",
+      "title_end": "you get:",
+      "b1": "Co-design with management of flows and modules for a successful implementation.",
+      "b2": "Change management to ensure real adoption by leaders and teams",
+      "b3": "Strategic alignment between the platform and your organizational objectives",
+      "b4": "Ongoing support for adjustments, improvements and system evolution"
+    },
+    "trayectoria": {
+      "p1": "We have a",
+      "p1_span": "track record of over 7 years",
+      "p1_end": "driving transformation and talent in organizations.",
+      "p2": "Instead of generic solutions, we focus on",
+      "p2_span1": "achieving measurable results",
+      "p2_mid": "through strategic accompaniment that never loses sight of the",
+      "p2_span2": "human factor",
+      "p2_end": ", ensuring that every change is successfully adopted across the organization.",
+      "cta": "Request a guided Demo"
     }
   }
 }

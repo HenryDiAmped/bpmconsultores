@@ -356,6 +356,73 @@
       "item2": "Consultoría",
       "result1": "Estrategia y",
       "resultspan": "resultados"
+    },
+    "valor": {
+      "title": "Con la",
+      "title_span": "tecnología de Humand",
+      "title_end": "tienes acceso a",
+      "cta": "Gestiona nómina, capacitaciones, comunicación interna en",
+      "cta_span": "tiempo real",
+      "cta_end": "y muchos más, para una organización siempre alineada.",
+      "col1": {
+        "cat1_title": "Cultura Empresarial",
+        "cat1_i1": "Programa de referidos",
+        "cat1_i2": "People Experience",
+        "cat1_i3": "Cumpleaños y Aniversarios",
+        "cat1_i4": "Marketplace",
+        "cat1_i5": "Eventos",
+        "cat1_i6": "Reconocimientos",
+        "cat2_title": "Comunicación Interna",
+        "cat2_i1": "Chat",
+        "cat2_i2": "Red Social Interna",
+        "cat2_i3": "Live Streaming",
+        "cat2_i4": "Noticias",
+        "cat2_i5": "Organigrama",
+        "cat2_i6": "Biblioteca de Recursos",
+        "cat2_i7": "Beneficios",
+        "cat3_title": "Operaciones",
+        "cat3_i1": "Formularios, trámites y aprobaciones",
+        "cat3_i2": "Gestión de Servicios",
+        "cat3_i3": "Control de Asistencia"
+      },
+      "col2": {
+        "cat1_title": "Desarrollo de Talento",
+        "cat1_i1": "Encuestas",
+        "cat1_i2": "Evaluación de desempeño",
+        "cat1_i3": "Objetivos y Resultados Clave",
+        "cat1_i4": "Aprendizaje",
+        "cat1_i5": "Plan de carrera",
+        "cat1_i6": "Búsquedas internas",
+        "cat2_title": "Gestión de RR. HH.",
+        "cat2_i1": "Documentos",
+        "cat2_i2": "Onboarding",
+        "cat2_i3": "Vacaciones y Permisos",
+        "cat2_i4": "Expediente digital del colaborador",
+        "cat2_i5": "Archivos",
+        "cat2_i6": "Reserva de espacios",
+        "cat2_i7": "Accesos Rápidos",
+        "cat2_i8": "Políticas"
+      }
+    },
+    "implementacion": {
+      "title": "Y con la implementación de",
+      "title_span": "BPM Consultores",
+      "title_end": "obtienes:",
+      "b1": "Co-diseño con gerencia de flujos y módulos para una implementación exitosa.",
+      "b2": "Gestión del cambio para asegurar adopción real en líderes y equipos",
+      "b3": "Alineamiento estratégico entre la plataforma y tus objetivos organizacionales",
+      "b4": "Soporte continuo para ajustes, mejoras y evolución del sistema"
+    },
+    "trayectoria": {
+      "p1": "Contamos con una",
+      "p1_span": "trayectoria de más de 7 años",
+      "p1_end": "impulsando la transformación y el talento en las organizaciones.",
+      "p2": "En lugar de soluciones genéricas, nos enfocamos en",
+      "p2_span1": "obtener resultados medibles",
+      "p2_mid": "a través de un acompañamiento estratégico que nunca pierde de vista el",
+      "p2_span2": "factor humano",
+      "p2_end": ", asegurando que cada cambio sea adoptado con éxito por toda la organización.",
+      "cta": "Solicita una Demo guiada"
     }
   }
 }

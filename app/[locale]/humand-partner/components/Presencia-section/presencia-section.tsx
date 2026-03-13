@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 const PARTNERS = [
   { src: '/LOGO_CHILIS-01.svg', url: 'https://chilis.pe', alt: 'Chilis' },
@@ -15,6 +16,7 @@ const PARTNERS = [
 ];
 
 export function PresenciaSection() {
+  const t = useTranslations('humandPartner.presence');
   return (
     <section className="w-full bg-white py-20 md:py-28 overflow-hidden relative">
 
@@ -43,7 +45,7 @@ export function PresenciaSection() {
           transition={{ duration: 0.7, type: "spring", bounce: 0.4 }}
           className="text-3xl md:text-4xl lg:text-[2.5rem] font-medium text-[#002EC3] mb-12 md:mb-16 text-center"
         >
-          Humand está presente en
+          {t('title')}
         </motion.h2>
 
         {/* 2. CARRUSEL DE LOGOS */}
