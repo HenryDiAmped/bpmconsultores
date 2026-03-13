@@ -15,7 +15,7 @@ export default function HeroSection() {
 
   const SLIDES = [
     {
-      video: 'https://cdn.midjourney.com/video/15b95eec-20b9-43f7-a0d8-47ba6963760d/0.mp4',
+      video: 'https://res.cloudinary.com/dmgufgga4/video/upload/v1773334758/HERO_PRINCIPAL_ffrwer.webm',
       title: t('slides.efficiency'),
     },
     {

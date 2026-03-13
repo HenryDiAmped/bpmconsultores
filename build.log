@@ -1,0 +1,18 @@
+
+> bpmconsultores@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+> Build error occurred
+Error: Ambiguous app routes detected:
+
+Ambiguous route pattern "/[*]/blog/[*]" matches multiple routes:
+  - /[locale]/blog/[id]
+  - /[locale]/blog/[slug]
+
+These routes cannot be distinguished from each other when matching URLs. Please ensure that dynamic segments have unique patterns or use different static segments.
+    at ignore-listed frames
