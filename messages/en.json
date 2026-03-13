@@ -230,5 +230,76 @@
       "read_more": "READ MORE",
       "all_articles": "View all articles"
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contact Us",
+      "whatsapp": "Message us on WhatsApp",
+      "email": "CONTACT EMAILS"
+    },
+    "social": {
+      "title": "Follow us on",
+      "subtitle": "social media"
+    },
+    "location": {
+      "title": "Location",
+      "city": "Lima, Peru"
+    },
+    "copyright": "BPM Consultores. All rights reserved.",
+    "policies": {
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy"
+    }
+  },
+  "blogPage": {
+    "hero": {
+      "tag": "Our Blog",
+      "title_part1": "Insights and Strategies for",
+      "title_part2": "Organizational Transformation",
+      "desc": "Explore articles on talent management, process optimization, and the impact of technology on HR."
+    },
+    "articles": {
+      "a1": {
+        "cat": "Technology",
+        "title": "HR Software: The strategic engine for high-impact performance management",
+        "excerpt": "Discover how HRMS transform talent management into a measurable competitive advantage, freeing the HR team from daily operations to focus on strategy and people.",
+        "date": "15 Mar 2026",
+        "readTime": "5 min"
+      },
+      "a2": {
+        "cat": "AI",
+        "title": "Reskilling: Why reskilling is the number one urgency for modern management",
+        "excerpt": "AI-enabled learning solves the skills mismatch by making training flexible, adaptive, and impactful. Turn this threat into a catalyst.",
+        "date": "10 Mar 2026",
+        "readTime": "4 min"
+      },
+      "a3": {
+        "cat": "Management",
+        "title": "Internal Communication: The bridge between operational chaos and strategic efficiency",
+        "excerpt": "In growing organizations, relying on emails or WhatsApp is a risk. Discover how centralizing the voice of the company increases ROI and retention.",
+        "date": "02 Mar 2026",
+        "readTime": "6 min"
+      },
+      "a4": {
+        "cat": "Consulting",
+        "title": "Human Capital or Human Resources? Why the difference defines your company's success",
+        "excerpt": "It's not just semantics. Understanding this distinction is the first step to transforming an operational payroll into a true strategic competitive advantage.",
+        "date": "28 Feb 2026",
+        "readTime": "5 min"
+      }
+    },
+    "misc": {
+      "read_time": "read",
+      "read_more": "READ MORE"
+    },
+    "single": {
+      "copy_link": "Copy link",
+      "copied": "Link copied!",
+      "cta": {
+        "title": "Ready to transform your talent management?",
+        "desc": "At BPM Consultores, we help you diagnose your processes and implement the technology that best suits your corporate culture.",
+        "btn": "Let's talk with an expert"
+      }
+    }
   }
 }

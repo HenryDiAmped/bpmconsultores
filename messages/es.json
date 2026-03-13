@@ -230,5 +230,76 @@
       "read_more": "LEER MAS",
       "all_articles": "Ver todos los artículos"
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contáctanos",
+      "whatsapp": "Escríbenos por WhatsApp",
+      "email": "CORREOS DE CONTACTO"
+    },
+    "social": {
+      "title": "Síguenos en nuestras",
+      "subtitle": "redes sociales"
+    },
+    "location": {
+      "title": "Ubicación",
+      "city": "Lima, Perú"
+    },
+    "copyright": "BPM Consultores. Todos los derechos reservados.",
+    "policies": {
+      "privacy": "Política de Privacidad",
+      "cookies": "Política de Cookies"
+    }
+  },
+  "blogPage": {
+    "hero": {
+      "tag": "Nuestro Blog",
+      "title_part1": "Insights y Estrategias para la",
+      "title_part2": "Transformación Organizacional",
+      "desc": "Explora artículos sobre gestión de talento, optimización de procesos y el impacto de la tecnología en RR.HH."
+    },
+    "articles": {
+      "a1": {
+        "cat": "Tecnología",
+        "title": "Software de RR.HH.: El motor estratégico para la gestión del desempeño de alto impacto",
+        "excerpt": "Descubre cómo los HRMS transforman la gestión del talento en una ventaja competitiva medible, liberando al equipo de RR.HH. de la operatividad diaria para enfocarse en la estrategia y las personas.",
+        "date": "15 Mar 2026",
+        "readTime": "5 min"
+      },
+      "a2": {
+        "cat": "IA",
+        "title": "Reskilling: Por qué la recapacitación es la urgencia número uno de la gerencia moderna",
+        "excerpt": "El aprendizaje habilitado por IA resuelve el desajuste de habilidades haciendo que la capacitación sea flexible, adaptativa e impactante. Convierte esta amenaza en un catalizador.",
+        "date": "10 Mar 2026",
+        "readTime": "4 min"
+      },
+      "a3": {
+        "cat": "Gestión",
+        "title": "Comunicación Interna: El puente entre el caos operativo y la eficiencia estratégica",
+        "excerpt": "En organizaciones en crecimiento, depender de correos o WhatsApp es un riesgo. Descubre cómo centralizar la voz de la empresa aumenta el ROI y la retención.",
+        "date": "02 Mar 2026",
+        "readTime": "6 min"
+      },
+      "a4": {
+        "cat": "Consultoría",
+        "title": "¿Capital Humano o Recursos Humanos? Por qué la diferencia define el éxito de tu empresa",
+        "excerpt": "No es solo semántica. Entender esta distinción es el primer paso para transformar una nómina operativa en una verdadera ventaja competitiva y estratégica.",
+        "date": "28 Feb 2026",
+        "readTime": "5 min"
+      }
+    },
+    "misc": {
+      "read_time": "de lectura",
+      "read_more": "LEER MÁS"
+    },
+    "single": {
+      "copy_link": "Copiar enlace",
+      "copied": "¡Enlace copiado!",
+      "cta": {
+        "title": "¿Listo para transformar tu gestión de talento?",
+        "desc": "En BPM Consultores, te ayudamos a diagnosticar tus procesos y a implementar la tecnología que mejor se adapte a tu cultura corporativa.",
+        "btn": "Conversemos con un experto"
+      }
+    }
   }
 }

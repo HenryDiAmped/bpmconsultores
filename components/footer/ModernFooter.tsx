@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { Mail, MessageCircle } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from 'next-intl';
 
 // --- ANIMACIONES ---
 const containerVariants: Variants = {
@@ -21,7 +21,7 @@ const itemVariants: Variants = {
 };
 
 export default function ModernFooter() {
-  const { t } = useTranslation('footer');
+  const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   return (

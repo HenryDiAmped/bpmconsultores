@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Share2, ChevronRight, Facebook, Link as LinkIcon, Check } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { use, useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 // --- IMPORTAMOS LOS COMPONENTES DE CONTENIDO ---
 import SoftwareRRHH from '../content/SoftwareRRHH';
@@ -12,49 +13,50 @@ import ReskillingIA from '../content/ReskillingIA';
 import ComunicacionInterna from '../content/ComunicacionInterna';
 import CapitalHumano from '../content/CapitalHumano';
 
-// --- BASE DE DATOS LIGERA ---
-const BLOG_POSTS = [
-  {
-    slug: 'software-rrhh-motor-estrategico',
-    category: 'Tecnología',
-    title: 'Software de RR.HH.: El motor estratégico para la gestión del desempeño de alto impacto',
-    date: '15 Mar 2026',
-    readTime: '5 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif',
-    content: <SoftwareRRHH />
-  },
-  {
-    slug: 'reskilling-urgencia-gerencia',
-    category: 'IA',
-    title: 'Reskilling: Por qué la recapacitación es la urgencia número uno de la gerencia moderna',
-    date: '10 Mar 2026',
-    readTime: '4 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp',
-    content: <ReskillingIA />
-  },
-  {
-    slug: 'comunicacion-interna-eficiencia',
-    category: 'Gestión',
-    title: 'Comunicación Interna: El puente entre el caos operativo y la eficiencia estratégica',
-    date: '02 Mar 2026',
-    readTime: '6 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif',
-    content: <ComunicacionInterna />
-  },
-  {
-    slug: 'capital-humano-vs-recursos-humanos',
-    category: 'Consultoría',
-    title: '¿Capital Humano o Recursos Humanos? Por qué la diferencia define el éxito de tu empresa',
-    date: '28 Feb 2026',
-    readTime: '5 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif',
-    content: <CapitalHumano />
-  }
-];
-
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  // Desenvolvemos la promesa de los params
+  const t = useTranslations('blogPage');
   const resolvedParams = use(params);
+
+  // --- BASE DE DATOS LIGERA ---
+  const BLOG_POSTS = [
+    {
+      slug: 'software-rrhh-motor-estrategico',
+      category: t('articles.a1.cat'),
+      title: t('articles.a1.title'),
+      date: t('articles.a1.date'),
+      readTime: t('articles.a1.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif',
+      content: <SoftwareRRHH />
+    },
+    {
+      slug: 'reskilling-urgencia-gerencia',
+      category: t('articles.a2.cat'),
+      title: t('articles.a2.title'),
+      date: t('articles.a2.date'),
+      readTime: t('articles.a2.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp',
+      content: <ReskillingIA />
+    },
+    {
+      slug: 'comunicacion-interna-eficiencia',
+      category: t('articles.a3.cat'),
+      title: t('articles.a3.title'),
+      date: t('articles.a3.date'),
+      readTime: t('articles.a3.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif',
+      content: <ComunicacionInterna />
+    },
+    {
+      slug: 'capital-humano-vs-recursos-humanos',
+      category: t('articles.a4.cat'),
+      title: t('articles.a4.title'),
+      date: t('articles.a4.date'),
+      readTime: t('articles.a4.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif',
+      content: <CapitalHumano />
+    }
+  ];
+
   const post = BLOG_POSTS.find((p) => p.slug === resolvedParams.slug);
 
   // --- ESTADOS PARA EL MENÚ DE COMPARTIR ---
@@ -105,7 +107,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         <div className="mx-auto px-6 lg:px-8 max-w-[1000px] relative z-10 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-2 text-white/70 text-sm mb-6 font-medium">
-              <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <Link href="/blog" className="hover:text-white transition-colors">{t('hero.tag')}</Link>
               <ChevronRight className="w-4 h-4" />
               <span className="text-white">{post.category}</span>
             </div>
@@ -121,7 +123,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#002EC3]" />
-                {post.readTime} de lectura
+                {post.readTime} {t('misc.read_time')}
               </div>
             </div>
           </motion.div>
@@ -166,7 +168,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   >
                     <button onClick={handleCopyLink} className="flex items-center gap-3 text-sm text-gray-700 font-medium hover:text-[#002EC3] hover:bg-blue-50/50 p-2.5 rounded-lg transition-colors text-left w-full">
                       {copied ? <Check className="w-4 h-4 text-green-500" /> : <LinkIcon className="w-4 h-4" />}
-                      {copied ? '¡Enlace copiado!' : 'Copiar enlace'}
+                      {copied ? t('single.copied') : t('single.copy_link')}
                     </button>
                     
                     <button onClick={handleWhatsApp} className="flex items-center gap-3 text-sm text-gray-700 font-medium hover:text-[#002EC3] hover:bg-blue-50/50 p-2.5 rounded-lg transition-colors text-left w-full">
@@ -208,12 +210,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       {/* --- CTA FINAL --- */}
       <section className="bg-slate-50 py-20 border-t border-gray-200">
         <div className="mx-auto px-6 lg:px-8 max-w-[800px] text-center">
-          <h3 className="text-3xl font-bold text-gray-900 mb-6 tracking-tight">¿Listo para transformar tu gestión de talento?</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-6 tracking-tight">{t('single.cta.title')}</h3>
           <p className="text-gray-600 mb-8 text-lg font-light">
-            En BPM Consultores, te ayudamos a diagnosticar tus procesos y a implementar la tecnología que mejor se adapte a tu cultura corporativa.
+            {t('single.cta.desc')}
           </p>
           <Link href="/#contacto" className="inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all bg-[#002EC3] hover:bg-slate-900 rounded-none gap-2 shadow-lg hover:shadow-xl">
-            Conversemos con un experto
+            {t('single.cta.btn')}
           </Link>
         </div>
       </section>

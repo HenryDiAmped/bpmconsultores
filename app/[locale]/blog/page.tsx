@@ -4,50 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
-
-// --- DATOS EXTRAÍDOS DEL DOCUMENTO DE WORD ---
-const BLOGS = [
-  {
-    slug: 'software-rrhh-motor-estrategico',
-    category: 'Tecnología',
-    title: 'Software de RR.HH.: El motor estratégico para la gestión del desempeño de alto impacto',
-    excerpt: 'Descubre cómo los HRMS transforman la gestión del talento en una ventaja competitiva medible, liberando al equipo de RR.HH. de la operatividad diaria para enfocarse en la estrategia y las personas.',
-    date: '15 Mar 2026',
-    readTime: '5 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif',
-    featured: true, 
-  },
-  {
-    slug: 'reskilling-urgencia-gerencia',
-    category: 'IA',
-    title: 'Reskilling: Por qué la recapacitación es la urgencia número uno de la gerencia moderna',
-    excerpt: 'El aprendizaje habilitado por IA resuelve el desajuste de habilidades haciendo que la capacitación sea flexible, adaptativa e impactante. Convierte esta amenaza en un catalizador.',
-    date: '10 Mar 2026',
-    readTime: '4 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp',
-    featured: false,
-  },
-  {
-    slug: 'comunicacion-interna-eficiencia',
-    category: 'Gestión',
-    title: 'Comunicación Interna: El puente entre el caos operativo y la eficiencia estratégica',
-    excerpt: 'En organizaciones en crecimiento, depender de correos o WhatsApp es un riesgo. Descubre cómo centralizar la voz de la empresa aumenta el ROI y la retención.',
-    date: '02 Mar 2026',
-    readTime: '6 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif',
-    featured: false,
-  },
-  {
-    slug: 'capital-humano-vs-recursos-humanos',
-    category: 'Consultoría',
-    title: '¿Capital Humano o Recursos Humanos? Por qué la diferencia define el éxito de tu empresa',
-    excerpt: 'No es solo semántica. Entender esta distinción es el primer paso para transformar una nómina operativa en una verdadera ventaja competitiva y estratégica.',
-    date: '28 Feb 2026',
-    readTime: '5 min',
-    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif',
-    featured: false,
-  }
-];
+import { useTranslations } from 'next-intl';
 
 const INTERVAL_MS = 4000;
 
@@ -70,7 +27,51 @@ const itemVariants: Variants = {
 };
 
 export default function BlogPage() {
+  const t = useTranslations('blogPage');
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const BLOGS = [
+    {
+      slug: 'software-rrhh-motor-estrategico',
+      category: t('articles.a1.cat'),
+      title: t('articles.a1.title'),
+      excerpt: t('articles.a1.excerpt'),
+      date: t('articles.a1.date'),
+      readTime: t('articles.a1.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif',
+      featured: true, 
+    },
+    {
+      slug: 'reskilling-urgencia-gerencia',
+      category: t('articles.a2.cat'),
+      title: t('articles.a2.title'),
+      excerpt: t('articles.a2.excerpt'),
+      date: t('articles.a2.date'),
+      readTime: t('articles.a2.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp',
+      featured: false,
+    },
+    {
+      slug: 'comunicacion-interna-eficiencia',
+      category: t('articles.a3.cat'),
+      title: t('articles.a3.title'),
+      excerpt: t('articles.a3.excerpt'),
+      date: t('articles.a3.date'),
+      readTime: t('articles.a3.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif',
+      featured: false,
+    },
+    {
+      slug: 'capital-humano-vs-recursos-humanos',
+      category: t('articles.a4.cat'),
+      title: t('articles.a4.title'),
+      excerpt: t('articles.a4.excerpt'),
+      date: t('articles.a4.date'),
+      readTime: t('articles.a4.readTime'),
+      image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif',
+      featured: false,
+    }
+  ];
 
   // Efecto para rotar las imágenes del Hero automáticamente
   useEffect(() => {
@@ -116,14 +117,14 @@ export default function BlogPage() {
               transition={{ duration: 0.8 }}
             >
               <span className="text-white font-bold tracking-[0.2em] uppercase text-xs mb-6 bg-[#002EC3]/80 px-4 py-2 rounded-full inline-block backdrop-blur-sm border border-white/20">
-                Nuestro Blog
+                {t('hero.tag')}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto drop-shadow-lg">
-                Insights y Estrategias para la <br className="hidden md:block"/>
-                <span className="text-blue-300 font-light italic">Transformación Organizacional</span>
+                {t('hero.title_part1')} <br className="hidden md:block"/>
+                <span className="text-blue-300 font-light italic">{t('hero.title_part2')}</span>
               </h1>
               <p className="text-lg md:text-xl text-blue-50 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
-                Explora artículos sobre gestión de talento, optimización de procesos y el impacto de la tecnología en RR.HH.
+                {t('hero.desc')}
               </p>
             </motion.div>
           </AnimatePresence>
@@ -221,10 +222,10 @@ export default function BlogPage() {
                     <div className="flex items-center justify-between mt-auto border-t border-gray-100 pt-5">
                       <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
                         <Clock className="w-3.5 h-3.5" />
-                        {blog.readTime} de lectura
+                        {blog.readTime} {t('misc.read_time')}
                       </div>
                       <div className="flex items-center text-[#002EC3] font-bold text-[12px] transition-colors duration-300">
-                        <span className="tracking-wide uppercase mr-2">LEER MÁS</span>
+                        <span className="tracking-wide uppercase mr-2">{t('misc.read_more')}</span>
                         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                       </div>
                     </div>
