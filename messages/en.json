@@ -1,4 +1,9 @@
 {
+  "whatsapp": {
+    "tooltip": "Hi! If you have any questions, chat with us.",
+    "aria_label": "Contact via WhatsApp",
+    "default_message": "Hello, I would like to get more information about your services."
+  },
   "header": {
     "navigation": {
       "solutions": "Solutions",

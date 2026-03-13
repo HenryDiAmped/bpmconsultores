@@ -1,28 +1,25 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function WhatsAppButton() {
-  // Estado para controlar si el mensaje se muestra por defecto
+  const t = useTranslations('whatsapp');
   const [showTooltip, setShowTooltip] = useState(true);
   
   const phoneNumber = "51980180775"; 
-  const defaultMessage = "Hola, me gustaría obtener más información sobre sus servicios.";
+  const defaultMessage = t('default_message');
   const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
-  // Efecto para ocultar el mensaje automáticamente después de 10 segundos
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowTooltip(false);
-    }, 10000); // 10000 milisegundos = 10 segundos
+    }, 10000);
 
-    // Limpiamos el timer si el componente se desmonta
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    // Contenedor principal: agrupa el mensaje y el botón. 
-    // La clase 'group' es clave para que el hover funcione en conjunto.
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4 group">
       
       {/* Mensaje tipo Tooltip */}
@@ -30,7 +27,6 @@ export default function WhatsAppButton() {
         className={`
           relative flex items-center bg-white text-[#0f172a] text-sm px-4 py-3 rounded-xl shadow-xl border border-gray-100
           transition-all duration-500 ease-in-out origin-right max-w-[220px]
-          /* Si showTooltip es true (primeros 10s) se muestra, si no se oculta. El group-hover SIEMPRE lo muestra al pasar el mouse */
           ${showTooltip 
             ? 'opacity-100 translate-x-0 scale-100 pointer-events-auto' 
             : 'opacity-0 translate-x-4 scale-95 pointer-events-none'
@@ -39,19 +35,19 @@ export default function WhatsAppButton() {
         `}
       >
         <p className="font-medium leading-snug">
-          ¡Hola! Si tienes alguna duda o consulta, chatea con nosotros.
+          {t('tooltip')}
         </p>
         
-        {/* Triángulo/Flecha apuntando al botón de WhatsApp */}
+        {/* Triángulo apuntando al botón */}
         <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-r border-t border-gray-100 rotate-45 shadow-[2px_-2px_2px_-2px_rgba(0,0,0,0.1)]"></div>
       </div>
 
-      {/* Botón de WhatsApp (se removió el fixed bottom-6 right-6 porque ya lo tiene el contenedor padre) */}
+      {/* Botón de WhatsApp */}
       <a
         href={waLink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Contactar por WhatsApp"
+        aria-label={t('aria_label')}
         className="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0"
       >
         <svg
