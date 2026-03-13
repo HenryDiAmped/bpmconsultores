@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { ArrowLeft, Calendar, Clock, Share2, ChevronRight, Facebook, Link as LinkIcon, Check } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { use, useState, useEffect } from 'react';
