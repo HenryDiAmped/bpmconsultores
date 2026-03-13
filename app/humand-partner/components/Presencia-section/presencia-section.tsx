@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const PARTNERS = [
   { src: '/LOGO_CHILIS-01.svg', url: 'https://chilis.pe', alt: 'Chilis' },
   { src: '/LOGO_SIEMENS.svg', url: 'https://www.siemens.com', alt: 'Siemens' },
-  { src: '/SWISS MEDICAL.svg', url: 'https://www.swissmedical.com.ar', alt: 'Swiss Medical' },
+  { src: '/SWISS_MEDICAL.svg', url: 'https://www.swissmedical.com.ar', alt: 'Swiss Medical' },
   { src: '/LOGO_MINISO.svg', url: 'https://www.miniso.pe', alt: 'Miniso' },
   { src: '/LOGO_OXXO.svg', url: 'https://www.oxxo.pe', alt: 'Oxxo' },
   { src: '/LOGO_SODEXO.svg', url: 'https://www.sodexo.pe', alt: 'Sodexo' },
