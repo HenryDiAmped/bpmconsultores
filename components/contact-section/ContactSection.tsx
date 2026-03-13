@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { AlertCircle, ChevronDown, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Script from "next/script";
+import { useTranslations } from 'next-intl';
 
 // Esquema de validación
 import { formSchema } from "@/lib/schema";
@@ -20,6 +21,7 @@ declare global {
 }
 
 export default function ContactSection() {
+  const t = useTranslations('contact');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -96,9 +98,9 @@ export default function ContactSection() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6"
             >
-              Cuéntanos tus <br />
-              desafíos, <br />
-              <span className="text-blue-300">nosotros <br /> trazamos la ruta.</span>
+              {t('title.t1')} <br />
+              {t('title.t2')} <br />
+              <span className="text-blue-300">{t('title.t3')} <br /> {t('title.t4')}</span>
             </motion.h1>
 
               <motion.p
@@ -108,7 +110,7 @@ export default function ContactSection() {
                 transition={{ delay: 0.1 }}
                 className="text-base md:text-lg text-blue-100/80 font-light leading-relaxed max-w-lg"
               >
-                Agenda una evaluación preliminar sin compromiso como primer paso para transformar tu organización con nuestros expertos.
+                {t('desc')}
               </motion.p>
             </div>
 
@@ -132,8 +134,8 @@ export default function ContactSection() {
                       <div className="w-16 h-16 bg-blue-50 text-[#002EC3] rounded-full flex items-center justify-center mx-auto mb-2">
                         <CheckCircle2 className="w-8 h-8" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">¡Formulario Enviado!</h3>
-                      <p className="text-gray-500 text-sm">Hemos recibido tus datos correctamente.</p>
+                      <h3 className="text-2xl font-bold text-gray-900">{t('form.success.t1')}</h3>
+                      <p className="text-gray-500 text-sm">{t('form.success.t2')}</p>
                     </motion.div>
                   ) : (
                     <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -141,7 +143,7 @@ export default function ContactSection() {
 
                         {/* Nombre Completo */}
                         <div className="sm:col-span-2">
-                          <label className={labelClass}>Nombre completo *</label>
+                          <label className={labelClass}>{t('form.labels.name')}</label>
                           <input
                             {...register("fullName")}
                             type="text"
@@ -155,7 +157,7 @@ export default function ContactSection() {
 
                         {/* Correo Corporativo */}
                         <div className="sm:col-span-2">
-                          <label className={labelClass}>Correo corporativo *</label>
+                          <label className={labelClass}>{t('form.labels.email')}</label>
                           <input
                             {...register("email")}
                             type="email"
@@ -169,12 +171,12 @@ export default function ContactSection() {
 
                         {/* Empresa */}
                         <div>
-                          <label className={labelClass}>Empresa *</label>
+                          <label className={labelClass}>{t('form.labels.company')}</label>
                           <input
                             {...register("company")}
                             type="text"
                             className={`${inputClass} ${errors.company ? 'border-red-400 focus:border-red-500 focus:ring-red-500' : ''}`}
-                            placeholder="Tu empresa"
+                            placeholder={t('form.placeholders.company')}
                           />
                           {errors.company?.message && (
                             <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.company.message)}</p>
@@ -183,12 +185,12 @@ export default function ContactSection() {
 
                         {/* Teléfono */}
                         <div>
-                          <label className={labelClass}>Tel/WhatsApp *</label>
+                          <label className={labelClass}>{t('form.labels.phone')}</label>
                           <input
                             {...register("phone")}
                             type="tel"
                             className={`${inputClass} ${errors.phone ? 'border-red-400 focus:border-red-500 focus:ring-red-500' : ''}`}
-                            placeholder="999999999"
+                            placeholder={t('form.placeholders.phone')}
                           />
                           {errors.phone?.message && (
                             <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.phone.message)}</p>
@@ -197,19 +199,19 @@ export default function ContactSection() {
 
                         {/* Cargo / Rol */}
                         <div>
-                          <label className={labelClass}>Cargo / Rol *</label>
+                          <label className={labelClass}>{t('form.labels.role')}</label>
                           <div className="relative">
                             <select
                               {...register("role")}
                               className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.role ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
                               defaultValue=""
                             >
-                              <option value="" disabled>Seleccionar</option>
-                              <option value="Director / Gerente">Director / Gerente</option>
-                              <option value="HR Manager">HR Manager</option>
-                              <option value="Operaciones">Operaciones</option>
-                              <option value="Transformación">Transformación / Procesos</option>
-                              <option value="Otro">Otro</option>
+                              <option value="" disabled>{t('form.placeholders.select')}</option>
+                              <option value="Director / Gerente">{t('form.roles.r1')}</option>
+                              <option value="HR Manager">{t('form.roles.r2')}</option>
+                              <option value="Operaciones">{t('form.roles.r3')}</option>
+                              <option value="Transformación">{t('form.roles.r4')}</option>
+                              <option value="Otro">{t('form.roles.r5')}</option>
                             </select>
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
@@ -220,18 +222,18 @@ export default function ContactSection() {
 
                         {/* Tamaño */}
                         <div>
-                          <label className={labelClass}>Tamaño *</label>
+                          <label className={labelClass}>{t('form.labels.size')}</label>
                           <div className="relative">
                             <select
                               {...register("employees")}
                               className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.employees ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
                               defaultValue=""
                             >
-                              <option value="" disabled>Seleccionar</option>
-                              <option value="50-100">50 - 100 colabs.</option>
-                              <option value="100-200">100 - 200 colabs.</option>
-                              <option value="201-500">201 - 500 colabs.</option>
-                              <option value="500+">500+ colabs.</option>
+                              <option value="" disabled>{t('form.placeholders.select')}</option>
+                              <option value="50-100">{t('form.sizes.s1')}</option>
+                              <option value="100-200">{t('form.sizes.s2')}</option>
+                              <option value="201-500">{t('form.sizes.s3')}</option>
+                              <option value="500+">{t('form.sizes.s4')}</option>
                             </select>
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
@@ -249,7 +251,7 @@ export default function ContactSection() {
                           className="bg-red-50 text-red-600 p-3 flex items-start gap-2.5 rounded-sm border border-red-100 overflow-hidden"
                         >
                           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                          <p className="text-xs font-medium leading-relaxed">Por favor, revisa los campos marcados en rojo.</p>
+                          <p className="text-xs font-medium leading-relaxed">{t('form.error')}</p>
                         </motion.div>
                       )}
 
@@ -269,11 +271,11 @@ export default function ContactSection() {
                           disabled={isSubmitting}
                           className="w-full h-12 bg-gray-900 hover:bg-[#002EC3] text-white text-sm font-bold tracking-wide uppercase rounded-none transition-colors duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
                         >
-                          {isSubmitting ? 'Enviando...' : 'Comenzar'}
+                          {isSubmitting ? t('form.sending') : t('form.btn')}
                           {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                         </button>
                         <p className="text-center text-[10px] text-gray-500 mt-3 font-medium tracking-wide">
-                          Te responderemos en un plazo máximo de 24 horas.
+                          {t('form.footer')}
                         </p>
                       </div>
                     </form>

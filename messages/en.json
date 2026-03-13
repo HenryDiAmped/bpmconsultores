@@ -1,0 +1,233 @@
+{
+  "header": {
+    "navigation": {
+      "solutions": "Solutions",
+      "humand_partner": "Humand Partner",
+      "blog": "News & more"
+    },
+    "buttons": {
+      "lets_talk": "Let's Talk",
+      "change_to_spanish": "Change to Spanish",
+      "change_to_english": "Cambiar a Inglés"
+    },
+    "language": {
+      "current": "En",
+      "spanish": "Spanish",
+      "english": "English"
+    },
+    "aria": {
+      "logo": "BPM Consultores Logo",
+      "flag": "Flag"
+    }
+  },
+  "HomePage": {
+    "title": "Welcome to BPM Consultores",
+    "subtitle": "Software Experts",
+    "description": "Descriptive text in English."
+  },
+  "hero": {
+    "slides": {
+      "efficiency": "SOFTWARE THAT MAXIMIZES EFFICIENCY",
+      "people": "PROCESSES THAT EMPOWER YOUR PEOPLE",
+      "scale": "TECHNOLOGY AS AN ENGINE TO SCALE"
+    },
+    "title": {
+      "part1": "Transforming businesses",
+      "part2": "through",
+      "part3": "software solutions."
+    },
+    "subtitle": {
+      "part1": "We design technology that optimizes processes,",
+      "part2": "empowers your team and accelerates growth."
+    },
+    "cta": "Let's Talk",
+    "scroll": "DISCOVER MORE"
+  },
+  "soluciones": {
+    "header": {
+      "title": "Process Management Consulting Solutions",
+      "description1": "At BPM Consultores we help organizations transform their operations.",
+      "description2": "We maximize efficiency and prepare your structure for sustainable growth."
+    },
+    "cards": {
+      "diag": {
+        "title": "Process Diagnosis and Optimization",
+        "desc": "We identify gaps and redesign key processes to eliminate bottlenecks.",
+        "d1": "Process mapping and analysis",
+        "d2": "Identification of bottlenecks",
+        "d3": "Redesign of critical processes",
+        "d4": "Quick Wins"
+      },
+      "kpi": {
+        "title": "Management Models and KPIs",
+        "desc": "We design indicators and dashboards for data-driven decision making.",
+        "d1": "Strategic KPI design",
+        "d2": "Real-time Dashboards",
+        "d3": "Roles and responsibilities",
+        "d4": "Continuous improvement cycles"
+      },
+      "trans": {
+        "title": "Organizational Transformation",
+        "desc": "We align your structure and strategy to strengthen execution and change.",
+        "d1": "Organizational design",
+        "d2": "Change management",
+        "d3": "Cultural alignment",
+        "d4": "Leadership training"
+      },
+      "dig": {
+        "title": "Digitalization and Automation",
+        "desc": "We integrate digital tools and automated flows to accelerate traceability.",
+        "d1": "Flow automation",
+        "d2": "System integration",
+        "d3": "BPM implementation",
+        "d4": "HR digitalization"
+      }
+    },
+    "misc": {
+      "more": "Learn more",
+      "includes": "Includes:"
+    }
+  },
+  "valor": {
+    "header": {
+      "title1": "The Added Value of",
+      "title2": "BPM Consultores",
+      "desc": "We don't just deliver a diagnosis; we make sure the results last over time, creating solid foundations for your scalability."
+    },
+    "cards": {
+      "c1": {
+        "title": "Methodological excellence",
+        "desc": "We apply international reference frameworks in processes, talent, and organizational transformation, adapted to the reality of each company."
+      },
+      "c2": {
+        "title": "Expert guidance",
+        "desc": "Our team combines executive experience, strategic vision, and technical mastery to ensure successful implementations."
+      },
+      "c3": {
+        "title": "Applied innovation",
+        "desc": "We incorporate digital tools and solutions like HUMAND to boost talent management and data-driven decision making."
+      }
+    }
+  },
+  "videoDoble": {
+    "b1": {
+      "phase": "Initial Phase",
+      "t1": "We start every project with a",
+      "t2": "free diagnostic.",
+      "desc": "We deeply analyze your current processes, identify bottlenecks, and map out a roadmap at no initial cost to your company."
+    },
+    "b2": {
+      "phase": "Guarantee of Success",
+      "t1": "We provide a year of",
+      "t2": "included support.",
+      "desc": "We know transformation takes time. That's why we accompany your team for a full year to ensure organizational adoption."
+    },
+    "aria": {
+      "next": "Go to the next phase",
+      "prev": "Go to the previous phase"
+    }
+  },
+  "humand": {
+    "title": {
+      "t1": "Digital Transformation with",
+      "t2": "humand"
+    },
+    "desc": {
+      "p1": "As",
+      "p2": "Official Partners and Implementers",
+      "p3": ", we integrate the leading platform to connect your team and automate your organizational culture."
+    },
+    "cta_card": {
+      "p1": "We bring your optimized processes to the",
+      "br": "palm of your collaborators' hands.",
+      "p2": "Less bureaucracy, more communication.",
+      "btn": "Discover Humand"
+    },
+    "mockup": {
+      "img_alt": "Space for Humand image",
+      "c1_t1": "Mobile App",
+      "c1_t2": "100% Accessible",
+      "c2_t1": "Agile Processes",
+      "c2_t2": "Automated"
+    }
+  },
+  "contact": {
+    "title": {
+      "t1": "Tell us your",
+      "t2": "challenges,",
+      "t3": "we",
+      "t4": "map the route."
+    },
+    "desc": "Schedule a preliminary assessment with no commitment as a first step to transform your organization with our experts.",
+    "form": {
+      "success": {
+        "t1": "Form Submitted!",
+        "t2": "We have received your data correctly."
+      },
+      "labels": {
+        "name": "Full name *",
+        "email": "Corporate email *",
+        "company": "Company *",
+        "phone": "Phone/WhatsApp *",
+        "role": "Role / Position *",
+        "size": "Size *"
+      },
+      "placeholders": {
+        "name": "e.g. John Doe",
+        "company": "Your company",
+        "select": "Select"
+      },
+      "roles": {
+        "r1": "Director / Manager",
+        "r2": "HR Manager",
+        "r3": "Operations",
+        "r4": "Transformation / Processes",
+        "r5": "Other"
+      },
+      "sizes": {
+        "s1": "50 - 100 employees",
+        "s2": "100 - 200 employees",
+        "s3": "201 - 500 employees",
+        "s4": "500+ employees"
+      },
+      "error": "Please check the fields marked in red.",
+      "btn": "Start",
+      "sending": "Sending...",
+      "footer": "We will respond within a maximum of 24 hours."
+    }
+  },
+  "blogs": {
+    "title": "Insights on organizational management and talent",
+    "subtitle": {
+      "t1": "Explore Our",
+      "t2": "Blogs",
+      "t3": "here"
+    },
+    "articles": {
+      "a1": {
+        "cat": "Transformation",
+        "title": "How to lead organizational change without losing key talent.",
+        "date": "15 Mar 2026"
+      },
+      "a2": {
+        "cat": "Processes",
+        "title": "5 key performance indicators (KPIs) that reveal if your company is ready to scale.",
+        "date": "10 Mar 2026"
+      },
+      "a3": {
+        "cat": "Culture",
+        "title": "HR Digitalization: Less bureaucracy, more human connection.",
+        "date": "02 Mar 2026"
+      },
+      "a4": {
+        "cat": "Strategy",
+        "title": "Why process mapping is step zero before implementing software.",
+        "date": "28 Feb 2026"
+      }
+    },
+    "misc": {
+      "read_more": "READ MORE",
+      "all_articles": "View all articles"
+    }
+  }
+}

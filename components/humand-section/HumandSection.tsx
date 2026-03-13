@@ -5,8 +5,10 @@ import Link from 'next/link';
 // import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Smartphone, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function HumandSection() {
+  const t = useTranslations('humand');
   return (
     <section className="relative w-full bg-slate-50 overflow-hidden py-16 lg:py-24 border-t border-gray-200">
       
@@ -26,7 +28,7 @@ export default function HumandSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15] mb-6"
           >
-            Transformación Digital con <span className="text-[#002EC3] font-normal tracking-wide">humand</span>
+            {t('title.t1')} <span className="text-[#002EC3] font-normal tracking-wide">{t('title.t2')}</span>
           </motion.h2>
 
           <motion.p 
@@ -36,7 +38,7 @@ export default function HumandSection() {
             transition={{ delay: 0.1 }}
             className="text-base md:text-lg lg:text-xl text-gray-700 font-light leading-relaxed"
           >
-            Como <strong className="text-[#002EC3] font-semibold">Partners e Implementadores Oficiales</strong>, integramos la plataforma líder para conectar a tu equipo y automatizar tu cultura organizacional.
+            {t('desc.p1')} <strong className="text-[#002EC3] font-semibold">{t('desc.p2')}</strong>{t('desc.p3')}
           </motion.p>
         </div>
 
@@ -52,17 +54,17 @@ export default function HumandSection() {
             className="border-2 border-[#002EC3] rounded-[1.2rem] bg-white/50 backdrop-blur-sm px-6 sm:px-8 py-8 md:py-10 flex flex-col items-center text-center justify-center shadow-sm"
           >
             <p className="text-base sm:text-lg md:text-xl text-[#002EC3] font-light leading-relaxed mb-4">
-              Llevamos tus procesos optimizados a la <br className="hidden sm:block" />
-              palma de la mano de tus colaboradores.
+              {t('cta_card.p1')} <br className="hidden sm:block" />
+              {t('cta_card.br')}
             </p>
             
             <p className="text-lg sm:text-xl md:text-2xl text-[#002EC3] font-bold mb-6 whitespace-nowrap">
-              Menos burocracia, más comunicación.
+              {t('cta_card.p2')}
             </p>
 
             <Link href="/humand-partner">
               <Button className="bg-[#1D4ED8] hover:bg-blue-800 text-white font-semibold text-base md:text-lg px-8 py-5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105">
-                Descubrir Humand
+                {t('cta_card.btn')}
               </Button>
             </Link>
           </motion.div>
@@ -96,7 +98,7 @@ export default function HumandSection() {
 
                 <div className="absolute inset-0 bg-slate-100 flex items-center justify-center">
                   <span className="text-gray-400 text-[10px] font-medium text-center px-4">
-                    Espacio para la imagen de Humand
+                    {t('mockup.img_alt')}
                   </span>
                 </div>
 
@@ -113,8 +115,8 @@ export default function HumandSection() {
                   <Smartphone className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <p className="text-gray-900 text-[10px] font-bold">App Móvil</p>
-                  <p className="text-gray-500 text-[8px]">100% Accesible</p>
+                  <p className="text-gray-900 text-[10px] font-bold">{t('mockup.c1_t1')}</p>
+                  <p className="text-gray-500 text-[8px]">{t('mockup.c1_t2')}</p>
                 </div>
               </motion.div>
 
@@ -128,8 +130,8 @@ export default function HumandSection() {
                   <Zap className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <p className="text-gray-900 text-[10px] font-bold">Procesos Ágiles</p>
-                  <p className="text-[#002EC3] text-[8px] font-medium">Automatizados</p>
+                  <p className="text-gray-900 text-[10px] font-bold">{t('mockup.c2_t1')}</p>
+                  <p className="text-[#002EC3] text-[8px] font-medium">{t('mockup.c2_t2')}</p>
                 </div>
               </motion.div>
 

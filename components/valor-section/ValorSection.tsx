@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Award, Users, Lightbulb } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
+import { useTranslations } from 'next-intl';
+
 // --- DATOS DEL VALOR AÑADIDO ---
 const VALORES = [
   {
@@ -27,6 +29,31 @@ const VALORES = [
 ];
 
 export default function ValorSection() {
+  const t = useTranslations('valor');
+
+  const getValores = () => [
+    {
+      num: '01',
+      title: t('cards.c1.title'),
+      desc: t('cards.c1.desc'),
+      icon: Award,
+    },
+    {
+      num: '02',
+      title: t('cards.c2.title'),
+      desc: t('cards.c2.desc'),
+      icon: Users,
+    },
+    {
+      num: '03',
+      title: t('cards.c3.title'),
+      desc: t('cards.c3.desc'),
+      icon: Lightbulb,
+    }
+  ];
+  
+  const VALORES = getValores();
+
   return (
     <section className="w-full bg-gradient-to-r from-slate-950 via-slate-900 to-[#002EC3] flex flex-col relative border-t border-white/5">
       {/* 2. EL VALOR AÑADIDO (DISEÑO EDITORIAL OSCURO CORREGIDO) */}
@@ -46,8 +73,8 @@ export default function ValorSection() {
                 className="text-3xl md:text-4xl lg:text-[2.2rem] xl:text-[2.75rem] font-bold text-white tracking-tight leading-[1.2]"
               >
                 {/* Envolvemos en un span con whitespace-nowrap para impedir el salto */}
-                <span className="whitespace-nowrap">El Valor Añadido de</span> <br />
-                <span className="text-blue-300">BPM Consultores</span>
+                <span className="whitespace-nowrap">{t('header.title1')}</span> <br />
+                <span className="text-blue-300">{t('header.title2')}</span>
               </motion.h2>
             </div>
             
@@ -58,7 +85,7 @@ export default function ValorSection() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-lg text-blue-100/70 font-light leading-relaxed pr-4 xl:pr-8"
             >
-              No solo entregamos un diagnóstico; nos aseguramos de que los resultados perduren a través del tiempo, creando bases sólidas para tu escalabilidad.
+              {t('header.desc')}
             </motion.p>
           </div>
 

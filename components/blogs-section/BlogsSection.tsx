@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 // --- ANIMACIONES ---
 const containerVariants: Variants = {
@@ -37,38 +38,41 @@ const typewriterLetter: Variants = {
 };
 
 export default function BlogsSection() {
-  const blogsData = [
+  const t = useTranslations('blogs');
+
+  const getBlogsData = () => [
     {
       id: 1,
-      category: 'Transformación',
-      title: 'Cómo liderar el cambio organizacional sin perder el talento clave.',
-      date: '15 Mar 2026',
+      category: t('articles.a1.cat'),
+      title: t('articles.a1.title'),
+      date: t('articles.a1.date'),
       link: "/blog/articulo-1",
     },
     {
       id: 2,
-      category: 'Procesos',
-      title: '5 indicadores clave (KPIs) que revelan si tu empresa está lista para escalar.',
-      date: '10 Mar 2026',
+      category: t('articles.a2.cat'),
+      title: t('articles.a2.title'),
+      date: t('articles.a2.date'),
       link: "/blog/articulo-2",
     },
     {
       id: 3,
-      category: 'Cultura',
-      title: 'Digitalización de RRHH: Menos burocracia, más conexión humana.',
-      date: '02 Mar 2026',
+      category: t('articles.a3.cat'),
+      title: t('articles.a3.title'),
+      date: t('articles.a3.date'),
       link: "/blog/articulo-3",
     },
     {
       id: 4,
-      category: 'Estrategia',
-      title: 'Por qué el mapeo de procesos es el paso cero antes de implementar software.',
-      date: '28 Feb 2026',
+      category: t('articles.a4.cat'),
+      title: t('articles.a4.title'),
+      date: t('articles.a4.date'),
       link: "/blog/articulo-4",
     },
   ];
 
-  const titleText = "Insights sobre gestión organizacional y talento";
+  const blogsData = getBlogsData();
+  const titleText = t('title');
 
   return (
     <section className="w-full bg-slate-50 py-24 border-t border-gray-200 flex justify-center relative overflow-hidden">
@@ -104,7 +108,7 @@ export default function BlogsSection() {
             transition={{ delay: 1.2, duration: 0.6 }} // Aparece justo cuando termina el typewriter
             className="text-lg md:text-xl font-bold text-gray-900"
           >
-            Explora Nuestros <span className="text-[#002EC3]">Blogs</span> aquí
+            {t('subtitle.t1')} <span className="text-[#002EC3]">{t('subtitle.t2')}</span> {t('subtitle.t3')}
           </motion.p>
         </div>
 
@@ -137,7 +141,7 @@ export default function BlogsSection() {
                   
                   {/* Categoría superior */}
                   <span className="text-xs text-gray-500 font-medium mb-4">
-                    Blog
+                    {blog.category}
                   </span>
 
                   {/* Título */}
@@ -147,7 +151,7 @@ export default function BlogsSection() {
 
                   {/* Footer de la tarjeta: "LEER MAS" a la izquierda, flecha a la derecha */}
                   <div className="flex items-center justify-between text-[#002EC3] font-bold text-[12px] mt-auto transition-colors duration-300">
-                    <span className="tracking-wide uppercase">LEER MAS</span>
+                    <span className="tracking-wide uppercase">{t('misc.read_more')}</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </div>
                   
@@ -169,7 +173,7 @@ export default function BlogsSection() {
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
             <span className="absolute inset-0 w-full h-full transition-all duration-500 ease-out transform -translate-x-full bg-[#002EC3] group-hover:translate-x-0" />
             <span className="relative flex items-center gap-2">
-              Ver todos los artículos
+              {t('misc.all_articles')}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>

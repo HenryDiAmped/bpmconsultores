@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react'; 
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 const INTERVAL_MS = 3000;
 
 export default function HeroSection() {
-  const { t } = useTranslation('hero');
+  const t = useTranslations('hero');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const SLIDES = [

@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 // 1. Icono SVG Personalizado (Basado en tu imagen)
 const SharpArrow = ({ className }: { className?: string }) => (
@@ -11,6 +12,7 @@ const SharpArrow = ({ className }: { className?: string }) => (
 );
 
 export default function VideoDobleSection() {
+  const t = useTranslations('videoDoble');
   // 2. Referencias para el scroll suave (el bucle)
   const bloque1Ref = useRef<HTMLDivElement>(null);
   const bloque2Ref = useRef<HTMLDivElement>(null);
@@ -55,20 +57,20 @@ export default function VideoDobleSection() {
             className="w-full lg:w-1/2 flex flex-col items-start"
           >
             <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 block">
-              Fase Inicial
+              {t('b1.phase')}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-[1.2] mb-6">
-              Iniciamos cada proyecto con un <span className="text-[#002EC3] font-normal">diagnóstico gratuito.</span>
+              {t('b1.t1')} <span className="text-[#002EC3] font-normal">{t('b1.t2')}</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-lg">
-              Analizamos a profundidad tus procesos actuales, identificamos cuellos de botella y trazamos una hoja de ruta sin ningún costo inicial para tu empresa.
+              {t('b1.desc')}
             </p>
             
             {/* Botón Icono hacia Derecha -> Redirige al Bloque 2 */}
             <button 
               onClick={() => scrollToSection(bloque2Ref)}
               className="group flex items-center justify-center p-4 -ml-4 hover:bg-slate-50 rounded-full transition-colors cursor-pointer"
-              aria-label="Ir a la siguiente fase"
+              aria-label={t('aria.next')}
             >
               <SharpArrow className="w-8 h-8 text-[#002EC3] transform group-hover:translate-x-3 transition-transform duration-500 ease-out" />
             </button>
@@ -121,20 +123,20 @@ export default function VideoDobleSection() {
             className="w-full lg:w-1/2 flex flex-col items-start lg:pl-8"
           >
             <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 block">
-              Garantía de Éxito
+              {t('b2.phase')}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-[1.2] mb-6">
-              Brindamos un año de <span className="text-[#002EC3] font-normal">soporte incluido.</span>
+              {t('b2.t1')} <span className="text-[#002EC3] font-normal">{t('b2.t2')}</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-lg">
-              Sabemos que la transformación toma tiempo. Por eso, acompañamos a tu equipo durante todo un año para asegurar la adopción organizacional.
+              {t('b2.desc')}
             </p>
             
             {/* Botón Icono hacia Izquierda -> Redirige al Bloque 1 */}
             <button 
               onClick={() => scrollToSection(bloque1Ref)}
               className="group flex items-center justify-center p-4 -ml-4 hover:bg-slate-50 rounded-full transition-colors cursor-pointer"
-              aria-label="Ir a la fase anterior"
+              aria-label={t('aria.prev')}
             >
               <SharpArrow className="w-8 h-8 text-[#002EC3] transform rotate-180 group-hover:-translate-x-3 transition-transform duration-500 ease-out" />
             </button>

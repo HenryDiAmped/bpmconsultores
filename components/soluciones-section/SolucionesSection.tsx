@@ -14,6 +14,8 @@ import {
   ChevronRight
 } from 'lucide-react';
 
+import { useTranslations } from 'next-intl';
+
 // --- DATOS DE LAS TARJETAS ---
 const SOLUCIONES = [
   {
@@ -67,7 +69,61 @@ const SOLUCIONES = [
 ];
 
 export default function SolucionesSection() {
+  const t = useTranslations('soluciones');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const getSoluciones = () => [
+    {
+      id: 1,
+      title: t('cards.diag.title'),
+      desc: t('cards.diag.desc'),
+      icon: Search,
+      details: [
+        t('cards.diag.d1'),
+        t('cards.diag.d2'),
+        t('cards.diag.d3'),
+        t('cards.diag.d4')
+      ]
+    },
+    {
+      id: 2,
+      title: t('cards.kpi.title'),
+      desc: t('cards.kpi.desc'),
+      icon: BarChart3,
+      details: [
+        t('cards.kpi.d1'),
+        t('cards.kpi.d2'),
+        t('cards.kpi.d3'),
+        t('cards.kpi.d4')
+      ]
+    },
+    {
+      id: 3,
+      title: t('cards.trans.title'),
+      desc: t('cards.trans.desc'),
+      icon: RefreshCcw,
+      details: [
+        t('cards.trans.d1'),
+        t('cards.trans.d2'),
+        t('cards.trans.d3'),
+        t('cards.trans.d4')
+      ]
+    },
+    {
+      id: 4,
+      title: t('cards.dig.title'),
+      desc: t('cards.dig.desc'),
+      icon: Cpu,
+      details: [
+        t('cards.dig.d1'),
+        t('cards.dig.d2'),
+        t('cards.dig.d3'),
+        t('cards.dig.d4')
+      ]
+    }
+  ];
+  
+  const SOLUCIONES = getSoluciones();
 
   // Bloquear scroll al abrir el modal
   useEffect(() => {
@@ -93,7 +149,7 @@ export default function SolucionesSection() {
   };
 
   // Animaciones del Header
-  const tituloText = "Soluciones de consultoría en gestión por procesos";
+  const tituloText = t('header.title');
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.03 } }
@@ -133,8 +189,8 @@ export default function SolucionesSection() {
             // Centramos el texto con mx-auto y usamos max-w-3xl
             className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl mx-auto"
           >
-            En BPM Consultores ayudamos a las organizaciones a transformar su operatividad.<br className="hidden md:block" /> 
-            Maximizamos la eficiencia y preparamos su estructura para un crecimiento sostenible.
+            {t('header.description1')}<br className="hidden md:block" /> 
+            {t('header.description2')}
           </motion.p>
         </div>
 
@@ -169,7 +225,7 @@ export default function SolucionesSection() {
                 </p>
 
                 <div className="mt-auto pt-6 border-t border-white/20 group-hover:border-white/10 flex items-center justify-between text-white font-medium text-xs uppercase tracking-widest transition-colors duration-500 relative z-10">
-                  Conocer más
+                  {t('misc.more')}
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-500" />
                 </div>
               </motion.div>
@@ -257,7 +313,7 @@ export default function SolucionesSection() {
 
                           <div className="mb-auto">
                             <span className="text-[10px] font-bold text-[#002EC3] uppercase tracking-widest block mb-5">
-                              Incluye:
+                              {t('misc.includes')}
                             </span>
                             <div className="flex flex-col gap-4">
                               {solucion.details.map((item, i) => (

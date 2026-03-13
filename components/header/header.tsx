@@ -1,17 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useRouter, usePathname } from 'next/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 
 export default function Header() {
-  const { t, i18n } = useTranslation('header');
+  const t = useTranslations('header');
+  const locale = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter(); 
@@ -42,16 +42,8 @@ export default function Header() {
   ];
 
   const toggleLanguage = () => {
-    const currentLang = i18n?.language || 'es';
-    const nextLang = currentLang === 'es' ? 'en' : 'es';
-
-    if (i18n && typeof i18n.changeLanguage === 'function') {
-      i18n.changeLanguage(nextLang);
-    } 
-    else {
-      document.cookie = `NEXT_LOCALE=${nextLang}; path=/; max-age=31536000`;
-      window.location.reload(); 
-    }
+    const nextLang = locale === 'es' ? 'en' : 'es';
+    router.replace(pathname, {locale: nextLang});
   };
 
   const menuVariants: Variants = {
@@ -69,7 +61,7 @@ export default function Header() {
     open: { y: 0, opacity: 1 }
   };
 
-  const isEnglish = i18n?.language === 'en';
+  const isEnglish = locale === 'en';
   const currentFlag = isEnglish 
     ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg' 
     : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg';
