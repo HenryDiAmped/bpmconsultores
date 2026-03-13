@@ -4,6 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     remotePatterns: [
       {
@@ -12,14 +15,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      // Agregamos el nuevo dominio de Pinterest aquí:
       {
         protocol: 'https',
         hostname: 'i.pinimg.com',
         port: '',
         pathname: '/**',
       },
-      //SECCION BLOG
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
