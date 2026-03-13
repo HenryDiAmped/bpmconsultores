@@ -84,7 +84,7 @@ export default function VideoDobleSection() {
             <motion.div variants={accentVariants} className="absolute -top-6 -right-6 lg:-top-10 lg:-right-10 w-2/3 h-full bg-[#002EC3] z-0" />
             <div className="relative z-10 w-full aspect-[4/3] md:aspect-video lg:aspect-[4/3] shadow-2xl overflow-hidden">
               <video
-                src="https://cdn.midjourney.com/video/15b95eec-20b9-43f7-a0d8-47ba6963760d/0.mp4"
+                src="https://res.cloudinary.com/dmgufgga4/video/upload/v1773353856/SOLUCIONES_2_vapriy.webm"
                 autoPlay muted loop playsInline
                 className="w-full h-full object-cover scale-100 hover:scale-105 transition-transform duration-[2s] ease-out"
               />
@@ -106,7 +106,7 @@ export default function VideoDobleSection() {
             <motion.div variants={accentVariants} className="absolute -bottom-6 -left-6 lg:-bottom-10 lg:-left-10 w-2/3 h-full bg-[#002EC3] z-0" />
             <div className="relative z-10 w-full aspect-[4/3] md:aspect-video lg:aspect-[4/3] shadow-2xl overflow-hidden">
               <video
-                src="https://cdn.midjourney.com/video/efeefaab-c593-4e11-923b-27ebdfea5194/0.mp4"
+                src="https://res.cloudinary.com/dmgufgga4/video/upload/v1773353471/SOLUCIONES_2_nbgkib.webm"
                 autoPlay muted loop playsInline
                 className="w-full h-full object-cover scale-100 hover:scale-105 transition-transform duration-[2s] ease-out"
               />

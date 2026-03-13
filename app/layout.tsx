@@ -5,6 +5,8 @@ import ModernFooter from "@/components/footer/ModernFooter";
 import { inter } from "./fonts";
 import { CookieSystem } from "@/components/cookies/CookieSystem";
 import { CookieProvider } from "@/lib/cookies/CookieContext";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
+
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -30,6 +32,7 @@ export default function RootLayout({
 
           {/* Sistema de consentimiento de cookies */}
           <CookieSystem />
+          <WhatsAppButton />
         </CookieProvider>
       </body>
     </html>

@@ -7,32 +7,32 @@ const CATEGORIAS_COLUMNA_1 = [
   {
     titulo: 'Cultura Empresarial',
     items: [
-      { nombre: 'Programa de referidos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/1 PROGRAMA DE REFERIDOS.webp' },
-      { nombre: 'People Experience', icon: '/ICONOS/4 CULTURA EMPRESARIAL/2 PEOPLE EXPERIENCE.webp' },
-      { nombre: 'Cumpleaños y Aniversarios', icon: '/ICONOS/4 CULTURA EMPRESARIAL/3 CUMPLEAÑOS Y ANIVERSARIOS.webp' },
-      { nombre: 'Marketplace', icon: '/ICONOS/4 CULTURA EMPRESARIAL/4 MARKETPLACE.webp' },
-      { nombre: 'Eventos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/5 EVENTOS.webp' },
-      { nombre: 'Reconocimientos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/6 RECONOCIMIENTOS.webp' },
+      { nombre: 'Programa de referidos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/1-PROGRAMA-DE-REFERIDOS.webp' },
+      { nombre: 'People Experience', icon: '/ICONOS/4 CULTURA EMPRESARIAL/2-PEOPLE-EXPERIENCE.webp' },
+      { nombre: 'Cumpleaños y Aniversarios', icon: '/ICONOS/4 CULTURA EMPRESARIAL/3-CUMPLEAÑOS-Y-ANIVERSARIOS.webp' },
+      { nombre: 'Marketplace', icon: '/ICONOS/4 CULTURA EMPRESARIAL/4-MARKETPLACE.webp' },
+      { nombre: 'Eventos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/5-EVENTOS.webp' },
+      { nombre: 'Reconocimientos', icon: '/ICONOS/4 CULTURA EMPRESARIAL/6-RECONOCIMIENTOS.webp' },
     ]
   },
   {
     titulo: 'Comunicación Interna',
     items: [
-      { nombre: 'Chat', icon: '/ICONOS/2 COMUNICACION INTERNA/1 CHAT.webp' },
-      { nombre: 'Red Social Interna', icon: '/ICONOS/2 COMUNICACION INTERNA/2 RED SOCIAL INTERNA.webp' },
-      { nombre: 'Live Streaming', icon: '/ICONOS/2 COMUNICACION INTERNA/3 LIVE STREAMING.webp' },
-      { nombre: 'Noticias', icon: '/ICONOS/2 COMUNICACION INTERNA/4 NOTICIAS.webp' },
-      { nombre: 'Organigrama', icon: '/ICONOS/2 COMUNICACION INTERNA/5 ORGANIGRAMA.webp' },
-      { nombre: 'Biblioteca de Recursos', icon: '/ICONOS/2 COMUNICACION INTERNA/6 BIBLIOTECA DE RECURSOS.webp' },
-      { nombre: 'Beneficios', icon: '/ICONOS/2 COMUNICACION INTERNA/7 BENEFICIOS.webp' },
+      { nombre: 'Chat', icon: '/ICONOS/2 COMUNICACION INTERNA/1-CHAT.webp' },
+      { nombre: 'Red Social Interna', icon: '/ICONOS/2 COMUNICACION INTERNA/2-RED-SOCIAL-INTERNA.webp' },
+      { nombre: 'Live Streaming', icon: '/ICONOS/2 COMUNICACION INTERNA/3-LIVE-STREAMING.webp' },
+      { nombre: 'Noticias', icon: '/ICONOS/2 COMUNICACION INTERNA/4-NOTICIAS.webp' },
+      { nombre: 'Organigrama', icon: '/ICONOS/2 COMUNICACION INTERNA/5-ORGANIGRAMA.webp' },
+      { nombre: 'Biblioteca de Recursos', icon: '/ICONOS/2 COMUNICACION INTERNA/6-BIBLIOTECA-DE-RECURSOS.webp' },
+      { nombre: 'Beneficios', icon: '/ICONOS/2 COMUNICACION INTERNA/7-BENEFICIOS.webp' },
     ]
   },
   {
     titulo: 'Operaciones',
     items: [
-      { nombre: 'Formularios, trámites y aprobaciones', icon: '/ICONOS/5 OPERACIONES/2 FORMULARIOS, TRÁMITES Y OPERACIONES.webp' },
-      { nombre: 'Gestión de Servicios', icon: '/ICONOS/5 OPERACIONES/1 GESTIÓN DE SERVICIOS.webp' },
-      { nombre: 'Control de Asistencia', icon: '/ICONOS/5 OPERACIONES/3 CONTROL DE ASISTENCIA.webp' },
+      { nombre: 'Formularios, trámites y aprobaciones', icon: '/ICONOS/5 OPERACIONES/2-FORMULARIOS-TRÁMITES-Y-OPERACIONES.webp' },
+      { nombre: 'Gestión de Servicios', icon: '/ICONOS/5 OPERACIONES/1-GESTIÓN-DE-SERVICIOS.webp' },
+      { nombre: 'Control de Asistencia', icon: '/ICONOS/5 OPERACIONES/3-CONTROL-DE-ASISTENCIA.webp' },
     ]
   }
 ];
@@ -41,25 +41,25 @@ const CATEGORIAS_COLUMNA_2 = [
   {
     titulo: 'Desarrollo de Talento',
     items: [
-      { nombre: 'Encuestas', icon: '/ICONOS/1 DESARROLLO DE TALENTO/1 ENCUESTAS.webp' },
-      { nombre: 'Evaluación de desempeño', icon: '/ICONOS/1 DESARROLLO DE TALENTO/2 EVALUACION DE DESEMPEÑO.webp' },
-      { nombre: 'Objetivos y Resultados Clave', icon: '/ICONOS/1 DESARROLLO DE TALENTO/3 OBJETIVOS Y RESULTADOS CLAVES.webp' },
-      { nombre: 'Aprendizaje', icon: '/ICONOS/1 DESARROLLO DE TALENTO/4 APRENDIZAJE.webp' },
-      { nombre: 'Plan de carrera', icon: '/ICONOS/1 DESARROLLO DE TALENTO/5 PLAN DE CARRERA.webp' },
-      { nombre: 'Búsquedas internas', icon: '/ICONOS/1 DESARROLLO DE TALENTO/6 BUSQUEDAS INTERNAS.webp' },
+      { nombre: 'Encuestas', icon: '/ICONOS/1 DESARROLLO DE TALENTO/1-ENCUESTAS.webp' },
+      { nombre: 'Evaluación de desempeño', icon: '/ICONOS/1 DESARROLLO DE TALENTO/2-EVALUACION-DE-DESEMPEÑO.webp' },
+      { nombre: 'Objetivos y Resultados Clave', icon: '/ICONOS/1 DESARROLLO DE TALENTO/3-OBJETIVOS-Y-RESULTADOS-CLAVES.webp' },
+      { nombre: 'Aprendizaje', icon: '/ICONOS/1 DESARROLLO DE TALENTO/4-APRENDIZAJE.webp' },
+      { nombre: 'Plan de carrera', icon: '/ICONOS/1 DESARROLLO DE TALENTO/5-PLAN-DE-CARRERA.webp' },
+      { nombre: 'Búsquedas internas', icon: '/ICONOS/1 DESARROLLO DE TALENTO/6-BUSQUEDAS-INTERNAS.webp' },
     ]
   },
   {
     titulo: 'Gestión de RR. HH.',
     items: [
-      { nombre: 'Documentos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/1 DOCUMENTOS.webp' },
-      { nombre: 'Onboarding', icon: '/ICONOS/3 GESTIÓN DE RR. HH/2 ONBOARDING.webp' },
-      { nombre: 'Vacaciones y Permisos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/3 VACACIONES Y PERMISOS.webp' },
-      { nombre: 'Expediente digital del colaborador', icon: '/ICONOS/3 GESTIÓN DE RR. HH/4 EXPEDIENTE DIGITAL DEL COLABORADOR.webp' },
-      { nombre: 'Archivos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/5 ARCHIVOS.webp' },
-      { nombre: 'Reserva de espacios', icon: '/ICONOS/3 GESTIÓN DE RR. HH/6 RESERVA DE ESPACIOS.webp' },
-      { nombre: 'Accesos Rápidos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/7 ACCESOS RAPIDOS.webp' },
-      { nombre: 'Políticas', icon: '/ICONOS/3 GESTIÓN DE RR. HH/8 POLÍTICAS.webp' },
+      { nombre: 'Documentos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/1-DOCUMENTOS.webp' },
+      { nombre: 'Onboarding', icon: '/ICONOS/3 GESTIÓN DE RR. HH/2-ONBOARDING.webp' },
+      { nombre: 'Vacaciones y Permisos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/3-VACACIONES-Y-PERMISOS.webp' },
+      { nombre: 'Expediente digital del colaborador', icon: '/ICONOS/3 GESTIÓN DE RR. HH/4-EXPEDIENTE-DIGITAL-DEL-COLABORADOR.webp' }, // Nota: El nombre en la imagen se corta pero sigue este patrón
+      { nombre: 'Archivos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/5-ARCHIVOS.webp' },
+      { nombre: 'Reserva de espacios', icon: '/ICONOS/3 GESTIÓN DE RR. HH/6-RESERVA-DE-ESPACIOS.webp' },
+      { nombre: 'Accesos Rápidos', icon: '/ICONOS/3 GESTIÓN DE RR. HH/7-ACCESOS-RAPIDOS.webp' },
+      { nombre: 'Políticas', icon: '/ICONOS/3 GESTIÓN DE RR. HH/8-POLÍTICAS.webp' },
     ]
   }
 ];

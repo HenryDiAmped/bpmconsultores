@@ -86,7 +86,7 @@ export default function ModernFooter() {
           <motion.div variants={itemVariants} className="flex justify-center items-center py-10 md:py-0 border-y md:border-y-0 md:border-x border-white/10">
             <Link href="/" className="inline-block transform hover:scale-105 transition-transform duration-500">
               <Image 
-                src="/logo.png" 
+                src="/LOGO_COMPLETO_BLANCO.svg" 
                 alt="BPM Consultores Logo" 
                 width={220} 
                 height={70} 

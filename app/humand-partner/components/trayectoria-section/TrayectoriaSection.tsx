@@ -60,7 +60,7 @@ export function TrayectoriaSection() {
             {/* Nota: Asegúrate de colocar la imagen correcta en la ruta o cambiar el src */}
             <div className="w-full aspect-[4/3] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-md">
               <img 
-                src="/equipo-consultores.jpg" 
+                src="https://res.cloudinary.com/dmgufgga4/image/upload/v1773367920/trayectoria_BPM_consultores_ovc945.avif" 
                 alt="Equipo de consultores trabajando" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />

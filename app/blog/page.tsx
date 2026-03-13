@@ -1,153 +1,242 @@
 'use client';
 
-import Link from "next/link";
-import { Search, ArrowRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
-import { CATEGORIES, BLOG_POSTS } from "@/lib/blogData";
-import Image from "next/image";
+import { useState, useEffect } from 'react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowRight, Calendar, Clock } from 'lucide-react';
 
-// Justo antes del return de tu BlogPage, agrega esta constante:
+// --- DATOS EXTRAÍDOS DEL DOCUMENTO DE WORD ---
+const BLOGS = [
+  {
+    slug: 'software-rrhh-motor-estrategico',
+    category: 'Tecnología',
+    title: 'Software de RR.HH.: El motor estratégico para la gestión del desempeño de alto impacto',
+    excerpt: 'Descubre cómo los HRMS transforman la gestión del talento en una ventaja competitiva medible, liberando al equipo de RR.HH. de la operatividad diaria para enfocarse en la estrategia y las personas.',
+    date: '15 Mar 2026',
+    readTime: '5 min',
+    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif',
+    featured: true, 
+  },
+  {
+    slug: 'reskilling-urgencia-gerencia',
+    category: 'IA',
+    title: 'Reskilling: Por qué la recapacitación es la urgencia número uno de la gerencia moderna',
+    excerpt: 'El aprendizaje habilitado por IA resuelve el desajuste de habilidades haciendo que la capacitación sea flexible, adaptativa e impactante. Convierte esta amenaza en un catalizador.',
+    date: '10 Mar 2026',
+    readTime: '4 min',
+    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp',
+    featured: false,
+  },
+  {
+    slug: 'comunicacion-interna-eficiencia',
+    category: 'Gestión',
+    title: 'Comunicación Interna: El puente entre el caos operativo y la eficiencia estratégica',
+    excerpt: 'En organizaciones en crecimiento, depender de correos o WhatsApp es un riesgo. Descubre cómo centralizar la voz de la empresa aumenta el ROI y la retención.',
+    date: '02 Mar 2026',
+    readTime: '6 min',
+    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif',
+    featured: false,
+  },
+  {
+    slug: 'capital-humano-vs-recursos-humanos',
+    category: 'Consultoría',
+    title: '¿Capital Humano o Recursos Humanos? Por qué la diferencia define el éxito de tu empresa',
+    excerpt: 'No es solo semántica. Entender esta distinción es el primer paso para transformar una nómina operativa en una verdadera ventaja competitiva y estratégica.',
+    date: '28 Feb 2026',
+    readTime: '5 min',
+    image: 'https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif',
+    featured: false,
+  }
+];
 
+const INTERVAL_MS = 4000;
+
+// --- ANIMACIONES ---
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+  },
+};
 
 export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState("Todos");
-  const filteredPosts = activeCategory === "Todos"
-    ? BLOG_POSTS
-    : BLOG_POSTS.filter(post => post.category === activeCategory);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Efecto para rotar las imágenes del Hero automáticamente
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % BLOGS.length);
+    }, INTERVAL_MS);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="w-full bg-[#F7F7F7] min-h-screen pb-24 font-sans">
-
-      {/* ========================================= */}
-      {/* 1. HERO DEL BLOG (Mejorado con Gradientes)*/}
-      {/* ========================================= */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-8">
-        <div className="bg-gradient-to-br from-[#002EC3] to-[#001763] rounded-[2rem] w-full py-24 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-500/20">
-
-          {/* Elementos decorativos de fondo (Más suaves y orgánicos) */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute -top-[50%] -left-[10%] w-[70%] h-[150%] bg-blue-400/20 rotate-12 blur-[100px] rounded-full mix-blend-overlay"></div>
-            <div className="absolute top-[20%] -right-[10%] w-[50%] h-[100%] bg-white/10 -rotate-12 blur-[80px] rounded-full mix-blend-overlay"></div>
-          </div>
-
-          <Badge variant="outline" className="text-blue-100 border-blue-300/30 mb-6 px-4 py-1.5 backdrop-blur-sm bg-white/5 relative z-10">
-            Nuestro espacio de aprendizaje
-          </Badge>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 relative z-10 tracking-tight leading-tight">
-            Explora Nuestros <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Blogs</span>
-          </h1>
-          <p className="text-blue-100/90 text-lg md:text-xl max-w-2xl relative z-10 font-light">
-            Ideas, tendencias y estrategias para transformar tu negocio con tecnología e inteligencia artificial.
-          </p>
-        </div>
-      </div>
-
-      {/* ========================================= */}
-      {/* 2. FILTROS Y BUSCADOR (Más limpios)       */}
-      {/* ========================================= */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 mt-12 mb-12">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
-
-          {/* Categorías (Pills con mejor hover) */}
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 text-sm rounded-xl transition-all duration-300 font-medium whitespace-nowrap ${activeCategory === cat
-                  ? "bg-[#002EC3] text-white shadow-md shadow-blue-600/20 scale-100"
-                  : "bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900 scale-95 hover:scale-100"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Buscador (Más corporativo) */}
-          <div className="relative w-full md:w-80 shrink-0">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-[#002EC3] transition-colors" />
-            <Input
-              type="text"
-              placeholder="Buscar artículos..."
-              className="pl-11 bg-gray-50/50 border-gray-200 rounded-xl h-12 focus-visible:ring-1 focus-visible:ring-[#002EC3] focus-visible:border-[#002EC3] focus-visible:bg-white transition-all text-base"
+    // 1. QUITAMOS el pt-20 de aquí para que todo suba hasta el borde de la pantalla
+    <main className="min-h-screen bg-slate-50"> 
+      
+      {/* --- HERO SECTION DEL BLOG (ROTATIVO) --- */}
+      {/* 2. AGREGAMOS pt-32 lg:pt-48 para bajar el contenido y que no choque con el Header */}
+      <section className="w-full pt-32 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden bg-black">
+        
+        {/* Fondo de Imágenes Rotativas */}
+        <div className="absolute inset-0 z-0">
+          {BLOGS.map((blog, index) => (
+            <img
+              key={blog.slug}
+              src={blog.image}
+              alt={blog.title}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
             />
-          </div>
+          ))}
+          {/* Overlay oscuro y malla para garantizar legibilidad del texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/80 to-[#002EC3]/40 z-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] z-20 pointer-events-none" />
         </div>
-      </div>
+        
+        {/* Contenido del Hero */}
+        <div className="mx-auto px-6 lg:px-8 max-w-[1320px] relative z-30 flex flex-col items-center text-center pb-8 lg:pb-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key="hero-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-white font-bold tracking-[0.2em] uppercase text-xs mb-6 bg-[#002EC3]/80 px-4 py-2 rounded-full inline-block backdrop-blur-sm border border-white/20">
+                Nuestro Blog
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto drop-shadow-lg">
+                Insights y Estrategias para la <br className="hidden md:block"/>
+                <span className="text-blue-300 font-light italic">Transformación Organizacional</span>
+              </h1>
+              <p className="text-lg md:text-xl text-blue-50 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                Explora artículos sobre gestión de talento, optimización de procesos y el impacto de la tecnología en RR.HH.
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-      {/* ========================================= */}
-      {/* 3. GRILLA DE TARJETAS (Efectos Premium)   */}
-      {/* ========================================= */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-
-          {filteredPosts.map((post) => (
-            // Agregamos la clase "group" aquí. Es vital para las animaciones interiores.
-            <Card key={post.id} className="group overflow-hidden flex flex-col h-full border-gray-100 bg-white rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer">
-
-              {/* Imagen con Zoom Efecto */}
-              <div className="relative w-full h-[240px] overflow-hidden bg-gray-100">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                {/* Overlay sutil que aparece en hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
-
-                {/* Badge flotante sobre la imagen */}
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-white/90 text-[#002EC3] hover:bg-white border-none rounded-lg px-3 py-1 text-xs font-bold shadow-sm backdrop-blur-sm">
-                    {post.category}
-                  </Badge>
-                </div>
-              </div>
-
-              {/* Contenido de la Tarjeta */}
-              <CardContent className="p-8 flex flex-col flex-grow">
-
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-sm text-gray-400 font-medium">{post.date}</span>
-                  <span className="text-sm text-gray-400 font-medium flex items-center before:content-['•'] before:mx-2 before:text-gray-300">
-                    {post.readTime}
-                  </span>
-                </div>
-
-                {/* El título cambia de color al hacer hover en la tarjeta */}
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 leading-snug line-clamp-2 group-hover:text-[#002EC3] transition-colors duration-300">
-                  {post.title}
-                </h3>
-
-                <p className="text-gray-500 text-base mb-8 flex-grow line-clamp-3 leading-relaxed">
-                  {post.excerpt}
-                </p>
-
-                {/* Link al final */}
-                <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="text-[#002EC3] font-bold text-sm flex items-center gap-2 transition-all"
-                  >
-                    Leer artículo
-                  </Link>
-                  {/* Flecha que se desplaza en hover */}
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-[#002EC3] transition-colors duration-300">
-                    <ArrowRight className="w-4 h-4 text-[#002EC3] group-hover:text-white transition-transform duration-300 group-hover:translate-x-0.5" />
+        {/* Indicadores de progreso (Referencia a HeroSection principal) */}
+        <div className="absolute bottom-0 left-0 right-0 w-full z-40 pb-6">
+          <div className="max-w-[1320px] mx-auto px-6 lg:px-8 flex items-end justify-center gap-3 sm:gap-6 w-full">
+            {BLOGS.map((blog, index) => {
+              const isActive = index === currentIndex;
+              return (
+                <div 
+                  key={index} 
+                  className="flex-1 max-w-[200px] cursor-pointer group flex flex-col justify-end"
+                  onClick={() => setCurrentIndex(index)}
+                >
+                  <p className={`text-[10px] sm:text-xs font-semibold tracking-wide transition-colors duration-300 mb-2 truncate text-left ${
+                    isActive ? 'text-white' : 'text-white/50 group-hover:text-white/80'
+                  }`}>
+                    {blog.category}
+                  </p>
+                  
+                  <div className="h-[2px] w-full bg-white/20 relative overflow-hidden rounded-full">
+                    {isActive && (
+                      <motion.div
+                        key={currentIndex} 
+                        className="absolute top-0 left-0 h-full bg-[#002EC3]"
+                        initial={{ width: '0%' }}
+                        animate={{ width: '100%' }}
+                        transition={{ duration: INTERVAL_MS / 1000, ease: 'linear' }}
+                      />
+                    )}
                   </div>
                 </div>
-
-              </CardContent>
-            </Card>
-          ))}
-
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
 
-    </div>
+      {/* --- GRID DE ARTÍCULOS --- */}
+      <section className="py-20 lg:py-24">
+        <div className="mx-auto px-6 lg:px-8 max-w-[1320px]">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {BLOGS.map((blog) => (
+              <Link 
+                href={`/blog/${blog.slug}`} 
+                key={blog.slug}
+                className={`group flex flex-col h-full ${blog.featured ? 'md:col-span-2 lg:col-span-2' : 'col-span-1'}`}
+              >
+                <motion.article
+                  variants={itemVariants}
+                  className={`flex h-full bg-white border border-gray-200 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,46,195,0.15)] hover:border-[#002EC3]/30 hover:-translate-y-2 relative ${blog.featured ? 'flex-col md:flex-row' : 'flex-col'}`}
+                >
+                  {/* Línea decorativa superior en hover */}
+                  <div className={`absolute left-0 w-full h-1 bg-[#002EC3] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20 top-0 origin-left`} />
+
+                  {/* Imagen */}
+                  <div className={`relative overflow-hidden bg-[#B0BCE1] ${blog.featured ? 'w-full md:w-1/2 aspect-video md:aspect-auto' : 'w-full aspect-[4/3]'}`}>
+                    <img 
+                      src={blog.image} 
+                      alt={blog.title} 
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Contenido */}
+                  <div className={`p-6 md:p-8 flex flex-col flex-grow bg-white z-10 ${blog.featured ? 'w-full md:w-1/2 justify-center' : 'w-full'}`}>
+                    
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#002EC3] bg-blue-50 px-3 py-1 rounded-sm">
+                        {blog.category}
+                      </span>
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {blog.date}
+                      </div>
+                    </div>
+
+                    <h3 className={`font-bold text-gray-900 leading-[1.3] mb-4 group-hover:text-[#002EC3] transition-colors duration-300 ${blog.featured ? 'text-2xl md:text-3xl' : 'text-xl line-clamp-3'}`}>
+                      {blog.title}
+                    </h3>
+
+                    <p className={`text-gray-600 font-light leading-relaxed mb-8 flex-grow ${blog.featured ? 'text-base md:text-lg line-clamp-4' : 'text-sm line-clamp-3'}`}>
+                      {blog.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between mt-auto border-t border-gray-100 pt-5">
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                        <Clock className="w-3.5 h-3.5" />
+                        {blog.readTime} de lectura
+                      </div>
+                      <div className="flex items-center text-[#002EC3] font-bold text-[12px] transition-colors duration-300">
+                        <span className="tracking-wide uppercase mr-2">LEER MÁS</span>
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </div>
+                    </div>
+                    
+                  </div>
+                </motion.article>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+    </main>
   );
 }

@@ -34,7 +34,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 1. AÑADIMOS EL "/" ANTES DEL "#" PARA FORZAR LA RUTA AL INICIO
   const navigation = [
     { name: 'Soluciones', href: '/#soluciones' },
     { name: 'Humand Partner', href: '/#humand-partner' },
@@ -91,48 +90,54 @@ export default function Header() {
     >
       <nav className="mx-auto px-6 lg:px-8 max-w-[1320px] flex items-center justify-between relative">
         
-        <motion.div whileHover={{ scale: 1.05 }} className="flex z-20">
-          <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-            <Image
-              src="/logo.png"
-              alt="Logo BPM Consultores"
-              width={140}
-              height={45}
-              className={cn(
-                "h-9 w-auto transition-all duration-500",
-                !isSolid && "brightness-0 invert"
-              )}
-              priority
-            />
-          </Link>
-        </motion.div>
-
-      <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
+      <motion.div whileHover={{ scale: 1.05 }} className="flex z-20">
+                <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
+                  {/* Usamos un div como máscara para aplicar el color HEX exacto */}
+                  <div 
                     className={cn(
-                      "group relative px-5 py-3 text-[15px] font-semibold leading-6 transition-all rounded-lg",
-                      /* CAMBIO AQUÍ: Usamos isSolid para que el texto sea oscuro */
-                      isSolid ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                      "h-9 w-[140px] transition-colors duration-500",
+                      isSolid ? "bg-[#002EC3]" : "bg-white"
                     )}
+                    style={{
+                      WebkitMaskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
+                      WebkitMaskSize: 'contain',
+                      WebkitMaskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'left center',
+                      maskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
+                      maskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      maskPosition: 'left center',
+                    }}
                   >
-                    <span className={cn(
-                      "relative z-10 transition-colors",
-                      /* CAMBIO AQUÍ: El color al pasar el mouse */
-                      isSolid ? "group-hover:text-[#002EC3]" : "group-hover:text-blue-200"
-                    )}>
-                      {item.name}
-                    </span>
-                    <span className={cn(
-                      "absolute bottom-2 left-5 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-40px)]",
-                      /* CAMBIO AQUÍ: El color de la línea inferior */
-                      isSolid ? "bg-[#002EC3]" : "bg-blue-400"
-                    )} />
-                  </Link>
-                ))}
-              </div>
+                    {/* Texto oculto para SEO y accesibilidad (ya que quitamos el atributo alt) */}
+                    <span className="sr-only">Logo BPM Consultores</span>
+                  </div>
+                </Link>
+      </motion.div>
+
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "group relative px-5 py-3 text-[15px] font-semibold leading-6 transition-all rounded-lg",
+                isSolid ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
+              )}
+            >
+              <span className={cn(
+                "relative z-10 transition-colors",
+                isSolid ? "group-hover:text-[#002EC3]" : "group-hover:text-blue-200"
+              )}>
+                {item.name}
+              </span>
+              <span className={cn(
+                "absolute bottom-2 left-5 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-40px)]",
+                isSolid ? "bg-[#002EC3]" : "bg-blue-400"
+              )} />
+            </Link>
+          ))}
+        </div>
 
         <div className="hidden lg:flex items-center gap-x-4 z-10">
           <Button
@@ -141,7 +146,8 @@ export default function Header() {
             onClick={toggleLanguage}
             className={cn(
               "flex items-center gap-2 font-bold transition-colors border border-transparent",
-              scrolled 
+              // 3. SOLUCIÓN SINCRONIZACIÓN: Cambiamos 'scrolled' por 'isSolid'
+              isSolid 
                 ? "text-gray-800 hover:bg-gray-100 hover:border-gray-200" 
                 : "text-white hover:bg-white/10 hover:border-white/20"
             )}
@@ -156,12 +162,12 @@ export default function Header() {
             {currentLangText}
           </Button>
 
-          {/* 2. AÑADIMOS EL "/" AL BOTÓN DE CONTACTO */}
           <Link href="/#contacto">
             <Button 
               className={cn(
                 "font-semibold px-6 py-5 rounded-none transition-all border",
-                scrolled 
+                // 3. SOLUCIÓN SINCRONIZACIÓN: Cambiamos 'scrolled' por 'isSolid'
+                isSolid 
                   ? "bg-[#002EC3] text-white border-[#002EC3] hover:bg-[#002EC3]/90" 
                   : "bg-[#002EC3] text-white border-[#002EC3] hover:border-white hover:bg-white hover:text-[#002EC3]"
               )}
@@ -179,7 +185,8 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(true)}
               className={cn(
                 "rounded-full transition-all",
-                scrolled ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                // 4. SOLUCIÓN MENÚ MÓVIL: Cambiamos 'scrolled' por 'isSolid' para que se vea igual que el logo
+                isSolid ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
               )}
             >
               <Menu size={32} />
@@ -225,7 +232,6 @@ export default function Header() {
                 variants={itemVariants}
                 className="mt-8 pt-6 border-t border-white/20 flex flex-col gap-6"
               >
-                {/* 3. AÑADIMOS EL "/" AL BOTÓN DE CONTACTO MÓVIL */}
                 <Link href="/#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
                   <Button className="w-full bg-[#002EC3] text-white hover:bg-[#002EC3]/80 font-bold py-6 text-lg rounded-none transition-all shadow-md">
                     Conversemos
