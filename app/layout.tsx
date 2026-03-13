@@ -7,7 +7,6 @@ import { CookieSystem } from "@/components/cookies/CookieSystem";
 import { CookieProvider } from "@/lib/cookies/CookieContext";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
 
-
 export const metadata: Metadata = {
   title: "BPM Consultores",
   description: "Portal oficial de BPM Consultores",
