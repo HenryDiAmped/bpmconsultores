@@ -82,7 +82,7 @@
       "dig": {
         "title": "Digitalización y Automatización",
         "desc": "Integramos herramientas digitales y flujos automáticos para acelerar tu trazabilidad.",
-        "d1": "Automatización de flujos",
+        "d1": "Automatización del flujo de su empresa",
         "d2": "Integración de sistemas",
         "d3": "Implementación BPM",
         "d4": "Digitalización de RRHH"
@@ -139,7 +139,7 @@
     },
     "desc": {
       "p1": "Como",
-      "p2": "Partners e Implementadores Oficiales",
+      "p2": "Partners e Implementadores",
       "p3": ", integramos la plataforma líder para conectar a tu equipo y automatizar tu cultura organizacional."
     },
     "cta_card": {

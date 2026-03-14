@@ -13,6 +13,7 @@ import Header from "@/components/header/header";
 import ModernFooter from "@/components/footer/ModernFooter";
 import { CookieProvider } from "@/lib/cookies/CookieContext";
 import { CookieSystem } from "@/components/cookies/CookieSystem";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -48,6 +49,7 @@ export default async function RootLayout({
             <ModernFooter />
             <CookieSystem />
           </CookieProvider>
+          <WhatsAppButton/>
         </NextIntlClientProvider>
       </body>
     </html>
