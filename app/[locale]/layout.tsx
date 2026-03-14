@@ -11,6 +11,7 @@ import { inter } from "../fonts";
 // Importamos tus componentes de UI
 import Header from "@/components/header/header";
 import ModernFooter from "@/components/footer/ModernFooter";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -44,8 +45,9 @@ export default async function RootLayout({
           </main>
 
           <ModernFooter />
-
+          <WhatsAppButton />
         </NextIntlClientProvider>
+        
       </body>
     </html>
   );

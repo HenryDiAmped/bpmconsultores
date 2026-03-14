@@ -6,28 +6,6 @@ import { Separator } from '@/components/ui/separator';
 
 import { useTranslations } from 'next-intl';
 
-// --- DATOS DEL VALOR AÑADIDO ---
-const VALORES = [
-  {
-    num: '01',
-    title: 'Excelencia metodológica',
-    desc: 'Aplicamos marcos de referencia internacionales en procesos, talento y transformación organizacional, adaptados a la realidad de cada empresa.',
-    icon: Award,
-  },
-  {
-    num: '02',
-    title: 'Acompañamiento experto',
-    desc: 'Nuestro equipo combina experiencia ejecutiva, visión estratégica y dominio técnico para asegurar implementaciones exitosas.',
-    icon: Users,
-  },
-  {
-    num: '03',
-    title: 'Innovación aplicada',
-    desc: 'Incorporamos herramientas digitales y soluciones como HUMAND para potenciar la gestión del talento y la toma de decisiones basada en datos.',
-    icon: Lightbulb,
-  }
-];
-
 export default function ValorSection() {
   const t = useTranslations('valor');
 

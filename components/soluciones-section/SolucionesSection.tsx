@@ -60,7 +60,7 @@ const SOLUCIONES = [
     desc: 'Integramos herramientas digitales y flujos automáticos para acelerar tu trazabilidad.',
     icon: Cpu,
     details: [
-      'Automatización de flujos',
+      'Automatización del Flujo de su Empresa.',
       'Integración de sistemas',
       'Implementación BPM',
       'Digitalización de RRHH'
