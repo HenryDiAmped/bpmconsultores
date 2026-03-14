@@ -19,11 +19,15 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params // 1. Recibimos params sin desestructurar aquí
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // 2. Actualizamos el tipo a Promise
 }) {
+  
+  // 3. Resolvemos la promesa para obtener el locale
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale;
   
   // Obtenemos los diccionarios de traducción del servidor
   const messages = await getMessages();
@@ -33,15 +37,12 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           
-          {/* 1. Tu Header va arriba de todo */}
           <Header />
           
-          {/* 2. El contenido de tus páginas (page.tsx) */}
           <main className="min-h-screen">
             {children}
           </main>
 
-          {/* 3. Tu Footer va al final */}
           <ModernFooter />
 
         </NextIntlClientProvider>
