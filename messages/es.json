@@ -566,5 +566,32 @@
       "h2_3": "Conclusión",
       "p6": "Los Recursos Humanos son el cimiento que permite a la empresa funcionar, pero el Capital Humano es la energía que la hace crecer. Una gestión moderna e inteligente busca el equilibrio: procesos administrativos impecables que sirvan como plataforma para el desarrollo humano. En BPM Consultores, ayudamos a las organizaciones a dar este salto cualitativo. No solo implementamos herramientas; transformamos la visión de su gestión para que el talento de su equipo sea su mayor activo."
     }
+  },
+  "cookies": {
+    "banner": {
+      "title": "Usamos cookies",
+      "description": "Utilizamos cookies esenciales para el funcionamiento del sitio y cookies opcionales para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes aceptar todas, rechazarlas o personalizar tus preferencias.",
+      "policy_text": "Al continuar navegando, aceptas nuestra",
+      "cookie_policy": "Política de Cookies",
+      "privacy_policy": "Política de Privacidad",
+      "and": "y"
+    },
+    "buttons": {
+      "accept_all": "Aceptar todas",
+      "reject_all": "Rechazar todas",
+      "customize": "Personalizar"
+    },
+    "aria": {
+      "accept_all": "Aceptar todas las cookies",
+      "reject_all": "Rechazar cookies opcionales",
+      "customize": "Personalizar preferencias de cookies"
+    },
+    "preferences": {
+      "title": "Preferencias de Cookies",
+      "description": "Personaliza qué cookies quieres aceptar. Las cookies esenciales no se pueden desactivar.",
+      "always_active": "Siempre activas",
+      "cancel": "Cancelar",
+      "save": "Guardar preferencias"
+    }
   }
 }

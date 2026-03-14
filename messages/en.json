@@ -566,5 +566,32 @@
       "h2_3": "Conclusion",
       "p6": "Human Resources are the foundation that allows the company to function, but Human Capital is the energy that makes it grow. A modern and intelligent management seeks balance: impeccable administrative processes that serve as a platform for human development. At BPM Consultores, we help organizations take this qualitative leap. We don't just implement tools; we transform the vision of your management so that your team's talent is your greatest asset."
     }
+  },
+  "cookies": {
+    "banner": {
+      "title": "We use cookies",
+      "description": "We use essential cookies for site functionality and optional cookies to improve your experience, analyze traffic and personalize content. You can accept all, reject them or customize your preferences.",
+      "policy_text": "By continuing to browse, you accept our",
+      "cookie_policy": "Cookie Policy",
+      "privacy_policy": "Privacy Policy",
+      "and": "and"
+    },
+    "buttons": {
+      "accept_all": "Accept all",
+      "reject_all": "Reject all",
+      "customize": "Customize"
+    },
+    "aria": {
+      "accept_all": "Accept all cookies",
+      "reject_all": "Reject optional cookies",
+      "customize": "Customize cookie preferences"
+    },
+    "preferences": {
+      "title": "Cookie Preferences",
+      "description": "Customize which cookies you want to accept. Essential cookies cannot be disabled.",
+      "always_active": "Always active",
+      "cancel": "Cancel",
+      "save": "Save preferences"
+    }
   }
 }

@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCookies } from '@/lib/cookies/CookieContext';
 import { COOKIE_CATEGORIES } from '@/lib/cookies/constants';
 import { X } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 export function CookiePreferences() {
-  const { t } = useTranslation('cookies');
+  const t = useTranslations('cookies');
   const { showPreferences, consent, updatePreferences, closePreferences } = useCookies();
   
   const [preferences, setPreferences] = useState({
@@ -89,10 +89,10 @@ export function CookiePreferences() {
                 </button>
                 
                 <h2 id="cookie-preferences-title" className="text-2xl font-bold mb-2">
-                  Preferencias de Cookies
+                  {t('preferences.title')}
                 </h2>
                 <p id="cookie-preferences-description" className="text-white/90 text-sm">
-                  Personaliza qué cookies quieres aceptar. Las cookies esenciales no se pueden desactivar.
+                  {t('preferences.description')}
                 </p>
               </div>
 
@@ -114,7 +114,7 @@ export function CookiePreferences() {
                         <div className="relative inline-block w-12 h-6 bg-[#002EC3] rounded-full opacity-50 cursor-not-allowed">
                           <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
                         </div>
-                        <span className="sr-only">Siempre activas</span>
+                        <span className="sr-only">{t('preferences.always_active')}</span>
                       </div>
                     </div>
                     <p className="text-xs text-gray-500 mt-2">
@@ -233,13 +233,13 @@ export function CookiePreferences() {
                     onClick={closePreferences}
                     className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                   >
-                    Cancelar
+                    {t('preferences.cancel')}
                   </button>
                   <button
                     onClick={handleSave}
                     className="px-6 py-3 bg-[#002EC3] text-white font-medium rounded-md hover:bg-[#002EC3]/90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#002EC3] focus:ring-offset-2"
                   >
-                    Guardar preferencias
+                    {t('preferences.save')}
                   </button>
                 </div>
               </div>
