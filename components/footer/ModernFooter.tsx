@@ -27,7 +27,7 @@ export default function ModernFooter() {
   return (
     <footer className="w-full bg-slate-950 relative overflow-hidden border-t border-white/10 pt-20 lg:pt-28 pb-8">
 
-      {/* --- EFECTOS DE FONDO (Del diseño oscuro original) --- */}
+      {/* --- EFECTOS DE FONDO --- */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         {/* Brillo superior sutil */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#002EC3]/50 to-transparent" />
@@ -46,29 +46,29 @@ export default function ModernFooter() {
         >
 
           {/* ========================================= */}
-          {/* COLUMNA 1: CONTÁCTANOS                    */}
+          {/* COLUMNA 1: CONTÁCTANOS (Orden 2 en móvil, 1 en desktop) */}
           {/* ========================================= */}
-          <motion.div variants={itemVariants} className="flex flex-col items-start justify-center">
+          <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start justify-center text-center md:text-left order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white tracking-tight">{t('contact.title')}</h2>
 
-            <div className="flex flex-col space-y-5 text-[15px] font-light text-gray-300">
+            <div className="flex flex-col space-y-8 md:space-y-5 text-[15px] font-light text-gray-300 w-full items-center md:items-start">
 
               {/* WhatsApp */}
-              <div className="flex items-center gap-4 group">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#002EC3] group-hover:border-[#002EC3] transition-all duration-300 shrink-0">
                   <MessageCircle className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <a href="tel:+51999999999" className="hover:text-white transition-colors">
+                <a href="tel:+51999999999" className="hover:text-white transition-colors md:mt-2">
                   {t('contact.whatsapp')}: +51 999 999 999
                 </a>
               </div>
 
               {/* Correos */}
-              <div className="flex items-start gap-4 group">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#002EC3] group-hover:border-[#002EC3] transition-all duration-300 shrink-0">
                   <Mail className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <div className="flex flex-col leading-relaxed mt-1">
+                <div className="flex flex-col items-center md:items-start leading-relaxed mt-1">
                   <span className="text-gray-500 mb-1 font-medium text-sm uppercase tracking-wider">{t('contact.email')}</span>
                   <a href="mailto:informes@bpmconsultores.com" className="hover:text-white transition-colors">
                     informes@bpmconsultores.com
@@ -83,9 +83,9 @@ export default function ModernFooter() {
           </motion.div>
 
           {/* ========================================= */}
-          {/* COLUMNA 2: LOGO CENTRAL                   */}
+          {/* COLUMNA 2: LOGO CENTRAL (Orden 1 en móvil, 2 en desktop) */}
           {/* ========================================= */}
-          <motion.div variants={itemVariants} className="flex justify-center items-center py-10 md:py-0 border-y md:border-y-0 md:border-x border-white/10">
+          <motion.div variants={itemVariants} className="flex justify-center items-center pb-10 md:py-0 border-b md:border-b-0 md:border-x border-white/10 order-1 md:order-2 w-full">
             <Link href="/" className="inline-block transform hover:scale-105 transition-transform duration-500">
               <Image 
                 src="/LOGO_COMPLETO_BLANCO.svg" 
@@ -93,21 +93,20 @@ export default function ModernFooter() {
                 width={220} 
                 height={70} 
                 className="w-auto h-16 md:h-20 brightness-0 invert object-contain opacity-90 hover:opacity-100 transition-opacity" 
-
               />
             </Link>
           </motion.div>
 
           {/* ========================================= */}
-          {/* COLUMNA 3: REDES SOCIALES Y UBICACIÓN     */}
+          {/* COLUMNA 3: REDES SOCIALES Y UBICACIÓN (Orden 3 siempre) */}
           {/* ========================================= */}
-          <motion.div variants={itemVariants} className="flex flex-col items-start md:items-end text-left md:text-right">
+          <motion.div variants={itemVariants} className="flex flex-col items-center md:items-end text-center md:text-right order-3 md:order-3">
 
             <div className="mb-10">
               <h3 className="text-lg font-semibold mb-5 text-white leading-tight">
-                {t('social.title')}<br />{t('social.subtitle')}
+                {t('social.title')}<br className="hidden md:block" /> {t('social.subtitle')}
               </h3>
-              <div className="flex items-center justify-start md:justify-end gap-3">
+              <div className="flex items-center justify-center md:justify-end gap-3">
                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group hover:bg-[#002EC3] hover:border-[#002EC3] transition-all duration-300">
                   <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
                 </a>

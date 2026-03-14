@@ -1,18 +1,16 @@
+// app/[locale]/layout.tsx
+
 import type { Metadata } from "next";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
-import {routing} from '@/i18n/routing';
-import {notFound} from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
-
+// Importaciones globales
 import "../globals.css";
-import Header from "@/components/header";
-import ModernFooter from "@/components/footer/ModernFooter";
 import { inter } from "../fonts";
-import { CookieSystem } from "@/components/cookies/CookieSystem";
-import { CookieProvider } from "@/lib/cookies/CookieContext";
-import { I18nProvider } from "@/lib/i18n/I18nProvider";
-import WhatsAppButton from "@/components/ui/whatsapp-button";
+
+// Importamos tus componentes de UI
+import Header from "@/components/header/header";
+import ModernFooter from "@/components/footer/ModernFooter";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -21,42 +19,33 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params
+  params: { locale }
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: { locale: string };
 }) {
-  const {locale} = await params;
-
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
   
-  setRequestLocale(locale);
+  // Obtenemos los diccionarios de traducción del servidor
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <I18nProvider>
-          <CookieProvider>
-            <Header />
-            <main>
-              {children}
-            </main>
-            <footer>
-              <ModernFooter />
-            </footer>
+          
+          {/* 1. Tu Header va arriba de todo */}
+          <Header />
+          
+          {/* 2. El contenido de tus páginas (page.tsx) */}
+          <main className="min-h-screen">
+            {children}
+          </main>
 
-            {/* Sistema de consentimiento de cookies */}
-            <CookieSystem />
-            <WhatsAppButton />
-          </CookieProvider>
-        </I18nProvider>
+          {/* 3. Tu Footer va al final */}
+          <ModernFooter />
+
         </NextIntlClientProvider>
       </body>
     </html>
-
   );
 }

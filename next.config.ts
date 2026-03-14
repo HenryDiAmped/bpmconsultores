@@ -11,20 +11,27 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'humandcdn.b-cdn.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'img.youtube.com',
-        port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'i.pinimg.com',
-        port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
         pathname: '/**',
       },
     ],

@@ -19,11 +19,11 @@ export default function HeroSection() {
       title: t('slides.efficiency'),
     },
     {
-      video: 'https://cdn.midjourney.com/video/efeefaab-c593-4e11-923b-27ebdfea5194/0.mp4',
+      video: 'https://res.cloudinary.com/dmgufgga4/video/upload/v1773437559/vecteezy_circuit-board-with-a-central-computer-processors-cpu-a_7237672_op1xhf.mp4',
       title: t('slides.people'),
     },
     {
-      video: 'https://cdn.midjourney.com/video/759adac2-af5b-4b0e-97f7-7217d9b01a73/0.mp4',
+      video: 'https://res.cloudinary.com/dmgufgga4/video/upload/v1773437554/vecteezy_a-men-using-computer-for-connecting-to-a-cloud-computing_11674426_w99wwu.mp4',
       title: t('slides.scale'),
     },
   ];
