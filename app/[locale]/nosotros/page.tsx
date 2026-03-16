@@ -1,15 +1,21 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from "framer-motion";
 import { ShieldCheck, TrendingUp, Lightbulb } from 'lucide-react';
 
 export default function NosotrosPage() {
   // Animaciones suaves de entrada
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5, 
+      ease: "easeOut" 
+    } 
+  }
+} as const;
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
