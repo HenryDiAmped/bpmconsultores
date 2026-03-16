@@ -12,6 +12,8 @@ import { inter } from "../fonts";
 import Header from "@/components/header/header";
 import ModernFooter from "@/components/footer/ModernFooter";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
+import { CookieSystem } from "@/components/cookies/CookieSystem";
+import { CookieProvider } from "@/lib/cookies/CookieContext";
 
 export const metadata: Metadata = {
   title: "BPM Consultores",
@@ -25,11 +27,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>; // 2. Actualizamos el tipo a Promise
 }) {
-  
+
   // 3. Resolvemos la promesa para obtener el locale
   const resolvedParams = await params;
   const locale = resolvedParams.locale;
-  
+
   // Obtenemos los diccionarios de traducción del servidor
   const messages = await getMessages();
 
@@ -37,15 +39,17 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          
-          <Header />
-          
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <CookieProvider>
+            <Header />
 
-          <ModernFooter />
-          <WhatsAppButton />
+            <main className="min-h-screen">
+              {children}
+            </main>
+
+            <ModernFooter />
+            <CookieSystem />
+          </CookieProvider>
+          <WhatsAppButton/>
         </NextIntlClientProvider>
         
       </body>

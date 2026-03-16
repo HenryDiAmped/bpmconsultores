@@ -32,18 +32,18 @@
   },
   "hero": {
     "slides": {
-      "efficiency": "SOFTWARE THAT MAXIMIZES EFFICIENCY",
+      "efficiency": "SOFTWARE THAT MAXIMIZES YOUR EFFICIENCY",
       "people": "PROCESSES THAT EMPOWER YOUR PEOPLE",
       "scale": "TECHNOLOGY AS AN ENGINE TO SCALE"
     },
     "title": {
-      "part1": "Transforming businesses",
-      "part2": "through",
-      "part3": "software solutions."
+      "part1": "We transform your company",
+      "part2": "through business flows",
+      "part3": "adapted to your needs."
     },
     "subtitle": {
-      "part1": "We design technology that optimizes processes,",
-      "part2": "empowers your team and accelerates growth."
+      "part1": "We design technology that optimizes your processes,",
+      "part2": "empowers your team and accelerates your growth."
     },
     "cta": "Let's Talk",
     "scroll": "DISCOVER MORE"
@@ -82,7 +82,7 @@
       "dig": {
         "title": "Digitalization and Automation",
         "desc": "We integrate digital tools and automated flows to accelerate traceability.",
-        "d1": "Flow automation",
+        "d1": "Automation of your company's business flows",
         "d2": "System integration",
         "d3": "BPM implementation",
         "d4": "HR digitalization"
@@ -139,7 +139,7 @@
     },
     "desc": {
       "p1": "As",
-      "p2": "Official Partners and Implementers",
+      "p2": "Partners and Implementers",
       "p3": ", we integrate the leading platform to connect your team and automate your organizational culture."
     },
     "cta_card": {
@@ -338,7 +338,7 @@
         "s6": "Average adoption rate"
       },
       "companies": {
-        "title": "+1,500 companies",
+        "title": "+1,600 companies",
         "desc": "Use Humand, connecting 1.6 million employees around the world."
       },
       "industries": {
@@ -415,7 +415,7 @@
     },
     "trayectoria": {
       "p1": "We have a",
-      "p1_span": "track record of over 7 years",
+      "p1_span": "track record of over 19 years",
       "p1_end": "driving transformation and talent in organizations.",
       "p2": "Instead of generic solutions, we focus on",
       "p2_span1": "achieving measurable results",
@@ -565,6 +565,33 @@
       "li7": "Improve internal communication and sense of belonging.",
       "h2_3": "Conclusion",
       "p6": "Human Resources are the foundation that allows the company to function, but Human Capital is the energy that makes it grow. A modern and intelligent management seeks balance: impeccable administrative processes that serve as a platform for human development. At BPM Consultores, we help organizations take this qualitative leap. We don't just implement tools; we transform the vision of your management so that your team's talent is your greatest asset."
+    }
+  },
+  "cookies": {
+    "banner": {
+      "title": "We use cookies",
+      "description": "We use essential cookies for site functionality and optional cookies to improve your experience, analyze traffic and personalize content. You can accept all, reject them or customize your preferences.",
+      "policy_text": "By continuing to browse, you accept our",
+      "cookie_policy": "Cookie Policy",
+      "privacy_policy": "Privacy Policy",
+      "and": "and"
+    },
+    "buttons": {
+      "accept_all": "Accept all",
+      "reject_all": "Reject all",
+      "customize": "Customize"
+    },
+    "aria": {
+      "accept_all": "Accept all cookies",
+      "reject_all": "Reject optional cookies",
+      "customize": "Customize cookie preferences"
+    },
+    "preferences": {
+      "title": "Cookie Preferences",
+      "description": "Customize which cookies you want to accept. Essential cookies cannot be disabled.",
+      "always_active": "Always active",
+      "cancel": "Cancel",
+      "save": "Save preferences"
     }
   }
 }

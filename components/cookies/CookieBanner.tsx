@@ -3,10 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCookies } from '@/lib/cookies/CookieContext';
 import { Cookie } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 export function CookieBanner() {
-  const { t } = useTranslation('cookies');
+  const t = useTranslations('cookies');
   const { showBanner, acceptAll, rejectAll, openPreferences } = useCookies();
 
   return (

@@ -37,9 +37,9 @@
       "scale": "LA TECNOLOGÍA COMO MOTOR PARA ESCALAR"
     },
     "title": {
-      "part1": "Transformando negocios",
-      "part2": "a través de",
-      "part3": "soluciones de software."
+      "part1": "Transformamos su empresa",
+      "part2": "a través de flujos",
+      "part3": "de negocios adaptados a su necesidad."
     },
     "subtitle": {
       "part1": "Diseñamos tecnología que optimiza tus procesos,",
@@ -82,7 +82,7 @@
       "dig": {
         "title": "Digitalización y Automatización",
         "desc": "Integramos herramientas digitales y flujos automáticos para acelerar tu trazabilidad.",
-        "d1": "Automatización de flujos",
+        "d1": "Automatización del flujo de su empresa",
         "d2": "Integración de sistemas",
         "d3": "Implementación BPM",
         "d4": "Digitalización de RRHH"
@@ -139,7 +139,7 @@
     },
     "desc": {
       "p1": "Como",
-      "p2": "Partners e Implementadores Oficiales",
+      "p2": "Partners e Implementadores",
       "p3": ", integramos la plataforma líder para conectar a tu equipo y automatizar tu cultura organizacional."
     },
     "cta_card": {
@@ -338,7 +338,7 @@
         "s6": "Tasa de adopción promedio"
       },
       "companies": {
-        "title": "+1.500 empresas",
+        "title": "+1.600 empresas",
         "desc": "Usan Humand, conectando a 1.6 millones de colaboradores alrededor del mundo."
       },
       "industries": {
@@ -415,7 +415,7 @@
     },
     "trayectoria": {
       "p1": "Contamos con una",
-      "p1_span": "trayectoria de más de 7 años",
+      "p1_span": "trayectoria de más de 19 años",
       "p1_end": "impulsando la transformación y el talento en las organizaciones.",
       "p2": "En lugar de soluciones genéricas, nos enfocamos en",
       "p2_span1": "obtener resultados medibles",
@@ -565,6 +565,33 @@
       "li7": "Mejorar la comunicación interna y el sentido de pertenencia.",
       "h2_3": "Conclusión",
       "p6": "Los Recursos Humanos son el cimiento que permite a la empresa funcionar, pero el Capital Humano es la energía que la hace crecer. Una gestión moderna e inteligente busca el equilibrio: procesos administrativos impecables que sirvan como plataforma para el desarrollo humano. En BPM Consultores, ayudamos a las organizaciones a dar este salto cualitativo. No solo implementamos herramientas; transformamos la visión de su gestión para que el talento de su equipo sea su mayor activo."
+    }
+  },
+  "cookies": {
+    "banner": {
+      "title": "Usamos cookies",
+      "description": "Utilizamos cookies esenciales para el funcionamiento del sitio y cookies opcionales para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes aceptar todas, rechazarlas o personalizar tus preferencias.",
+      "policy_text": "Al continuar navegando, aceptas nuestra",
+      "cookie_policy": "Política de Cookies",
+      "privacy_policy": "Política de Privacidad",
+      "and": "y"
+    },
+    "buttons": {
+      "accept_all": "Aceptar todas",
+      "reject_all": "Rechazar todas",
+      "customize": "Personalizar"
+    },
+    "aria": {
+      "accept_all": "Aceptar todas las cookies",
+      "reject_all": "Rechazar cookies opcionales",
+      "customize": "Personalizar preferencias de cookies"
+    },
+    "preferences": {
+      "title": "Preferencias de Cookies",
+      "description": "Personaliza qué cookies quieres aceptar. Las cookies esenciales no se pueden desactivar.",
+      "always_active": "Siempre activas",
+      "cancel": "Cancelar",
+      "save": "Guardar preferencias"
     }
   }
 }
