@@ -17,7 +17,9 @@ export default function Header() {
   const router = useRouter(); 
   const pathname = usePathname();
   const isPartnerPage = pathname === '/humand-partner';
-  const isSolid = scrolled || isPartnerPage;
+  const isNosotrosPage = pathname === '/nosotros';
+  const isSolid = scrolled || isPartnerPage || isNosotrosPage;
+  
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -34,7 +36,9 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
+const navigation = [
+    { name: t('navigation.home'), href: '/' },                  
+    { name: t('navigation.about'), href: '/nosotros' },                
     { name: t('navigation.solutions'), href: '/#soluciones' },
     { name: t('navigation.humand_partner'), href: '/#humand-partner' },
     { name: t('navigation.blog'), href: '/blog' }
