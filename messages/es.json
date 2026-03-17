@@ -4,8 +4,40 @@
     "aria_label": "Contactar por WhatsApp",
     "default_message": "Hola, me gustaría obtener más información sobre sus servicios."
   },
+  "nosotros": {
+    "hero": {
+      "tag": "Descripción Corporativa – BPM Consultores",
+      "desc": "BPM Consultores es una firma especializada en consultoría empresarial que acompaña a organizaciones en la optimización de sus procesos, la gestión estratégica del talento y la adopción de soluciones digitales que impulsan eficiencia, control y crecimiento sostenible."
+    },
+    "enfoque": {
+      "p1": "Nuestro enfoque combina metodologías de clase mundial, análisis profundo del negocio y una ejecución cercana que garantiza resultados medibles en el corto y largo plazo.",
+      "p2": "Con más de una década de experiencia en sectores altamente competitivos, BPM Consultores se ha consolidado como un aliado estratégico para empresas que buscan transformar su operación, fortalecer sus capacidades internas y acelerar su madurez organizacional.",
+      "p3": "Nuestro trabajo integra consultoría, tecnología y gestión del cambio, permitiendo que cada cliente avance hacia modelos de operación más ágiles, eficientes y orientados a valor."
+    },
+    "pilares": {
+      "title": "Nuestra propuesta se sustenta en tres pilares:",
+      "p1": {
+        "title": "Excelencia metodológica:",
+        "desc": "aplicamos marcos de referencia internacionales en procesos, talento y transformación organizacional, adaptados a la realidad de cada empresa."
+      },
+      "p2": {
+        "title": "Acompañamiento experto:",
+        "desc": "nuestro equipo combina experiencia ejecutiva, visión estratégica y dominio técnico para asegurar implementaciones exitosas."
+      },
+      "p3": {
+        "title": "Innovación aplicada:",
+        "desc": "incorporamos herramientas digitales y soluciones como HUMAND para potenciar la gestión del talento y la toma de decisiones basada en datos."
+      }
+    },
+    "cierre": {
+      "quote": "\"En BPM Consultores creemos en relaciones de largo plazo, construidas sobre confianza, transparencia y resultados.\"",
+      "desc": "Cada proyecto es una oportunidad para elevar el desempeño de nuestros clientes y fortalecer su capacidad de competir en mercados dinámicos y exigentes."
+    }
+  },
   "header": {
     "navigation": {
+      "home": "Inicio",
+      "about": "Nosotros",
       "solutions": "Soluciones",
       "humand_partner": "Humand Partner",
       "blog": "Blogs"

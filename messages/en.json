@@ -4,8 +4,40 @@
     "aria_label": "Contact via WhatsApp",
     "default_message": "Hello, I would like to get more information about your services."
   },
+  "nosotros": {
+    "hero": {
+      "tag": "Corporate Description – BPM Consultores",
+      "desc": "BPM Consultores is a firm specialized in business consulting that supports organizations in optimizing their processes, strategic talent management and the adoption of digital solutions that drive efficiency, control and sustainable growth."
+    },
+    "enfoque": {
+      "p1": "Our approach combines world-class methodologies, deep business analysis and close execution that guarantees measurable results in the short and long term.",
+      "p2": "With more than a decade of experience in highly competitive sectors, BPM Consultores has established itself as a strategic partner for companies seeking to transform their operations, strengthen their internal capabilities and accelerate their organizational maturity.",
+      "p3": "Our work integrates consulting, technology and change management, allowing each client to advance towards more agile, efficient and value-oriented operating models."
+    },
+    "pilares": {
+      "title": "Our proposal is based on three pillars:",
+      "p1": {
+        "title": "Methodological excellence:",
+        "desc": "we apply international reference frameworks in processes, talent and organizational transformation, adapted to the reality of each company."
+      },
+      "p2": {
+        "title": "Expert support:",
+        "desc": "our team combines executive experience, strategic vision and technical expertise to ensure successful implementations."
+      },
+      "p3": {
+        "title": "Applied innovation:",
+        "desc": "we incorporate digital tools and solutions like HUMAND to enhance talent management and data-driven decision making."
+      }
+    },
+    "cierre": {
+      "quote": "\"At BPM Consultores we believe in long-term relationships, built on trust, transparency and results.\"",
+      "desc": "Each project is an opportunity to elevate our clients' performance and strengthen their ability to compete in dynamic and demanding markets."
+    }
+  },
   "header": {
     "navigation": {
+      "home": "Home",
+      "about": "About",
       "solutions": "Solutions",
       "humand_partner": "Humand Partner",
       "blog": "News & more"
