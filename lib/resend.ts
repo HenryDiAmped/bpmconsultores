@@ -12,8 +12,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const send = async (emailFormData: z.infer<typeof formSchema>)=>{
     try {
         const { error } = await resend.emails.send({
-            from: 'BPM Consultores <onboarding@resend.dev>',
-            to: ['minvosoftware@gmail.com'],
+            from: 'BPM Consultores <humand@bpmconsultores.com>',
+            to: [emailFormData.email],
+            bcc: ['humand@bpmconsultores.com'],
             subject: 'Hemos recibido tu solicitud - BPM Consultores',
             react: EmailTemplate({ 
                 fullName: emailFormData.fullName,
