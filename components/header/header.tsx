@@ -20,7 +20,6 @@ export default function Header() {
   const isNosotrosPage = pathname === '/nosotros';
   const isSolid = scrolled || isPartnerPage || isNosotrosPage;
   
-
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -36,7 +35,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navigation = [
+  const navigation = [
     { name: t('navigation.home'), href: '/' },                  
     { name: t('navigation.about'), href: '/nosotros' },                
     { name: t('navigation.solutions'), href: '/#soluciones' },
@@ -44,9 +43,11 @@ const navigation = [
     { name: t('navigation.blog'), href: '/blog' }
   ];
 
-  const toggleLanguage = () => {
-    const nextLang = locale === 'es' ? 'en' : 'es';
-    router.replace(pathname, {locale: nextLang});
+  // NUEVA FUNCIÓN: Cambia directamente al idioma seleccionado
+  const changeLanguage = (newLocale: string) => {
+    if (locale !== newLocale) {
+      router.replace(pathname, { locale: newLocale });
+    }
   };
 
   const menuVariants: Variants = {
@@ -64,16 +65,9 @@ const navigation = [
     open: { y: 0, opacity: 1 }
   };
 
-  const isEnglish = locale === 'en';
-  const currentFlag = isEnglish 
-    ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg' 
-    : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg';
-  const currentLangText = t('language.current');
-
-  const targetFlag = isEnglish 
-    ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg' 
-    : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg';
-  const targetLangText = isEnglish ? t('language.spanish') : t('language.english');
+  // Definimos las banderas fijas para poder usarlas en ambos botones simultáneamente
+  const esFlag = 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/es.svg';
+  const enFlag = 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/1x1/us.svg';
 
   return (
     <header 
@@ -89,26 +83,25 @@ const navigation = [
         <motion.div whileHover={{ scale: 1.05 }} className="flex z-20">
           <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
             <div 
-                    className={cn(
-                      "h-9 w-[140px] transition-colors duration-500",
-                      isSolid ? "bg-[#002EC3]" : "bg-white"
-                    )}
-                    style={{
-                      WebkitMaskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
-                      WebkitMaskSize: 'contain',
-                      WebkitMaskRepeat: 'no-repeat',
-                      WebkitMaskPosition: 'left center',
-                      maskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
-                      maskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      maskPosition: 'left center',
-                    }}
-                  >
-                    {/* Texto oculto para SEO y accesibilidad (ya que quitamos el atributo alt) */}
-                    <span className="sr-only">Logo BPM Consultores</span>
-                  </div>
-                </Link>
-      </motion.div>
+              className={cn(
+                "h-9 w-[140px] transition-colors duration-500",
+                isSolid ? "bg-[#002EC3]" : "bg-white"
+              )}
+              style={{
+                WebkitMaskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'left center',
+                maskImage: 'url("/LOGO_COMPLETO_BLANCO.svg")',
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'left center',
+              }}
+            >
+              <span className="sr-only">Logo BPM Consultores</span>
+            </div>
+          </Link>
+        </motion.div>
 
         <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-10 gap-x-2">
           {navigation.map((item) => (
@@ -135,33 +128,45 @@ const navigation = [
         </div>
 
         <div className="hidden lg:flex items-center gap-x-4 z-10">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleLanguage}
-            className={cn(
-              "flex items-center gap-2 font-bold transition-colors border border-transparent",
-              // 3. SOLUCIÓN SINCRONIZACIÓN: Cambiamos 'scrolled' por 'isSolid'
-              isSolid 
-                ? "text-gray-800 hover:bg-gray-100 hover:border-gray-200" 
-                : "text-white hover:bg-white/10 hover:border-white/20"
-            )}
-          >
-            <div className="w-5 h-5 rounded-full overflow-hidden border border-gray-300/50 flex items-center justify-center shrink-0">
-              <img 
-                src={currentFlag} 
-                alt={`${t('aria.flag')} ${currentLangText}`} 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {currentLangText}
-          </Button>
+          
+          {/* NUEVO: Contenedor de Idiomas Lado a Lado (Escritorio) */}
+          <div className={cn(
+            "flex items-center gap-1 p-1 rounded-lg border",
+            isSolid ? "border-gray-200 bg-gray-50/50" : "border-white/20 bg-white/5"
+          )}>
+            {/* Botón Español */}
+            <button
+              onClick={() => changeLanguage('es')}
+              className={cn(
+                "flex items-center gap-2 px-2.5 py-1.5 rounded-md font-bold transition-all text-sm",
+                locale === 'es' 
+                  ? (isSolid ? "bg-white shadow-sm text-gray-900" : "bg-white/20 text-white") 
+                  : (isSolid ? "text-gray-500 hover:text-gray-900" : "text-white/60 hover:text-white")
+              )}
+            >
+              <img src={esFlag} alt="ES" className="w-4 h-4 rounded-full object-cover shrink-0" />
+              Es
+            </button>
+
+            {/* Botón Inglés */}
+            <button
+              onClick={() => changeLanguage('en')}
+              className={cn(
+                "flex items-center gap-2 px-2.5 py-1.5 rounded-md font-bold transition-all text-sm",
+                locale === 'en' 
+                  ? (isSolid ? "bg-white shadow-sm text-gray-900" : "bg-white/20 text-white") 
+                  : (isSolid ? "text-gray-500 hover:text-gray-900" : "text-white/60 hover:text-white")
+              )}
+            >
+              <img src={enFlag} alt="EN" className="w-4 h-4 rounded-full object-cover shrink-0" />
+              En
+            </button>
+          </div>
 
           <Link href="/#contacto">
             <Button 
               className={cn(
-                "font-semibold px-6 py-5 rounded-none transition-all border",
-                // 3. SOLUCIÓN SINCRONIZACIÓN: Cambiamos 'scrolled' por 'isSolid'
+                "font-semibold px-6 py-5 rounded-none transition-all border ml-2",
                 isSolid 
                   ? "bg-[#002EC3] text-white border-[#002EC3] hover:bg-[#002EC3]/90" 
                   : "bg-[#002EC3] text-white border-[#002EC3] hover:border-white hover:bg-white hover:text-[#002EC3]"
@@ -180,7 +185,6 @@ const navigation = [
               onClick={() => setMobileMenuOpen(true)}
               className={cn(
                 "rounded-full transition-all",
-                // 4. SOLUCIÓN MENÚ MÓVIL: Cambiamos 'scrolled' por 'isSolid' para que se vea igual que el logo
                 isSolid ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
               )}
             >
@@ -233,23 +237,43 @@ const navigation = [
                   </Button>
                 </Link>
 
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    toggleLanguage();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full flex justify-center items-center gap-3 py-6 text-base border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white transition-all rounded-xl"
-                >
-                  <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 flex items-center justify-center shrink-0">
-                    <img 
-                      src={targetFlag} 
-                      alt={`${t('aria.flag')} ${targetLangText}`} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {isEnglish ? t('buttons.change_to_spanish') : t('buttons.change_to_english')}
-                </Button>
+                {/* NUEVO: Contenedor de Idiomas Lado a Lado (Móvil) */}
+                <div className="flex gap-3 w-full">
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      changeLanguage('es');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={cn(
+                      "flex-1 flex justify-center items-center gap-2 py-6 text-base transition-all rounded-xl",
+                      locale === 'es'
+                        ? "bg-white/20 border-white text-white font-bold"
+                        : "bg-white/5 border-white/20 text-white/60 hover:bg-white/10 hover:text-white"
+                    )}
+                  >
+                    <img src={esFlag} alt="ES" className="w-5 h-5 rounded-full object-cover shrink-0" />
+                    Español
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      changeLanguage('en');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={cn(
+                      "flex-1 flex justify-center items-center gap-2 py-6 text-base transition-all rounded-xl",
+                      locale === 'en'
+                        ? "bg-white/20 border-white text-white font-bold"
+                        : "bg-white/5 border-white/20 text-white/60 hover:bg-white/10 hover:text-white"
+                    )}
+                  >
+                    <img src={enFlag} alt="EN" className="w-5 h-5 rounded-full object-cover shrink-0" />
+                    English
+                  </Button>
+                </div>
+
               </motion.div>
             </motion.div>
           )}
