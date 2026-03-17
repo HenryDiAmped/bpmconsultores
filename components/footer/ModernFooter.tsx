@@ -51,7 +51,8 @@ export default function ModernFooter() {
           <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start justify-center text-center md:text-left order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white tracking-tight">{t('contact.title')}</h2>
 
-            <div className="flex flex-col space-y-8 md:space-y-5 text-[15px] font-light text-gray-300 w-full items-center md:items-start">
+            {/* --- CAMBIO: font-normal y text-white/80 en lugar de font-light y text-gray-300 --- */}
+            <div className="flex flex-col space-y-8 md:space-y-5 text-[15px] font-normal text-white/80 w-full items-center md:items-start">
 
               {/* WhatsApp */}
               <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 group">
@@ -69,7 +70,8 @@ export default function ModernFooter() {
                   <Mail className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
                 <div className="flex flex-col items-center md:items-start leading-relaxed mt-1">
-                  <span className="text-gray-500 mb-1 font-medium text-sm uppercase tracking-wider">{t('contact.email')}</span>
+                  {/* --- CAMBIO: text-gray-400, font-semibold y text-xs para la etiqueta --- */}
+                  <span className="text-gray-400 mb-1 font-semibold text-xs uppercase tracking-wider">{t('contact.email')}</span>
                   <a href="mailto:informes@bpmconsultores.com" className="hover:text-white transition-colors">
                     informes@bpmconsultores.com
                   </a>
@@ -121,7 +123,8 @@ export default function ModernFooter() {
 
             <div>
               <h3 className="text-lg font-bold mb-2 text-white">{t('location.title')}</h3>
-              <p className="text-[15px] font-light text-gray-400">{t('location.city')}</p>
+              {/* --- CAMBIO: text-gray-300 y font-normal --- */}
+              <p className="text-[15px] font-normal text-gray-300">{t('location.city')}</p>
             </div>
 
           </motion.div>
@@ -138,7 +141,8 @@ export default function ModernFooter() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="pt-8 border-t border-white/10 text-center"
         >
-          <p className="text-xs md:text-sm text-gray-500 font-light tracking-wide">
+          {/* --- CAMBIO: text-gray-400 y font-normal --- */}
+          <p className="text-xs md:text-sm text-gray-400 font-normal tracking-wide">
             &copy; {currentYear} {t('copyright')}
           </p>
 
@@ -146,14 +150,16 @@ export default function ModernFooter() {
           <div className="flex items-center justify-center gap-4 text-xs mt-2">
             <Link
               href="/politica-privacidad"
-              className="text-gray-500 hover:text-white transition-colors"
+              // --- CAMBIO: text-gray-400 base ---
+              className="text-gray-400 hover:text-white transition-colors"
             >
               {t('policies.privacy')}
             </Link>
-            <span className="text-gray-700">•</span>
+            <span className="text-gray-600">•</span>
             <Link
               href="/politica-cookies"
-              className="text-gray-500 hover:text-white transition-colors"
+              // --- CAMBIO: text-gray-400 base ---
+              className="text-gray-400 hover:text-white transition-colors"
             >
               {t('policies.cookies')}
             </Link>

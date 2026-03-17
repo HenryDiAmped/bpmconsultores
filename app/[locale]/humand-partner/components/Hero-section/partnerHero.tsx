@@ -24,7 +24,8 @@ export function PartnerHero() {
   }, [images.length]);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-start pt-24 lg:pt-32 bg-gradient-to-b from-[#F8F9FA] to-white overflow-hidden">
+    // --- CAMBIO: Fondo bg-slate-50 estandarizado ---
+    <section className="relative min-h-screen w-full flex flex-col justify-start pt-24 lg:pt-32 bg-slate-50 overflow-hidden">
       {/* Background blurs */}
       <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-[#002EC3]/5 rounded-full blur-[100px] pointer-events-none -z-10" />
       <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[400px] h-[400px] bg-[#002EC3]/5 rounded-full blur-[100px] pointer-events-none -z-10" />
@@ -38,9 +39,11 @@ export function PartnerHero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-10 w-full flex flex-col items-center"
         >
-          <h1 className="flex flex-wrap justify-center items-center gap-3 text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-6">
+          {/* --- CAMBIO: font-bold y tracking-tight en lugar de font-black --- */}
+          <h1 className="flex flex-wrap justify-center items-center gap-3 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6">
             <span>{t('title_main')}</span>
-            <span className="flex items-center gap-3 text-3xl md:text-5xl text-slate-400 font-light">
+            {/* --- CAMBIO: font-medium y text-gray-500 en lugar de font-light --- */}
+            <span className="flex items-center gap-3 text-3xl md:text-5xl text-gray-500 font-medium">
               + 
               <img 
                 src="https://humandcdn.b-cdn.net/wp-content/uploads/2024/10/logo-humand-blue.svg" 
@@ -50,8 +53,9 @@ export function PartnerHero() {
             </span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            <span className="text-[#002EC3] font-semibold">{t('subtitle_part1')}</span> {t('subtitle_part2')}
+          {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-800 font-medium max-w-3xl mx-auto leading-relaxed">
+            <span className="text-[#002EC3] font-bold">{t('subtitle_part1')}</span> {t('subtitle_part2')}
           </p>
         </motion.div>
 
@@ -100,7 +104,8 @@ export function PartnerHero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-4 mb-16 text-center z-20 relative"
         >
-          <div className="inline-flex items-center justify-center text-base md:text-xl lg:text-2xl font-medium text-slate-700 bg-white/70 backdrop-blur-md px-8 py-5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 ring-1 ring-slate-900/5">
+          {/* --- CAMBIO: rounded-sm, text-gray-800, y bordes corporativos --- */}
+          <div className="inline-flex items-center justify-center text-base md:text-lg lg:text-xl font-medium text-gray-800 bg-white/80 backdrop-blur-md px-8 py-5 rounded-sm shadow-sm border border-gray-200">
             <span className="relative">
               {t('benefits')}
               <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#002EC3]/30 to-transparent rounded-full" />

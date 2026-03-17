@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Puzzle, UserPlus, Eye, Sprout } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -14,7 +14,8 @@ export function ImplementacionSection() {
     { icon: Sprout, text: t('b4') },
   ];
 
-  const containerVariants = {
+  // --- CAMBIO: Tipado correcto con Variants ---
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -22,7 +23,7 @@ export function ImplementacionSection() {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
     visible: { 
       opacity: 1, 
@@ -33,7 +34,8 @@ export function ImplementacionSection() {
   };
 
   return (
-    <section className="w-full bg-[#F8F9FA] py-20 md:py-32 overflow-hidden flex flex-col items-center">
+    // --- CAMBIO: Se eliminaron py-20 y md:py-32 ---
+    <section className="w-full bg-[#F8F9FA]  md:py-12 overflow-hidden flex flex-col items-center">
       <div className="mx-auto px-6 lg:px-8 max-w-[1320px] w-full">
         
         <motion.h2 
@@ -47,7 +49,7 @@ export function ImplementacionSection() {
         </motion.h2>
 
         <motion.div 
-          variants={containerVariants as any}
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -59,7 +61,7 @@ export function ImplementacionSection() {
             return (
               <motion.div 
                 key={index}
-                variants={cardVariants as any}
+                variants={cardVariants}
                 whileHover={{ scale: 1.03, y: -5 }}
                 className="flex flex-col items-center text-center border-[3px] border-[#8da3f6] hover:border-[#4466F2] rounded-[2.5rem] p-8 md:p-10 transition-colors duration-300 bg-transparent h-full shadow-sm hover:shadow-[0_10px_30px_rgba(68,102,242,0.1)]"
               >

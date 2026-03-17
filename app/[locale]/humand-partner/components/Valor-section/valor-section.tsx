@@ -128,6 +128,42 @@ export function ValorSection() {
     <section className="w-full bg-[#F8F9FA] py-20 md:py-32 overflow-hidden flex flex-col items-center">
       <div className="mx-auto px-6 lg:px-8 max-w-[1500px] w-full">
         
+        {/* ========================================= */}
+        {/* NUEVO: TÍTULO Y VIDEO DE YOUTUBE INTRODUCTORIO */}
+        {/* ========================================= */}
+        <div className="flex flex-col items-center mb-20 md:mb-28 w-full">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-10 text-center"
+          >
+            Descubre los módulos de <span className="text-[#4466F2]">Humand</span>
+          </motion.h2>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="w-full max-w-5xl aspect-video rounded-[2rem] overflow-hidden shadow-2xl border-[3px] border-[#4466F2]/20 bg-slate-900"
+          >
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/izINLTDaXrY?rel=0" 
+              title="Descubre los módulos de Humand" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </motion.div>
+        </div>
+        {/* ========================================= */}
+
+
         <motion.h2 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
