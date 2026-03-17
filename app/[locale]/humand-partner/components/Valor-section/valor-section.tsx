@@ -88,14 +88,14 @@ export function ValorSection() {
   };
 
   const CategoriaCard = ({ data, className = "" }: { data: any, className?: string }) => (
-    <motion.div 
+    <motion.div
       variants={cardVariants as any}
-      whileHover={{ scale: 1.01, y: -2 }} 
+      whileHover={{ scale: 1.01, y: -2 }}
       className={`bg-transparent border-[3px] border-[#4466F2] rounded-[2.5rem] p-7 flex flex-col w-full h-fit transition-all duration-300 ${className}`}
     >
       <h3 className="text-slate-600 font-semibold text-[1.15rem] mb-5">{data.titulo}</h3>
-      
-      <motion.div 
+
+      <motion.div
         variants={tagsContainerVariants as any}
         initial="hidden"
         whileInView="visible"
@@ -103,16 +103,16 @@ export function ValorSection() {
         className="flex flex-wrap gap-3"
       >
         {data.items.map((item: any, i: number) => (
-          <motion.div 
-            key={i} 
+          <motion.div
+            key={i}
             variants={tagVariants as any}
             whileHover={{ scale: 1.03 }}
             className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-2xl text-[13px] md:text-sm text-slate-800 font-medium shadow-[0_2px_12px_rgba(0,0,0,0.04)] cursor-default transition-all"
           >
             {item.icon && (
-              <img 
-                src={item.icon} 
-                alt={`Icono de ${item.nombre}`} 
+              <img
+                src={item.icon}
+                alt={`Icono de ${item.nombre}`}
                 className="w-4 h-4 object-contain"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
@@ -175,10 +175,10 @@ export function ValorSection() {
         </motion.h2>
 
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center lg:items-stretch">
-          
+
           <div className="w-full lg:w-[65%] grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 lg:gap-8">
-            
-            <motion.div 
+
+            <motion.div
               variants={containerVariants as any}
               initial="hidden"
               whileInView="visible"
@@ -190,7 +190,7 @@ export function ValorSection() {
               ))}
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={containerVariants as any}
               initial="hidden"
               whileInView="visible"
@@ -203,7 +203,7 @@ export function ValorSection() {
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -211,8 +211,7 @@ export function ValorSection() {
             className="w-full lg:w-[35%] flex flex-col justify-center lg:pl-4 mt-10 lg:mt-0"
           >
             <p className="text-2xl md:text-3xl lg:text-[2.2rem] leading-snug text-slate-800 text-center lg:text-left font-light">
-              {t('cta')} <span className="font-bold">{t('cta_span')} <span className="underline decoration-[#4466F2] decoration-4 underline-offset-4">{t('cta_span')}</span></span> {t('cta_end')} <br className="hidden lg:block"/>
-              <span className="text-[#4466F2] font-normal italic mt-4 block">{t('cta_end')}</span>
+              {t('cta')} <span className="font-bold text-slate-800">{t('cta_span')}</span> {t('cta_end')}
             </p>
           </motion.div>
 

@@ -16,10 +16,10 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
   },
 };
 
@@ -28,7 +28,7 @@ const typewriterContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.03 } 
+    transition: { staggerChildren: 0.03 }
   }
 };
 
@@ -47,28 +47,32 @@ export default function BlogsSection() {
       title: t('articles.a1.title'),
       date: t('articles.a1.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_1_ngbkme.avif",
-      postUrl: "/blog/software-rrhh-motor-estrategico"    },
+      postUrl: "/blog/software-rrhh-motor-estrategico"
+    },
     {
       id: 2,
       category: t('articles.a2.cat'),
       title: t('articles.a2.title'),
       date: t('articles.a2.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_2_wsk7qa.webp",
-      postUrl: "/blog/reskilling-urgencia-gerencia"    },
+      postUrl: "/blog/reskilling-urgencia-gerencia"
+    },
     {
       id: 3,
       category: t('articles.a3.cat'),
       title: t('articles.a3.title'),
       date: t('articles.a3.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_3_cviihw.avif",
-      postUrl: "/blog/comunicacion-interna-eficiencia"    },
+      postUrl: "/blog/comunicacion-interna-eficiencia"
+    },
     {
       id: 4,
       category: t('articles.a4.cat'),
       title: t('articles.a4.title'),
       date: t('articles.a4.date'),
       link: "https://res.cloudinary.com/dmgufgga4/image/upload/v1773360132/BLOG_4_i6gr8t.avif",
-      postUrl: "/blog/capital-humano-vs-recursos-humanos"    },
+      postUrl: "/blog/capital-humano-vs-recursos-humanos"
+    },
   ];
 
   const blogsData = getBlogsData();
@@ -76,14 +80,14 @@ export default function BlogsSection() {
 
   return (
     <section className="w-full bg-slate-50 py-24 border-t border-gray-200 flex justify-center relative overflow-hidden">
-      
+
       <div className="absolute top-0 right-0 w-full h-[300px] bg-gradient-to-b from-white to-transparent -z-10" />
 
       <div className="mx-auto w-full max-w-[1320px] px-6 lg:px-8">
-        
+
         {/* HEADER DE LA SECCIÓN */}
         <div className="flex flex-col items-center text-center w-full mb-16">
-          <motion.h2 
+          <motion.h2
             variants={typewriterContainer}
             initial="hidden"
             whileInView="visible"
@@ -97,19 +101,10 @@ export default function BlogsSection() {
             ))}
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="text-lg md:text-xl font-bold text-gray-900"
-          >
-            {t('subtitle.t1')} <span className="text-[#002EC3]">{t('subtitle.t2')}</span> {t('subtitle.t3')}
-          </motion.p>
         </div>
 
         {/* GRILLA DE ARTÍCULOS */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -128,9 +123,9 @@ export default function BlogsSection() {
                 {/* Contenedor de Imagen Actualizado */}
                 <div className="relative w-full aspect-[4/3] bg-[#B0BCE1] overflow-hidden">
                   {/* Etiqueta img apuntando al link de Cloudinary */}
-                  <img 
-                    src={blog.link} 
-                    alt={blog.title} 
+                  <img
+                    src={blog.link}
+                    alt={blog.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Overlay oscuro que aparece en hover para darle más estilo */}
@@ -158,7 +153,7 @@ export default function BlogsSection() {
         </motion.div>
 
         {/* BOTÓN GLOBAL */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
