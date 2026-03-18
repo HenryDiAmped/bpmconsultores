@@ -37,7 +37,7 @@ export default function ContactSection() {
     }
   });
 
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = form;
+  const { register, handleSubmit, formState: { errors } } = form;
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const token = window.turnstile.getResponse();
@@ -70,9 +70,10 @@ export default function ContactSection() {
     }
   }
 
-  // Estilos constantes para el diseño "Petite"
-  const inputClass = "w-full h-10 px-3 bg-slate-50 border border-gray-200 focus:border-[#002EC3] focus:ring-1 focus:ring-[#002EC3] outline-none transition-all rounded-sm text-sm text-gray-900 placeholder:text-gray-400";
-  const labelClass = "block text-[10px] md:text-[11px] font-bold text-gray-700 uppercase tracking-widest mb-1.5";
+  // --- CAMBIO: Estilos constantes estandarizados ---
+  const inputClass = "w-full h-11 px-3 bg-slate-50 border border-gray-200 focus:border-[#002EC3] focus:ring-1 focus:ring-[#002EC3] outline-none transition-all rounded-sm text-sm text-gray-900 placeholder:text-gray-400 font-medium";
+  // --- CAMBIO: Label text-gray-800 para mejor contraste ---
+  const labelClass = "block text-[10px] md:text-[11px] font-bold text-gray-800 uppercase tracking-widest mb-1.5";
 
   return (
     <>
@@ -90,55 +91,57 @@ export default function ContactSection() {
         <div className="mx-auto px-6 lg:px-8 max-w-[1320px] relative z-10">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
 
-          {/* TEXTO IZQUIERDA */}
-          <div className="w-full lg:w-1/2">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6"
-            >
-              {t('title.t1')} <br />
-              {t('title.t2')} <br />
-              <span className="text-blue-300">{t('title.t3')} <br /> {t('title.t4')}</span>
-            </motion.h1>
+            {/* TEXTO IZQUIERDA */}
+            <div className="w-full lg:w-1/2">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6"
+              >
+                {t('title.t1')} <br />
+                {t('title.t2')} <br />
+                <span className="text-blue-300">{t('title.t3')} <br /> {t('title.t4')}</span>
+              </motion.h1>
 
+              {/* --- CAMBIO: text-white/95 y font-normal --- */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-base md:text-lg text-blue-100/80 font-light leading-relaxed max-w-lg"
+                className="text-base md:text-lg text-white/95 font-normal leading-relaxed max-w-lg"
               >
                 {t('desc')}
               </motion.p>
             </div>
 
             {/* FORMULARIO DERECHA */}
-            <div className="w-full lg:w-1/2 flex justify-end">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="w-full max-w-[440px] bg-white p-7 md:p-9 rounded-sm shadow-2xl relative min-h-[500px] flex flex-col justify-center"
+                className="w-full max-w-[460px] bg-white p-7 md:p-9 rounded-sm shadow-2xl relative min-h-[500px] flex flex-col justify-center"
               >
                 <AnimatePresence mode="wait">
                   {isSuccess ? (
+                    // --- PANTALLA DE ÉXITO ESTANDARIZADA ---
                     <motion.div
                       key="success"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center space-y-4 py-8"
+                      className="text-center space-y-4 py-8 flex flex-col items-center"
                     >
-                      <div className="w-16 h-16 bg-blue-50 text-[#002EC3] rounded-full flex items-center justify-center mx-auto mb-2">
+                      <div className="w-16 h-16 bg-blue-50 text-[#002EC3] rounded-full flex items-center justify-center mx-auto mb-4">
                         <CheckCircle2 className="w-8 h-8" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">{t('form.success.t1')}</h3>
-                      <p className="text-gray-500 text-sm">{t('form.success.t2')}</p>
+                      <h3 className="text-2xl font-bold text-gray-900 tracking-tight">{t('form.success.t1')}</h3>
+                      <p className="text-gray-700 font-medium text-sm">{t('form.success.t2')}</p>
                     </motion.div>
                   ) : (
-                    <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                         {/* Nombre Completo */}
@@ -151,7 +154,7 @@ export default function ContactSection() {
                             placeholder="Ej. Juan Pérez"
                           />
                           {errors.fullName?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.fullName.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.fullName.message)}</p>
                           )}
                         </div>
 
@@ -165,7 +168,7 @@ export default function ContactSection() {
                             placeholder="juan@tuempresa.com"
                           />
                           {errors.email?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.email.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.email.message)}</p>
                           )}
                         </div>
 
@@ -179,7 +182,7 @@ export default function ContactSection() {
                             placeholder={t('form.placeholders.company')}
                           />
                           {errors.company?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.company.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.company.message)}</p>
                           )}
                         </div>
 
@@ -193,7 +196,7 @@ export default function ContactSection() {
                             placeholder={t('form.placeholders.phone')}
                           />
                           {errors.phone?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.phone.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.phone.message)}</p>
                           )}
                         </div>
 
@@ -216,7 +219,7 @@ export default function ContactSection() {
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
                           {errors.role?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.role.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.role.message)}</p>
                           )}
                         </div>
 
@@ -238,12 +241,12 @@ export default function ContactSection() {
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
                           {errors.employees?.message && (
-                            <p className="text-[10px] text-red-500 mt-1 font-medium">{String(errors.employees.message)}</p>
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.employees.message)}</p>
                           )}
                         </div>
                       </div>
 
-                      {/* Mensaje de Error General (Opcional, puedes quitarlo si prefieres solo los mensajes individuales) */}
+                      {/* Mensaje de Error General */}
                       {Object.keys(errors).length > 0 && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
@@ -256,7 +259,7 @@ export default function ContactSection() {
                       )}
 
                       <div
-                        className="cf-turnstile"
+                        className="cf-turnstile mt-2"
                         data-sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_SITE_KEY}
                         data-theme="light"
                         data-size="normal"
@@ -264,17 +267,17 @@ export default function ContactSection() {
                         data-callback="onSuccess"
                       ></div>
 
-                      {/* Botón de Envío */}
-                      <div className="pt-2">
+                      {/* --- CAMBIO: Botón unificado con el resto de la web --- */}
+                      <div className="pt-3">
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full h-12 bg-gray-900 hover:bg-[#002EC3] text-white text-sm font-bold tracking-wide uppercase rounded-none transition-colors duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
+                          className="w-full h-12 md:h-14 bg-[#002EC3] hover:bg-slate-900 text-white text-base font-medium rounded-sm transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 shadow-md hover:shadow-lg"
                         >
                           {isSubmitting ? t('form.sending') : t('form.btn')}
-                          {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                          {!isSubmitting && <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
                         </button>
-                        <p className="text-center text-[10px] text-gray-500 mt-3 font-medium tracking-wide">
+                        <p className="text-center text-[10px] text-gray-500 mt-4 font-medium tracking-wide">
                           {t('form.footer')}
                         </p>
                       </div>

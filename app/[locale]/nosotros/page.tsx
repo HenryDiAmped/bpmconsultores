@@ -24,10 +24,12 @@ export default function NosotrosPage() {
       <section className="pt-40 pb-20 lg:pt-52 lg:pb-32 px-6 lg:px-8">
         <div className="max-w-[1000px] mx-auto text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h1 className="text-sm md:text-base font-bold tracking-[0.2em] uppercase text-[#002EC3] mb-6">
+            {/* --- CAMBIO: Etiqueta unificada al tamaño de VideoDobleSection --- */}
+            <h1 className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#002EC3] mb-6 block">
               {t('hero.tag')}
             </h1>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight lg:leading-[1.2]">
+            {/* --- CAMBIO: font-bold y tracking-tight --- */}
+            <p className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight lg:leading-[1.2]">
               {t('hero.desc')}
             </p>
           </motion.div>
@@ -35,7 +37,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* SECCIÓN 2: ENFOQUE Y EXPERIENCIA */}
-      <section className="py-20 bg-slate-50 border-y border-gray-100">
+      <section className="py-20 bg-slate-50 border-y border-gray-200">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -46,15 +48,18 @@ export default function NosotrosPage() {
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-4">
               <div className="w-12 h-1 bg-[#002EC3] mb-4"></div>
-              <p className="text-lg text-gray-600 leading-relaxed font-light">{t('enfoque.p1')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-lg text-gray-800 leading-relaxed font-medium">{t('enfoque.p1')}</p>
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-col gap-4">
               <div className="w-12 h-1 bg-gray-300 mb-4"></div>
-              <p className="text-lg text-gray-600 leading-relaxed font-light">{t('enfoque.p2')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-lg text-gray-800 leading-relaxed font-medium">{t('enfoque.p2')}</p>
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-col gap-4">
               <div className="w-12 h-1 bg-gray-300 mb-4"></div>
-              <p className="text-lg text-gray-600 leading-relaxed font-light">{t('enfoque.p3')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-lg text-gray-800 leading-relaxed font-medium">{t('enfoque.p3')}</p>
             </motion.div>
           </motion.div>
         </div>
@@ -70,7 +75,8 @@ export default function NosotrosPage() {
             variants={fadeUp}
             className="text-center mb-16 lg:mb-24"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{t('pilares.title')}</h2>
+            {/* --- CAMBIO: tracking-tight --- */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">{t('pilares.title')}</h2>
           </motion.div>
 
           <motion.div
@@ -80,36 +86,45 @@ export default function NosotrosPage() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16"
           >
-            <motion.div variants={fadeUp} className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-[#002EC3] flex items-center justify-center mb-6">
+            <motion.div variants={fadeUp} className="flex flex-col items-center text-center group">
+              {/* --- CAMBIO: rounded-sm y sutil efecto hover en el icono --- */}
+              <div className="w-16 h-16 rounded-sm bg-blue-50 text-[#002EC3] group-hover:bg-[#002EC3] group-hover:text-white transition-colors duration-500 flex items-center justify-center mb-6">
                 <ShieldCheck size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{t('pilares.p1.title')}</h3>
-              <p className="text-gray-600 font-light leading-relaxed">{t('pilares.p1.desc')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-gray-800 font-medium leading-relaxed">{t('pilares.p1.desc')}</p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-[#002EC3] flex items-center justify-center mb-6">
+            <motion.div variants={fadeUp} className="flex flex-col items-center text-center group">
+              {/* --- CAMBIO: rounded-sm y sutil efecto hover en el icono --- */}
+              <div className="w-16 h-16 rounded-sm bg-blue-50 text-[#002EC3] group-hover:bg-[#002EC3] group-hover:text-white transition-colors duration-500 flex items-center justify-center mb-6">
                 <TrendingUp size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{t('pilares.p2.title')}</h3>
-              <p className="text-gray-600 font-light leading-relaxed">{t('pilares.p2.desc')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-gray-800 font-medium leading-relaxed">{t('pilares.p2.desc')}</p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-[#002EC3] flex items-center justify-center mb-6">
+            <motion.div variants={fadeUp} className="flex flex-col items-center text-center group">
+              {/* --- CAMBIO: rounded-sm y sutil efecto hover en el icono --- */}
+              <div className="w-16 h-16 rounded-sm bg-blue-50 text-[#002EC3] group-hover:bg-[#002EC3] group-hover:text-white transition-colors duration-500 flex items-center justify-center mb-6">
                 <Lightbulb size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{t('pilares.p3.title')}</h3>
-              <p className="text-gray-600 font-light leading-relaxed">{t('pilares.p3.desc')}</p>
+              {/* --- CAMBIO: text-gray-800 y font-medium --- */}
+              <p className="text-gray-800 font-medium leading-relaxed">{t('pilares.p3.desc')}</p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* SECCIÓN 4: CIERRE */}
-      <section className="py-24 bg-[#002EC3] text-white px-6 lg:px-8">
-        <div className="max-w-[900px] mx-auto text-center">
+      <section className="py-24 bg-[#002EC3] text-white px-6 lg:px-8 relative overflow-hidden">
+        {/* Acento de fondo sutil (opcional para no dejarlo tan plano) */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div className="max-w-[900px] mx-auto text-center relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -117,9 +132,13 @@ export default function NosotrosPage() {
             variants={fadeUp}
             className="space-y-8"
           >
-            <p className="text-2xl md:text-3xl font-light leading-relaxed">{t('cierre.quote')}</p>
+            {/* --- CAMBIO: font-medium en lugar de font-light --- */}
+            <p className="text-2xl md:text-3xl font-medium leading-relaxed tracking-tight">{t('cierre.quote')}</p>
+            
             <div className="w-24 h-px bg-white/30 mx-auto"></div>
-            <p className="text-lg md:text-xl font-light text-blue-100 leading-relaxed">{t('cierre.desc')}</p>
+            
+            {/* --- CAMBIO: font-normal y text-white/95 --- */}
+            <p className="text-lg md:text-xl font-normal text-white/95 leading-relaxed">{t('cierre.desc')}</p>
           </motion.div>
         </div>
       </section>

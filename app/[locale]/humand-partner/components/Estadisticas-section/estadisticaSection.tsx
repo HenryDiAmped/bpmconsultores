@@ -47,53 +47,61 @@ export function EstadisticaSection() {
             transition={{ duration: 0.8 }}
             className="lg:w-5/12 text-white text-center lg:text-left"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.3] tracking-tight">
+            {/* --- CAMBIO: font-bold, tracking-tight, y énfasis en blue-400 --- */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-white">
               {t('title_part1')} <br className="hidden md:block"/>
-              <span className="font-bold">{t('title_span')}</span> {t('title_part2')} <br className="hidden md:block"/>
-              <span className="text-white/90 text-xl md:text-2xl lg:text-[2rem] mt-4 block leading-snug">
+              <span className="text-blue-400">{t('title_span')}</span> {t('title_part2')} <br className="hidden md:block"/>
+              {/* --- CAMBIO: text-white/95, font-medium y leading-relaxed --- */}
+              <span className="text-white/95 font-medium text-xl md:text-2xl lg:text-[2rem] mt-6 block leading-relaxed">
                 {t('title_sub')}
               </span>
             </h2>
           </motion.div>
 
           <div className="lg:w-7/12 w-full flex flex-col gap-6">
+            {/* --- CAMBIO: rounded-sm y hover más pulido --- */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="border border-white/20 hover:border-white/50 bg-white/5 transition-all duration-300 rounded-[2rem] p-8 md:p-10 backdrop-blur-sm"
+              className="border border-white/10 hover:border-white/30 bg-white/5 transition-all duration-500 rounded-sm p-8 md:p-10 backdrop-blur-sm group"
             >
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">{t('companies.title')}</h3>
-              <p className="text-white/80 text-base md:text-xl font-light">
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-300 transition-colors duration-500">{t('companies.title')}</h3>
+              {/* --- CAMBIO: font-normal y text-white/90 --- */}
+              <p className="text-white/90 text-base md:text-xl font-normal leading-relaxed">
                 {t('companies.desc')}
               </p>
             </motion.div>
 
+            {/* --- CAMBIO: rounded-sm y hover más pulido --- */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="border border-white/20 hover:border-white/50 bg-white/5 transition-all duration-300 rounded-[2rem] p-8 md:p-10 backdrop-blur-sm"
+              className="border border-white/10 hover:border-white/30 bg-white/5 transition-all duration-500 rounded-sm p-8 md:p-10 backdrop-blur-sm group"
             >
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">{t('industries.title')}</h3>
-              <p className="text-white/80 text-base md:text-xl font-light">
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-300 transition-colors duration-500">{t('industries.title')}</h3>
+              {/* --- CAMBIO: font-normal y text-white/90 --- */}
+              <p className="text-white/90 text-base md:text-xl font-normal leading-relaxed">
                 {t('industries.desc')}
               </p>
             </motion.div>
           </div>
         </div>
 
+        {/* --- CAMBIO: bg-slate-950/80 y rounded-sm para el contenedor del carrusel --- */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="w-full bg-black/80 rounded-[2rem] p-6 md:p-12 flex items-center shadow-2xl relative overflow-hidden backdrop-blur-lg"
+          className="w-full bg-slate-950/80 border border-white/5 rounded-sm p-6 md:p-12 flex items-center shadow-2xl relative overflow-hidden backdrop-blur-lg"
         >
+          {/* --- CAMBIO: text-blue-400 para mejor contraste --- */}
           <button onClick={prevSlide} className="hidden lg:flex items-center justify-center pl-2 pr-4 z-20 hover:scale-110 transition-transform cursor-pointer">
-            <ChevronLeft className="w-12 h-12 text-[#002EC3] hover:text-white transition-colors" strokeWidth={2} />
+            <ChevronLeft className="w-12 h-12 text-blue-400 hover:text-white transition-colors" strokeWidth={2} />
           </button>
 
           <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-4 px-2 relative min-h-[160px] md:min-h-[140px]">
@@ -108,10 +116,11 @@ export function EstadisticaSection() {
                   transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
                   className="flex flex-col items-center text-center px-2 justify-center h-full"
                 >
-                  <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 tracking-tighter">
+                  <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tighter">
                     {stat.percent}
                   </span>
-                  <p className="text-gray-400 text-xs md:text-sm leading-snug max-w-[180px] font-light">
+                  {/* --- CAMBIO: text-gray-300 y font-medium en lugar de font-light --- */}
+                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed max-w-[180px] font-medium">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -119,8 +128,9 @@ export function EstadisticaSection() {
             </AnimatePresence>
           </div>
 
+          {/* --- CAMBIO: text-blue-400 para mejor contraste --- */}
           <button onClick={nextSlide} className="hidden lg:flex items-center justify-center pr-2 pl-4 z-20 hover:scale-110 transition-transform cursor-pointer">
-            <ChevronRight className="w-12 h-12 text-[#002EC3] hover:text-white transition-colors" strokeWidth={2} />
+            <ChevronRight className="w-12 h-12 text-blue-400 hover:text-white transition-colors" strokeWidth={2} />
           </button>
         </motion.div>
 

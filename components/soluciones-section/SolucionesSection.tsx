@@ -163,15 +163,13 @@ export default function SolucionesSection() {
     <section className="w-full bg-slate-50 relative overflow-hidden flex flex-col border-t border-gray-200">
       <div className="mx-auto px-6 lg:px-8 max-w-[1320px] py-24 w-full">
         
-{/* HEADER SECTION (Centrado) */}
+        {/* HEADER SECTION (Centrado) */}
         <div className="w-full mx-auto mb-16 text-center flex flex-col items-center">
           <motion.h2 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            // Al quitar el max-w del contenedor padre, el texto tomará todo el ancho necesario para quedar en 1 línea en desktop.
-            // Se ajustaron los tamaños responsivos para que se vea bien en móviles también.
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6 w-full"
           >
             {tituloText.split("").map((char, index) => (
@@ -186,8 +184,7 @@ export default function SolucionesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            // Centramos el texto con mx-auto y usamos max-w-3xl
-            className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl mx-auto"
+            className="text-lg text-gray-800 font-medium leading-relaxed max-w-3xl mx-auto"
           >
             {t('header.description1')}<br className="hidden md:block" /> 
             {t('header.description2')}
@@ -220,7 +217,8 @@ export default function SolucionesSection() {
                   {solucion.title}
                 </h3>
 
-                <p className="text-blue-100/80 group-hover:text-gray-400 text-sm mb-8 flex-grow transition-colors duration-500 font-light relative z-10">
+                {/* --- CAMBIO APLICADO: Mejor contraste y peso en la fuente --- */}
+                <p className="text-blue-50/95 group-hover:text-gray-300 text-sm mb-8 flex-grow transition-colors duration-500 font-normal relative z-10">
                   {solucion.desc}
                 </p>
 
@@ -243,7 +241,7 @@ export default function SolucionesSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedIndex(null)} // <- Cierra al hacer clic en el fondo oscuro
+            onClick={() => setSelectedIndex(null)} 
             className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-slate-950/90 backdrop-blur-sm overflow-hidden"
           >
             {/* Botón Cerrar */}
@@ -262,7 +260,6 @@ export default function SolucionesSection() {
                 const isLeft = index === (selectedIndex - 1 + SOLUCIONES.length) % SOLUCIONES.length;
                 const isRight = index === (selectedIndex + 1) % SOLUCIONES.length;
 
-                // Definimos la animación de cada tarjeta según su posición
                 let animateProps = { x: "0%", scale: 0.7, opacity: 0, zIndex: 0 };
                 
                 if (isActive) {
@@ -279,11 +276,10 @@ export default function SolucionesSection() {
                     animate={animateProps}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     onClick={(e) => {
-                      e.stopPropagation(); // <- Evita que al dar clic en la tarjeta se cierre el fondo
+                      e.stopPropagation(); 
                       if (isLeft) handlePrev();
                       if (isRight) handleNext();
                     }}
-                    // Dimensiones estilizadas para modo "portrait"
                     className={`absolute w-full max-w-[360px] h-[540px] rounded-sm shadow-2xl overflow-hidden cursor-pointer flex flex-col ${
                       isActive ? 'bg-white' : 'bg-[#002EC3]'
                     }`}
@@ -299,7 +295,8 @@ export default function SolucionesSection() {
                             <div className="bg-blue-50 text-[#002EC3] p-3 rounded-lg">
                               <solucion.icon strokeWidth={1.5} size={24} />
                             </div>
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                            {/* --- CAMBIO APLICADO: text-gray-500 para el contador --- */}
+                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
                               {String(index + 1).padStart(2, '0')} / {String(SOLUCIONES.length).padStart(2, '0')}
                             </span>
                           </div>
@@ -307,7 +304,8 @@ export default function SolucionesSection() {
                           <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
                             {solucion.title}
                           </h3>
-                          <p className="text-gray-600 text-sm mb-10 leading-relaxed">
+                          {/* --- CAMBIO APLICADO: text-gray-700 y font-medium para la descripción --- */}
+                          <p className="text-gray-700 text-sm mb-10 leading-relaxed font-medium">
                             {solucion.desc}
                           </p>
 
@@ -319,7 +317,8 @@ export default function SolucionesSection() {
                               {solucion.details.map((item, i) => (
                                 <div key={i} className="flex items-start gap-3">
                                   <Check strokeWidth={2.5} className="w-4 h-4 text-[#002EC3] shrink-0 mt-[2px]" />
-                                  <span className="text-sm font-medium text-gray-700">{item}</span>
+                                  {/* --- CAMBIO APLICADO: text-gray-800 para los items --- */}
+                                  <span className="text-sm font-medium text-gray-800">{item}</span>
                                 </div>
                               ))}
                             </div>
@@ -330,10 +329,10 @@ export default function SolucionesSection() {
                     ) : (
                       /* --- TARJETAS INACTIVAS LATERALES (AZULES) --- */
                       <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-[#002EC3] relative">
-                         {/* Efecto de cristal oscuro sobre las tarjetas inactivas */}
                          <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply pointer-events-none" />
                          <solucion.icon strokeWidth={1} size={64} className="text-white/30 mb-6 relative z-10" />
-                         <h3 className="text-xl font-bold text-white/50 relative z-10">
+                         {/* --- CAMBIO APLICADO: text-white/80 para mejor visibilidad --- */}
+                         <h3 className="text-xl font-bold text-white/80 relative z-10">
                            {solucion.title}
                          </h3>
                       </div>
@@ -344,7 +343,7 @@ export default function SolucionesSection() {
               })}
             </div>
 
-            {/* Controles inferiores manuales con stopPropagation */}
+            {/* Controles inferiores manuales */}
             <div className="flex items-center gap-6 mt-8 z-50">
               <button 
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }} 
