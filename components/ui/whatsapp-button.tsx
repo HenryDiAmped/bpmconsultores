@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
   const t = useTranslations('whatsapp');
   const [showTooltip, setShowTooltip] = useState(true);
   
-  const phoneNumber = "51980180775"; 
+  const phoneNumber = "51920345095"; 
   const defaultMessage = t('default_message');
   const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 

@@ -2,7 +2,7 @@
   "whatsapp": {
     "tooltip": "¡Hola! Si tienes alguna duda o consulta, chatea con nosotros.",
     "aria_label": "Contactar por WhatsApp",
-    "default_message": "Hola, me gustaría obtener más información sobre sus servicios."
+    "default_message": "Hola, me gustaría recibir más información sobre los servicios de consultoría y soluciones que ofrece BPM Consultores. ¡Muchas gracias!"
   },
   "nosotros": {
     "hero": {
