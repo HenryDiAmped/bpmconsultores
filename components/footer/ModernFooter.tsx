@@ -59,8 +59,8 @@ export default function ModernFooter() {
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#002EC3] group-hover:border-[#002EC3] transition-all duration-300 shrink-0">
                   <MessageCircle className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <a href="tel:+51999999999" className="hover:text-white transition-colors md:mt-2">
-                  {t('contact.whatsapp')}: +51 999 999 999
+                <a href="tel:+51920345095" className="hover:text-white transition-colors md:mt-2">
+                  {t('contact.whatsapp')}: +51 920 345 095
                 </a>
               </div>
 
