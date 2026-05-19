@@ -28,12 +28,17 @@ export default function ContactSection() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "",
+      interest: "",
+      name: "",
+      lastname: "",
       email: "",
       company: "",
-      phone: "",
       employees: "",
+      phone: "",
+      typeCompany: "",
+      profesionalLevel: "",
       role: "",
+      country: "",
     }
   });
 
@@ -141,26 +146,75 @@ export default function ContactSection() {
                       <p className="text-gray-700 font-medium text-sm">{t('form.success.t2')}</p>
                     </motion.div>
                   ) : (
-                    <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                    <form key="form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                        {/* Nombre Completo */}
+                        {/* Producto de Interés - Ancho completo */}
                         <div className="sm:col-span-2">
-                          <label className={labelClass}>{t('form.labels.name')}</label>
-                          <input
-                            {...register("fullName")}
-                            type="text"
-                            className={`${inputClass} ${errors.fullName ? 'border-red-400 focus:border-red-500 focus:ring-red-500' : ''}`}
-                            placeholder="Ej. Juan Pérez"
-                          />
-                          {errors.fullName?.message && (
-                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.fullName.message)}</p>
+                          <label className={labelClass}>{t('form.labels.interest')} *</label>
+                          <div className="relative">
+                            <select
+                              {...register("interest")}
+                              className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.interest ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
+                              defaultValue=""
+                            >
+                              <option value="" disabled>Seleccione...</option>
+                              <option value="Copia de seguridad - Dispositivos">{t('form.interests.i1')}</option>
+                              <option value="Copia de seguridad - Copia de seguridad de terminales">{t('form.interests.i2')}</option>
+                              <option value="Copia de seguridad - Proteccion de archivos">{t('form.interests.i3')}</option>
+                              <option value="Copia de seguridad - Microsoft Azure">{t('form.interests.i4')}</option>
+                              <option value="Copia de seguridad - Microsoft Entra ID">{t('form.interests.i5')}</option>
+                              <option value="Copia de seguridad - Proteccion SaaS">{t('form.interests.i6')}</option>
+                              <option value="Copia de seguridad - Lugar de trabajo">{t('form.interests.i7')}</option>
+                              <option value="Operaciones de TI - Automatizacion de servicios profesionales">{t('form.interests.i8')}</option>
+                              <option value="Operaciones de TI - Gerente de cotizaciones">{t('form.interests.i9')}</option>
+                              <option value="Operaciones de TI: supervision y gestion remotas">{t('form.interests.i10')}</option>
+                              <option value="Redes - Soluciones SASE">{t('form.interests.i11')}</option>
+                              <option value="Redes: conmutadores y enrutadores">{t('form.interests.i12')}</option>
+                              <option value="Redes - Puntos de acceso Wi-Fi">{t('form.interests.i13')}</option>
+                              <option value="Redes - Gestion de la energia">{t('form.interests.i14')}</option>
+                              <option value="Seguridad - Proteccion antivirus">{t('form.interests.i15')}</option>
+                              <option value="Seguridad: deteccion y respuesta en endpoints">{t('form.interests.i16')}</option>
+                              <option value="Seguridad - Centro de operaciones de seguridad gestionado">{t('form.interests.i17')}</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                          </div>
+                          {errors.interest?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.interest.message)}</p>
                           )}
                         </div>
 
-                        {/* Correo Corporativo */}
+                        {/* Nombre */}
+                        <div>
+                          <label className={labelClass}>{t('form.labels.name')} *</label>
+                          <input
+                            {...register("name")}
+                            type="text"
+                            className={`${inputClass} ${errors.name ? 'border-red-400 focus:border-red-500 focus:ring-red-500' : ''}`}
+                            placeholder="Ej. Juan"
+                          />
+                          {errors.name?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.name.message)}</p>
+                          )}
+                        </div>
+
+                        {/* Apellido */}
+                        <div>
+                          <label className={labelClass}>{t('form.labels.lastname')} *</label>
+                          <input
+                            {...register("lastname")}
+                            type="text"
+                            className={`${inputClass} ${errors.lastname ? 'border-red-400 focus:border-red-500 focus:ring-red-500' : ''}`}
+                            placeholder="Ej. Pérez"
+                          />
+                          {errors.lastname?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.lastname.message)}</p>
+                          )}
+                        </div>
+
+                        {/* Correo Corporativo - Ancho completo */}
                         <div className="sm:col-span-2">
-                          <label className={labelClass}>{t('form.labels.email')}</label>
+                          <label className={labelClass}>{t('form.labels.email')} *</label>
                           <input
                             {...register("email")}
                             type="email"
@@ -174,7 +228,7 @@ export default function ContactSection() {
 
                         {/* Empresa */}
                         <div>
-                          <label className={labelClass}>{t('form.labels.company')}</label>
+                          <label className={labelClass}>{t('form.labels.company')} *</label>
                           <input
                             {...register("company")}
                             type="text"
@@ -186,9 +240,52 @@ export default function ContactSection() {
                           )}
                         </div>
 
+                        {/* Tipo de Empresa */}
+                        <div>
+                          <label className={labelClass}>{t('form.labels.typeCompany')} *</label>
+                          <div className="relative">
+                            <select
+                              {...register("typeCompany")}
+                              className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.typeCompany ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
+                              defaultValue=""
+                            >
+                              <option value="" disabled>Seleccione...</option>
+                              <option value="MSP o proveedor de servicios de TI">{t('form.typeCompanies.t1')}</option>
+                              <option value="Departamento interno de TI">{t('form.typeCompanies.t2')}</option>
+                              <option value="VAR o distribuidor tecnologico">{t('form.typeCompanies.t3')}</option>
+                              <option value="Distribuidor">{t('form.typeCompanies.t4')}</option>
+                              <option value="Soy estudiante">{t('form.typeCompanies.t5')}</option>
+                              <option value="Soy un hacker">{t('form.typeCompanies.t6')}</option>
+                              <option value="Otro">{t('form.typeCompanies.t7')}</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                          </div>
+                          {errors.typeCompany?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.typeCompany.message)}</p>
+                          )}
+                        </div>
+
+                        {/* Tamaño (Número de empleados) */}
+                        <div>
+                          <label className={labelClass}>{t('form.labels.size')} *</label>
+                          <div className="relative">
+                            <input
+                              type="number"
+                              {...register("employees")}
+                              className={`${inputClass} ${errors.employees ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
+                              placeholder="Ej. 100"
+                              min="0"
+                              step="1"
+                            />
+                          </div>
+                          {errors.employees?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.employees.message)}</p>
+                          )}
+                        </div>
+
                         {/* Teléfono */}
                         <div>
-                          <label className={labelClass}>{t('form.labels.phone')}</label>
+                          <label className={labelClass}>{t('form.labels.phone')} *</label>
                           <input
                             {...register("phone")}
                             type="tel"
@@ -200,21 +297,55 @@ export default function ContactSection() {
                           )}
                         </div>
 
+                        {/* Nivel Profesional */}
+                        <div>
+                          <label className={labelClass}>{t('form.labels.profesionalLevel')} *</label>
+                          <div className="relative">
+                            <select
+                              {...register("profesionalLevel")}
+                              className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.profesionalLevel ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
+                              defaultValue=""
+                            >
+                              <option value="" disabled>Seleccione...</option>
+                              <option value="Administrador">{t('form.profesionalLevels.p1')}</option>
+                              <option value="Consultor">{t('form.profesionalLevels.p2')}</option>
+                              <option value="Director">{t('form.profesionalLevels.p3')}</option>
+                              <option value="Colaborador individual">{t('form.profesionalLevels.p4')}</option>
+                              <option value="Presidente, director ejecutivo, fundador">{t('form.profesionalLevels.p5')}</option>
+                              <option value="Vicepresidente, vicepresidente adjunto, vicepresidente senior, vicepresidente ejecutivo">{t('form.profesionalLevels.p6')}</option>
+                              <option value="Director general">{t('form.profesionalLevels.p7')}</option>
+                              <option value="Propietario">{t('form.profesionalLevels.p8')}</option>
+                              <option value="Jefe de proyecto">{t('form.profesionalLevels.p9')}</option>
+                              <option value="Otro">{t('form.profesionalLevels.p10')}</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                          </div>
+                          {errors.profesionalLevel?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.profesionalLevel.message)}</p>
+                          )}
+                        </div>
+
                         {/* Cargo / Rol */}
                         <div>
-                          <label className={labelClass}>{t('form.labels.role')}</label>
+                          <label className={labelClass}>{t('form.labels.role')} *</label>
                           <div className="relative">
                             <select
                               {...register("role")}
                               className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.role ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
                               defaultValue=""
                             >
-                              <option value="" disabled>{t('form.placeholders.select')}</option>
-                              <option value="Director / Gerente">{t('form.roles.r1')}</option>
-                              <option value="HR Manager">{t('form.roles.r2')}</option>
-                              <option value="Operaciones">{t('form.roles.r3')}</option>
-                              <option value="Transformación">{t('form.roles.r4')}</option>
-                              <option value="Otro">{t('form.roles.r5')}</option>
+                              <option value="" disabled>Seleccione...</option>
+                              <option value="Finanzas o Contabilidad">{t('form.roles.r1')}</option>
+                              <option value="Tecnologia de la informacion">{t('form.roles.r2')}</option>
+                              <option value="Desarrollo, servicios o soporte de aplicaciones">{t('form.roles.r3')}</option>
+                              <option value="Auditoria o cumplimiento">{t('form.roles.r4')}</option>
+                              <option value="Desarrollo empresarial">{t('form.roles.r5')}</option>
+                              <option value="Comunicaciones">{t('form.roles.r6')}</option>
+                              <option value="Atencion al cliente">{t('form.roles.r7')}</option>
+                              <option value="Ingenieria">{t('form.roles.r8')}</option>
+                              <option value="Gestion de la Informacion o Sistemas de Informacion">{t('form.roles.r9')}</option>
+                              <option value="Seguridad de la informacion o gestion de riesgos">{t('form.roles.r10')}</option>
+                              <option value="Otro">{t('form.roles.r11')}</option>
                             </select>
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
@@ -223,25 +354,146 @@ export default function ContactSection() {
                           )}
                         </div>
 
-                        {/* Tamaño */}
+                        {/* País */}
                         <div>
-                          <label className={labelClass}>{t('form.labels.size')}</label>
+                          <label className={labelClass}>{t('form.labels.country')} *</label>
                           <div className="relative">
                             <select
-                              {...register("employees")}
-                              className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.employees ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
+                              {...register("country")}
+                              className={`${inputClass} appearance-none cursor-pointer pr-8 ${errors.country ? 'border-red-400 focus:border-red-500 focus:ring-red-500 text-gray-900' : 'text-gray-600'}`}
                               defaultValue=""
                             >
-                              <option value="" disabled>{t('form.placeholders.select')}</option>
-                              <option value="50-100">{t('form.sizes.s1')}</option>
-                              <option value="100-200">{t('form.sizes.s2')}</option>
-                              <option value="201-500">{t('form.sizes.s3')}</option>
-                              <option value="500+">{t('form.sizes.s4')}</option>
+                              <option value="" disabled>Seleccione...</option>
+                              <option value="Afganistán">{t('form.countries.c1')}</option>
+                              <option value="Albania">{t('form.countries.c2')}</option>
+                              <option value="Alemania">{t('form.countries.c3')}</option>
+                              <option value="Andorra">{t('form.countries.c4')}</option>
+                              <option value="Angola">{t('form.countries.c5')}</option>
+                              <option value="Arabia Saudita">{t('form.countries.c6')}</option>
+                              <option value="Argelia">{t('form.countries.c7')}</option>
+                              <option value="Argentina">{t('form.countries.c8')}</option>
+                              <option value="Armenia">{t('form.countries.c9')}</option>
+                              <option value="Australia">{t('form.countries.c10')}</option>
+                              <option value="Austria">{t('form.countries.c11')}</option>
+                              <option value="Azerbaiyán">{t('form.countries.c12')}</option>
+                              <option value="Bahamas">{t('form.countries.c13')}</option>
+                              <option value="Bangladés">{t('form.countries.c14')}</option>
+                              <option value="Bélgica">{t('form.countries.c15')}</option>
+                              <option value="Belice">{t('form.countries.c16')}</option>
+                              <option value="Benín">{t('form.countries.c17')}</option>
+                              <option value="Bielorrusia">{t('form.countries.c18')}</option>
+                              <option value="Bolivia">{t('form.countries.c19')}</option>
+                              <option value="Bosnia y Herzegovina">{t('form.countries.c20')}</option>
+                              <option value="Botsuana">{t('form.countries.c21')}</option>
+                              <option value="Brasil">{t('form.countries.c22')}</option>
+                              <option value="Bulgaria">{t('form.countries.c23')}</option>
+                              <option value="Camerún">{t('form.countries.c24')}</option>
+                              <option value="Canadá">{t('form.countries.c25')}</option>
+                              <option value="Chile">{t('form.countries.c26')}</option>
+                              <option value="China">{t('form.countries.c27')}</option>
+                              <option value="Chipre">{t('form.countries.c28')}</option>
+                              <option value="Colombia">{t('form.countries.c29')}</option>
+                              <option value="Corea del Norte">{t('form.countries.c30')}</option>
+                              <option value="Corea del Sur">{t('form.countries.c31')}</option>
+                              <option value="Costa Rica">{t('form.countries.c32')}</option>
+                              <option value="Croacia">{t('form.countries.c33')}</option>
+                              <option value="Cuba">{t('form.countries.c34')}</option>
+                              <option value="Dinamarca">{t('form.countries.c35')}</option>
+                              <option value="Ecuador">{t('form.countries.c36')}</option>
+                              <option value="Egipto">{t('form.countries.c37')}</option>
+                              <option value="El Salvador">{t('form.countries.c38')}</option>
+                              <option value="Emiratos Árabes Unidos">{t('form.countries.c39')}</option>
+                              <option value="Eslovaquia">{t('form.countries.c40')}</option>
+                              <option value="Eslovenia">{t('form.countries.c41')}</option>
+                              <option value="España">{t('form.countries.c42')}</option>
+                              <option value="Estados Unidos">{t('form.countries.c43')}</option>
+                              <option value="Estonia">{t('form.countries.c44')}</option>
+                              <option value="Etiopía">{t('form.countries.c45')}</option>
+                              <option value="Filipinas">{t('form.countries.c46')}</option>
+                              <option value="Finlandia">{t('form.countries.c47')}</option>
+                              <option value="Francia">{t('form.countries.c48')}</option>
+                              <option value="Georgia">{t('form.countries.c49')}</option>
+                              <option value="Ghana">{t('form.countries.c50')}</option>
+                              <option value="Grecia">{t('form.countries.c51')}</option>
+                              <option value="Guatemala">{t('form.countries.c52')}</option>
+                              <option value="Haití">{t('form.countries.c53')}</option>
+                              <option value="Honduras">{t('form.countries.c54')}</option>
+                              <option value="Hungría">{t('form.countries.c55')}</option>
+                              <option value="India">{t('form.countries.c56')}</option>
+                              <option value="Indonesia">{t('form.countries.c57')}</option>
+                              <option value="Irak">{t('form.countries.c58')}</option>
+                              <option value="Irán">{t('form.countries.c59')}</option>
+                              <option value="Irlanda">{t('form.countries.c60')}</option>
+                              <option value="Islandia">{t('form.countries.c61')}</option>
+                              <option value="Israel">{t('form.countries.c62')}</option>
+                              <option value="Italia">{t('form.countries.c63')}</option>
+                              <option value="Jamaica">{t('form.countries.c64')}</option>
+                              <option value="Japón">{t('form.countries.c65')}</option>
+                              <option value="Jordania">{t('form.countries.c66')}</option>
+                              <option value="Kazajistán">{t('form.countries.c67')}</option>
+                              <option value="Kenia">{t('form.countries.c68')}</option>
+                              <option value="Kuwait">{t('form.countries.c69')}</option>
+                              <option value="Letonia">{t('form.countries.c70')}</option>
+                              <option value="Líbano">{t('form.countries.c71')}</option>
+                              <option value="Libia">{t('form.countries.c72')}</option>
+                              <option value="Lituania">{t('form.countries.c73')}</option>
+                              <option value="Luxemburgo">{t('form.countries.c74')}</option>
+                              <option value="Macedonia del Norte">{t('form.countries.c75')}</option>
+                              <option value="Malasia">{t('form.countries.c76')}</option>
+                              <option value="Marruecos">{t('form.countries.c77')}</option>
+                              <option value="México">{t('form.countries.c78')}</option>
+                              <option value="Moldavia">{t('form.countries.c79')}</option>
+                              <option value="Mónaco">{t('form.countries.c80')}</option>
+                              <option value="Mongolia">{t('form.countries.c81')}</option>
+                              <option value="Montenegro">{t('form.countries.c82')}</option>
+                              <option value="Mozambique">{t('form.countries.c83')}</option>
+                              <option value="Nepal">{t('form.countries.c84')}</option>
+                              <option value="Nicaragua">{t('form.countries.c85')}</option>
+                              <option value="Nigeria">{t('form.countries.c86')}</option>
+                              <option value="Noruega">{t('form.countries.c87')}</option>
+                              <option value="Nueva Zelanda">{t('form.countries.c88')}</option>
+                              <option value="Omán">{t('form.countries.c89')}</option>
+                              <option value="Países Bajos">{t('form.countries.c90')}</option>
+                              <option value="Pakistán">{t('form.countries.c91')}</option>
+                              <option value="Panamá">{t('form.countries.c92')}</option>
+                              <option value="Paraguay">{t('form.countries.c93')}</option>
+                              <option value="Perú">{t('form.countries.c94')}</option>
+                              <option value="Polonia">{t('form.countries.c95')}</option>
+                              <option value="Portugal">{t('form.countries.c96')}</option>
+                              <option value="Puerto Rico">{t('form.countries.c97')}</option>
+                              <option value="Qatar">{t('form.countries.c98')}</option>
+                              <option value="Reino Unido">{t('form.countries.c99')}</option>
+                              <option value="República Checa">{t('form.countries.c100')}</option>
+                              <option value="República Dominicana">{t('form.countries.c101')}</option>
+                              <option value="Rumania">{t('form.countries.c102')}</option>
+                              <option value="Rusia">{t('form.countries.c103')}</option>
+                              <option value="Senegal">{t('form.countries.c104')}</option>
+                              <option value="Serbia">{t('form.countries.c105')}</option>
+                              <option value="Singapur">{t('form.countries.c106')}</option>
+                              <option value="Siria">{t('form.countries.c107')}</option>
+                              <option value="Sudáfrica">{t('form.countries.c108')}</option>
+                              <option value="Suecia">{t('form.countries.c109')}</option>
+                              <option value="Suiza">{t('form.countries.c110')}</option>
+                              <option value="Tailandia">{t('form.countries.c111')}</option>
+                              <option value="Taiwán">{t('form.countries.c112')}</option>
+                              <option value="Tanzania">{t('form.countries.c113')}</option>
+                              <option value="Túnez">{t('form.countries.c114')}</option>
+                              <option value="Turquía">{t('form.countries.c115')}</option>
+                              <option value="Ucrania">{t('form.countries.c116')}</option>
+                              <option value="Uganda">{t('form.countries.c117')}</option>
+                              <option value="Uruguay">{t('form.countries.c118')}</option>
+                              <option value="Uzbekistán">{t('form.countries.c119')}</option>
+                              <option value="Venezuela">{t('form.countries.c120')}</option>
+                              <option value="Vietnam">{t('form.countries.c121')}</option>
+                              <option value="Yemen">{t('form.countries.c122')}</option>
+                              <option value="Zambia">{t('form.countries.c123')}</option>
+                              <option value="Zimbabue">{t('form.countries.c124')}</option>
+                              <option value="Otro">{t('form.countries.c125')}</option>
                             </select>
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                           </div>
-                          {errors.employees?.message && (
-                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.employees.message)}</p>
+                          {errors.country?.message && (
+                            <p className="text-[10px] text-red-500 mt-1.5 font-medium">{String(errors.country.message)}</p>
                           )}
                         </div>
                       </div>
@@ -267,8 +519,13 @@ export default function ContactSection() {
                         data-callback="onSuccess"
                       ></div>
 
+                      {/* Mensaje de aceptación de correos promocionales */}
+                      <p className="text-[11px] text-gray-600 leading-relaxed font-medium">
+                        Sí, acepto recibir correos electrónicos promocionales de BPM Consultores, el Socio de Negocios de HUMAND
+                      </p>
+
                       {/* --- CAMBIO: Botón unificado con el resto de la web --- */}
-                      <div className="pt-3">
+                      <div className="pt-2">
                         <button
                           type="submit"
                           disabled={isSubmitting}

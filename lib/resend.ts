@@ -17,12 +17,17 @@ export const send = async (emailFormData: z.infer<typeof formSchema>)=>{
             bcc: ['humand@bpmconsultores.com'],
             subject: 'Hemos recibido tu solicitud - BPM Consultores',
             react: EmailTemplate({ 
-                fullName: emailFormData.fullName,
+                interest: emailFormData.interest,
+                name: emailFormData.name,
+                lastname: emailFormData.lastname,
                 email: emailFormData.email,
                 company: emailFormData.company,
-                phone: emailFormData.phone,
                 employees: emailFormData.employees,
+                phone: emailFormData.phone,
+                typeCompany: emailFormData.typeCompany,
+                profesionalLevel: emailFormData.profesionalLevel,
                 role: emailFormData.role,
+                country: emailFormData.country,
             }) as ReactElement,
         });
 

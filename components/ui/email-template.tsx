@@ -1,22 +1,32 @@
 import * as React from 'react';
 
-// 1. Agregamos todos los campos nuevos a la interfaz
+// Interfaz con todos los campos del formulario
 interface EmailTemplateProps {
-  fullName: string;
+  interest: string;
+  name: string;
+  lastname: string;
   email: string;
   company: string;
-  phone: string;
   employees: string;
+  phone: string;
+  typeCompany: string;
+  profesionalLevel: string;
   role: string;
+  country: string;
 }
 
 export function EmailTemplate({
-  fullName,
+  interest,
+  name,
+  lastname,
   email,
   company,
-  phone,
   employees,
+  phone,
+  typeCompany,
+  profesionalLevel,
   role,
+  country,
 }: EmailTemplateProps) {
   return (
     <div style={styles.main}>
@@ -28,7 +38,7 @@ export function EmailTemplate({
 
         {/* Cuerpo del Correo (Enfocado en el Cliente) */}
         <div style={styles.content}>
-          <p style={styles.greeting}>Hola, {fullName}:</p>
+          <p style={styles.greeting}>Hola, {name} {lastname}:</p>
           <p style={styles.text}>
             ¡Gracias por contactar a <strong>BPM Consultores</strong>! Hemos recibido tu solicitud correctamente.
           </p>
@@ -42,10 +52,14 @@ export function EmailTemplate({
 
           {/* Caja de Información (Resumen para el cliente) */}
           <div style={styles.infoBox}>
-            <p style={styles.infoRow}><strong>Nombre completo:</strong> {fullName}</p>
+            <p style={styles.infoRow}><strong>Producto de interés:</strong> {interest}</p>
+            <p style={styles.infoRow}><strong>Nombre completo:</strong> {name} {lastname}</p>
             <p style={styles.infoRow}><strong>Empresa:</strong> {company}</p>
+            <p style={styles.infoRow}><strong>Tipo de empresa:</strong> {typeCompany}</p>
             <p style={styles.infoRow}><strong>Tamaño de la empresa:</strong> {employees}</p>
-            <p style={styles.infoRow}><strong>Departamento y Cargo:</strong> {role}</p>
+            <p style={styles.infoRow}><strong>Nivel profesional:</strong> {profesionalLevel}</p>
+            <p style={styles.infoRow}><strong>Cargo/Rol:</strong> {role}</p>
+            <p style={styles.infoRow}><strong>País:</strong> {country}</p>
           </div>
 
           <p style={{ ...styles.text, marginTop: '24px' }}>
